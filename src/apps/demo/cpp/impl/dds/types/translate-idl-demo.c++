@@ -1,0 +1,90 @@
+/// -*- c++ -*-
+//==============================================================================
+/// @file translate-idl-demo.c++
+/// @brief Encode/decode routines for Demo IDL types
+/// @author Tor Slettnes <tslettnes@picarro.com>
+//==============================================================================
+
+#include "translate-idl-demo.h++"  // IDL types, generated from `demo-types.idl`
+#include "translate-idl-inline.h++"
+#include "chrono/date-time.h++"
+
+namespace picarro::idl
+{
+    //==========================================================================
+    // Greeting
+    void encode(const picarro::demo::Greeting &native,
+                Picarro::Demo::Greeting *idl)
+    {
+        idl->text(native.text);
+        idl->identity(native.identity);
+        idl->implementation(native.implementation);
+        encode(native.birth, &idl->birth());
+        encode(native.data, &idl->data());
+    }
+
+    void decode(const Picarro::Demo::Greeting &idl,
+                picarro::demo::Greeting *native)
+    {
+        native->text = idl.text();
+        native->identity = idl.identity();
+        native->implementation = idl.implementation();
+        decode(idl.birth(), &native->birth);
+        decode(idl.data(), &native->data);
+    }
+
+    //==========================================================================
+    // TimeData
+
+    void encode(const picarro::demo::TimeData &native,
+                Picarro::Demo::TimeData *idl)
+    {
+        encode(native.timepoint, &idl->timestamp());
+        encode(native.localtime, &idl->local_time());
+        encode(native.utctime, &idl->utc_time());
+    }
+
+    void decode(const Picarro::Demo::TimeData &idl,
+                picarro::demo::TimeData *native)
+    {
+        decode(idl.timestamp(), &native->timepoint);
+        decode(idl.local_time(), &native->localtime);
+        decode(idl.utc_time(), &native->utctime);
+    }
+
+    //==========================================================================
+    // TimeStruct
+
+    void encode(const std::tm &native,
+                Picarro::Demo::TimeStruct *idl)
+    {
+        idl->year(native.tm_year + picarro::dt::TM_YEAR_OFFSET);
+        idl->month(native.tm_mon + picarro::dt::TM_MONTH_OFFSET);
+        idl->day(native.tm_mday + picarro::dt::TM_DAY_OFFSET);
+        idl->hour(native.tm_hour);
+        idl->minute(native.tm_min);
+        idl->second(native.tm_sec);
+        idl->weekday(static_cast<Picarro::Demo::Weekday>(native.tm_wday + picarro::dt::TM_WEEKDAY_OFFSET));
+        idl->year_day(native.tm_yday + picarro::dt::TM_YEARDAY_OFFSET);
+
+        if (native.tm_isdst >= 0)
+        {
+            idl->is_dst(native.tm_isdst > 0);
+        }
+    }
+
+    void decode(const Picarro::Demo::TimeStruct &idl,
+                std::tm *native)
+    {
+        native->tm_sec = static_cast<int>(idl.second());
+        native->tm_min = static_cast<int>(idl.minute());
+        native->tm_hour = static_cast<int>(idl.hour());
+        native->tm_mday = static_cast<int>(idl.day()) - picarro::dt::TM_DAY_OFFSET;
+        native->tm_mon = static_cast<int>(idl.month()) - picarro::dt::TM_MONTH_OFFSET;
+        native->tm_year = static_cast<int>(idl.year()) - picarro::dt::TM_YEAR_OFFSET;
+        native->tm_mday = static_cast<int>(idl.weekday()) - picarro::dt::TM_WEEKDAY_OFFSET;
+        native->tm_yday = static_cast<int>(idl.year_day()) - picarro::dt::TM_YEARDAY_OFFSET;
+        native->tm_isdst = static_cast<int>(idl.is_dst().has_value() ? idl.is_dst().value() : -1);
+    }
+
+}  // namespace picarro::idl

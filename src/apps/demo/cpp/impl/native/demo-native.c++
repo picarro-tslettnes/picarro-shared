@@ -1,0 +1,51 @@
+// -*- c++ -*-
+//==============================================================================
+/// @file demo-native.c++
+/// @brief Example app - Local/native implementation
+/// @author Tor Slettnes <tslettnes@picarro.com>
+//==============================================================================
+
+#include "demo-native.h++"
+#include "demo-signals.h++"
+#include "chrono/scheduler.h++"
+#include "platform/symbols.h++"
+
+namespace picarro::demo
+{
+    constexpr const char *SIGNAL_HANDLE = "demo-notify";
+    constexpr const char *TIMER_TASK_HANDLE = "demo-timer";
+
+    NativeImpl::NativeImpl(const std::string &identity)
+        : Super(identity, TYPE_NAME_BASE(This))
+    {
+    }
+
+    void NativeImpl::say_hello(const Greeting &greeting)
+    {
+        /// Emit `signal_greeting` to registered slots/callbacks.
+        picarro::demo::signal_greeting.emit(greeting.identity, greeting);
+    }
+
+    TimeData NativeImpl::get_current_time()
+    {
+        return {picarro::dt::Clock::now()};
+    }
+
+    void NativeImpl::start_ticking()
+    {
+        // Schedule a task to emit a new TimeData update every second
+        picarro::scheduler.add_if_missing(
+            TIMER_TASK_HANDLE,
+            [](const picarro::dt::TimePoint &tp) {
+                picarro::demo::signal_time.emit(TimeData(tp));
+            },
+            std::chrono::seconds(1),
+            picarro::Scheduler::ALIGN_UTC);
+    }
+
+    void NativeImpl::stop_ticking()
+    {
+        // Cancel any existing TimeData update task
+        picarro::scheduler.remove(TIMER_TASK_HANDLE);
+    }
+}  // namespace picarro::demo

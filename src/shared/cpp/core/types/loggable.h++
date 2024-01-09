@@ -1,0 +1,31 @@
+/// -*- c++ -*-
+//==============================================================================
+/// @file loggable.h++
+/// @brief Abstract loggable item, base for telemetry, log entry, error, etc.
+/// @author Tor Slettnes <tslettnes@picarro.com>
+//==============================================================================
+
+#pragma once
+#include <memory>
+
+namespace picarro::types
+{
+    //==========================================================================
+    /// \class Loggable
+    /// \brief Abstract loggable item.
+    ///
+    /// Specializations include:
+    ///   - `status::Event`, and in turn `logging:Message`
+    ///   - `status::Telemetry`
+    ///   - `types::BinaryData`
+
+    class Loggable
+    {
+    public:
+        using Ref = std::shared_ptr<Loggable>;
+
+    public:
+        virtual ~Loggable() {}  // Hack to ensure class is polymorphic
+    };
+
+}  // namespace picarro::types

@@ -1,0 +1,28 @@
+// -*- c++ -*-
+//==============================================================================
+/// @file client.h++
+/// @brief Parse commmand line options for client applications
+/// @author Tor Slettnes <tslettnes@picarro.com>
+//==============================================================================
+
+#pragma once
+#include "common.h++"
+
+namespace picarro::argparse
+{
+    //==========================================================================
+    /// Option parser for client apps
+    class ClientOptions : public CommonOptions
+    {
+        using Super = CommonOptions;
+
+    protected:
+        ClientOptions();
+
+    public:
+        void add_options() override;
+
+    public:
+        uint timeout;
+    };
+}  // namespace picarro::argparse
