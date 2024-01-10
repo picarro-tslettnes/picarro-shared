@@ -1,7 +1,7 @@
 Picarro Apps Demo
 =========================
 
-This demo application is provided to illustrate the morphology of a typical service-based applications based on the Picarro application framework. It may be used as a template for creating new applications, or as a reference implementation of current best practices.
+This demo application is provided to illustrate the morphology of a typical service-based applications based on the Common Core application framework. It may be used as a template for creating new applications, or as a reference implementation of current best practices.
 
 For illustration, our demo comprises two distinct implementations of the same Application Programming Interface (API), described below. Each approach showcases different building blocks within our codebase, ranging from basic C++ utilites to client/server communication over gRPC.
 
@@ -43,11 +43,13 @@ Implementations
 
 ### Linkable C++ libraries
 
-Two different C++ implementations are included here, illustrating different building blocks within the Picarro codebase.  Each approach implements the same abstract API, defined in [demo-api.h++](cpp/api/demo-api.h++):
+Three different C++ implementations are included here, illustrating different building blocks within the Picarro codebase.  Each approach implements the same abstract API, defined in [demo-api.h++](cpp/api/demo-api.h++):
 
 1. A [C++ native library](cpp/impl/native/README.md) that directly implements the underlying functionality within a single process. Notifications are emitted directly via the signals described above.
 
-2. A [gRPC adapter library](cpp/impl/grpc/README.md), comprising a client/server pair where the client implements the same C++ API by forwarding invocations as RPC calls to the server. Signals emitted in the server space are captured and streamed to the client, where they are then re-emitted.
+2. A [gRPC adapter library](cpp/impl/grpc/README.md), comprising a client/server pair where the client implements the same C++ API by forwarding invocations as RPC calls to the server. Signals emitted in the server space are captured in a [queue](cpp/impl/grpc/server/demo-grpc-signalqueue.h++), and from there streamed back to the client where they are read and then re-emitted locally as signals.
+
+3. A [DDS adapter library](cpp/impl/dds/README.md), similarly comprising a client/server pair. Similar to gRPC, a dedicated [RPC client](cpp/impl/dds/rpc-client) implements the API by forwarding requests to a corresponding [RPC server](cpp/impl/dds/rpc-server) where it is fulfilled natively. However, in this case signals are captured in the server and propagated to the client via a [DDS Publisher](cpp/impl/dds/dds-publisher); the client receives these and re-emits signals locally within a [DDS Subscriber](cpp/impl/dds/dds-subscriber). module.
 
 #### Interchangability
 

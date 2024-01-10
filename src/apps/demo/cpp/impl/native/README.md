@@ -8,7 +8,7 @@ Conversely, since this implementation does not involve any client/server communi
 Notifications
 -------------
 
-As for time notifiations, the `picarro::demo::NativeImplementation::start_ticking()` method uses our shared [task scheduler](../../../../../../shared/source/cpp/platform/chrono/scheduler.h++) to invoke a specified callback function at the specified frequency. Conversely, `picarro::demo::CoreProvider::stop_ticking()` cancels this task.
+As for time notifiations, the `picarro::demo::NativeImplementation::start_ticking()` method uses our shared [task scheduler](../../../../../shared/cpp/core/chrono/scheduler.h++) to invoke a specified callback function at the specified frequency. Conversely, `picarro::demo::CoreProvider::stop_ticking()` cancels this task.
 
 Similarly, greeting notices are issued via `picarro::demo::signal_greeting`.
 
