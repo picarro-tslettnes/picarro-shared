@@ -64,20 +64,20 @@ If you are reading this text directly on your system, you have already completed
     ```
     [user]
       name = Your Name
-      email = you@email.com
+      email = yname@picarro.com
     [credential]
       helper = store
     ```
 
-    (Replace `Your Name` and `your.name` as appropriate).
+    (Replace `Your Name` and `yname@picarro.com` as appropriate).
 
   * Create or add to the file `$HOME/.git-credentials`:
 
     ```
-    https://github-username:TOKEN@github.com
+    https://picarro-yname:TOKEN@github.com
     ```
 
-    (Replace `github-username` with your actual GitHub username, and `TOKEN`
+    (Replace `picarro-yname` with your actual GitHub username, and `TOKEN`
     with a the contents of the Personal Access Token you created above).
 
 
@@ -95,9 +95,9 @@ If you are reading this text directly on your system, you have already completed
 * C++ build-time dependencies:
 
   ```bash
-  # apt install build-essential cmake doxygen \
-                uuid-dev rapidjson-dev \
-                protobuf-compiler-grpc libgrpc++-dev
+  $ sudo apt install build-essential cmake doxygen \
+                     uuid-dev rapidjson-dev \
+                     protobuf-compiler-grpc libgrpc++-dev
   ```
 
   (Additional indirect dependencies are installed as well)
@@ -106,14 +106,14 @@ If you are reading this text directly on your system, you have already completed
 * (Optional) Dependencies used to generate developer/reference documentation:
 
    ```bash
-   # apt install doxygen
+   $ sudo apt install doxygen
    ```
 
 
 * Python 3 runtime dependencies:
 
   ```bash
-  # apt install python3-protobuf python3-grpcio
+  $ sudo apt install python3-protobuf python3-grpcio
   ```
 
 
