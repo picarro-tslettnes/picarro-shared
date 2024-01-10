@@ -58,13 +58,13 @@ class ErrorTable (dict):
     def save_to (self, path, mapname, indent=4):
         with open(path, "w") as fp:
             fp.write('\n'.join(self.cpp_header) + '\n')
-            fp.write('static const std::map<grpc::StatusCode, std::string> %s =\n'
+            fp.write('static const std::map<::grpc::StatusCode, std::string> %s =\n'
                      '{\n'%(mapname,))
 
             for index, code in enumerate(sorted(self)):
                 sep  = ("", ",")[index < len(self)-1]
                 symbol = self[code]
-                entry = '%s{grpc::StatusCode::%s, "%s"}%s'%\
+                entry = '%s{::grpc::StatusCode::%s, "%s"}%s'%\
                     (''.ljust(indent), symbol, symbol, sep)
                 fp.write("%s\n"%(entry,))
 
