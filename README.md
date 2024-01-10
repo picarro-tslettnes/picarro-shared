@@ -81,10 +81,10 @@ If you are reading this text directly on your system, you have already completed
     with a the contents of the Personal Access Token you created above).
 
 
-* You should now be able to pull all required source code to build product from [`common-core`](https://github.com/torslettnes/common-core/) repository:
+* You should now be able to pull all required source code to build product from [`common-core`](https://github.com/picarro-tslettnes/common-core) repository:
 
     ```bash
-    $ git clone https://github.com/torslettnes/common-core.git
+    $ git clone https://github.com/picarro-tslettnes/common-core.git
     ```
 
 
