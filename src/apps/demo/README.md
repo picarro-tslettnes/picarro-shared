@@ -53,7 +53,7 @@ Three different C++ implementations are included here, illustrating different bu
 
 #### Interchangability
 
-Since these two implementations derive from the same abstract API, they are interchangable from the perspective of the client/application.  In fact, neither the abstract API nor the *native* flavor has any gRPC/ProtoBuf dependencies; it is perfectly conceivable to one day replace it with something else (like DDS) without impacting the core implementation.
+Since these two implementations derive from the same abstract API, they are interchangable from the perspective of the client/application.  In fact, neither the abstract API nor the *native* flavor has any gRPC or RTI/DDS dependencies; it is perfectly conceivable to replace one with the other, or something else altogether.
 
 ### Python modules
 

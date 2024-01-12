@@ -128,7 +128,7 @@ To start the build, simply invoke
 This will
   * run `cmake -B ${BUILD_DIR}`, where `${BUILD_DIR}` is `out/build/${TARGET}-${BUiLD_TYPE}` (e.g. `out/build/Linux-x86_64-Release`). This folder is created if needed.
   * run `cmake --build ${BUILD_DIR} --parallel $(nproc)` to perform the actual build
-  * run `cmake --install ${BUILD_DIR} --strip --prefix ${INSTALL_DIR}`, where ${INSTALL_DIR} is `out/install/${TARGET}`.  This will install the build outputs within your own working directory
+  * run `cmake --install ${BUILD_DIR} --strip --prefix ${INSTALL_DIR}`, where `${INSTALL_DIR}` is `out/install/${TARGET}`.  This will install the build outputs within your own working directory
 
 
 If all went well the applications will now be installed within the the installation folder.
@@ -140,15 +140,15 @@ If all went well the applications will now be installed within the the installat
 
 ### Installing in custom location:
 
-You can optionally choose to install the applicaions in a different location; for instance you may want to install into `/opt/common-core` if you want to launch these applications as system services when your computer starts.  To do so:
+You can optionally choose to install the applicaions in a different location; for instance you may want to install into `/opt/picarro` if you want to launch these applications as system services when your computer starts.  To do so:
 
  * Ensure that you have write access to this folder:
 
    ```bash
-   $ sudo mkdir -p /opt/common-core     # Create the folder if missing
-   $ sudo chgrp staff /opt/common-core  # Set group ownership to `staff`
-   $ sudo chmod g+ws /opt/common-core   # Set group write permission + sticky bits
-   $ sudo adduser $(whoami) staff       # Add yourself to the `staff` group
+   $ sudo mkdir -p /opt/picarro     # Create the folder if missing
+   $ sudo chgrp staff /opt/picarro  # Set group ownership to `staff`
+   $ sudo chmod g+ws /opt/picarro   # Set group write permission + sticky bits
+   $ sudo adduser $(whoami) staff   # Add yourself to the `staff` group
    ```
 
    You may need to log out and back in again for this last change to take effect.
@@ -157,7 +157,7 @@ You can optionally choose to install the applicaions in a different location; fo
  * Speify the target folder as an argument to `make`:
 
   ```bash
-  $ make INSTALL_DIR=/opt/common-core
+  $ make INSTALL_DIR=/opt/picarro
   ```
 
 

@@ -5,7 +5,7 @@
 ## @author Tor Slettnes <tslettnes@picarro.com>
 #===============================================================================
 
-from protobuf_types import ProtoBuf
+from protobuf_standard_types import ProtoBuf
 import typing
 
 class Picarro (object):
