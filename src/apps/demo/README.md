@@ -1,7 +1,7 @@
-Picarro Apps Demo
-=========================
+Picarro Demo Application
+----------------------------
 
-This demo application is provided to illustrate the morphology of a typical service-based applications based on the Common Core application framework. It may be used as a template for creating new applications, or as a reference implementation of current best practices.
+This demo application is provided to illustrate the morphology of a typical service-based applications based on the Picarro application framework. It may be used as a template for creating new applications, or as a reference implementation of current best practices.
 
 For illustration, our demo comprises two distinct implementations of the same Application Programming Interface (API), described below. Each approach showcases different building blocks within our codebase, ranging from basic C++ utilites to client/server communication over gRPC.
 

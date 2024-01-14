@@ -1,9 +1,7 @@
 Picarro Apps Example - C++ implementations
-===============================================
+==============================================
 
-Two different C++ implementations are included here, illustrating different
-building blocks within the Picarro codebase.  Each approach implements the
-same abstract API, defined in [example/api.h++](../api/example/api.h++):
+Two different C++ implementations are included here, illustrating different building blocks within the Picarro codebase.  Each approach implements the same abstract API, defined in [example/api.h++](../api/example/api.h++):
 
 1. A [C++ native library](native) that directly implements the underlying functionality within a single process. Notifications are emitted directly via the signals, [as described in the API](../api/README.md).
 

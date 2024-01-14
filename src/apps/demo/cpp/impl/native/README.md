@@ -1,7 +1,7 @@
-Picarro Apps Example -- Native C++ Library
-===============================================
+Picarro Demo App -- Native C++ Library
+==========================================
 
-This self-contained library represents the first and most basic implementation of our [example API](../../api/README.md). In this approach, the underlying functionality is provided directly within the class [picarro::demo::NativeImplementation()](example-native.h++). As such, this library can be linked into a standalone C++ executable.
+This self-contained library represents the first and most basic implementation of our [demo API](../../api/README.md). In this approach, the underlying functionality is provided directly within the class [picarro::demo::NativeImplementation()](demo-native.h++). As such, this library can be linked into a standalone C++ executable.
 
 Conversely, since this implementation does not involve any client/server communication, there is no corresponding DDS bus, RPC service, or bindings for other languages. There is also no way to send or receive greetings to or from other processes, only to ourselves.
 
@@ -16,7 +16,7 @@ Similarly, greeting notices are issued via `picarro::demo::signal_greeting`.
 
 Good question, I wish I had thought of that myself.  There's some general information on the signal/slot pattern on [on Wikipedia](https://en.wikipedia.org/wiki/Signals_and_slots). Basically:
 
-* It simplifies one-to-many notifications. In our time example the event source (the task scheduler) handles multiple callback functions just fine, but what about the greeting? We'd otherwise have to add a boilerplate callback function which in turn would further distribute the event, and... wait, we're back to signals!
+* It simplifies one-to-many notifications. We'd otherwise have to add a boilerplate callback function which in turn would further distribute the event, and... wait, we're back to signals!
 
 * It standardizes callback semantics. Or, put differently, it loosens the coupling between the event source and the receiver. There is a uniform way to register to receive signal events (`.connect()`) and to unregister (`.disconnect()`), and the signature of the callback method ("slot") is well-defined.
 

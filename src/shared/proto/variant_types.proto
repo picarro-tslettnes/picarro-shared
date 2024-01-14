@@ -1,7 +1,7 @@
 // -*- Protocol-Buffers -*-
 //==============================================================================
 /// @file variant_types.proto
-/// @brief Picarro ProtoBuf message types for variant values
+/// @brief ProtoBuf message types for Picarro variant values
 /// @author Tor Slettnes <tslettnes@picarro.com>
 //==============================================================================
 
