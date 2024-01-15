@@ -1,4 +1,3 @@
-##
 ## -*- cmake -*-
 #===============================================================================
 ## @file CMakeLists.txt
@@ -20,7 +19,8 @@ set(LIB_DEPS
   picarro_demo_api
   picarro_demo_dds_types
   picarro_demo_dds_publisher
-  picarro_shared_ipc_rti_dds)
+  picarro_shared_ipc_dds_rti
+)
 
 ### Source files
 set(SOURCES

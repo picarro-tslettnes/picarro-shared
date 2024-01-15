@@ -5,6 +5,7 @@
 ## @author Tor Slettnes <tslettnes@picarro.com>
 ##
 ## To use this file, copy, uncomment, and modify the following in your "CMakeLists.txt":
+##
 ## @code
 ##     ### Name of this library. This can be used as a downstream dependency
 ##     set(TARGET YOURAPP_LIBRARY)
@@ -16,7 +17,7 @@
 ##
 ##     ### Static/shared library dependencies, either from this build or provided by
 ##     ### the system. Only direct dependencies are needed.
-##     set(LIB_DEPS cc_shared ...)
+##     set(LIB_DEPS picarro_shared ...)
 ##
 ##     ### Any OBJECT library dependencies that are not included in the library
 ##     ### dependency above. In particular, we include any direct *_protodefs

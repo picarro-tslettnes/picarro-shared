@@ -1,4 +1,3 @@
-##
 ## -*- cmake -*-
 #===============================================================================
 ## @file CMakeLists.txt
@@ -8,7 +7,7 @@
 
 cmake_minimum_required(VERSION 3.14)
 
-if (USE_PYTHON)
+if (BUILD_PYTHON)
   set(SOURCES shell)
   install(PROGRAMS ${SOURCES} TYPE BIN)
 endif()

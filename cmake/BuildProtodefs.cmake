@@ -1,6 +1,6 @@
 ## -*- cmake -*-
 #===============================================================================
-## @file FindProtodefs.cmake
+## @file BuildProtodefs.cmake
 ## @brief CMake rules to generate/build ProtoBuf/gRPC bindings from ".proto" sources
 ## @author Tor Slettnes <tslettnes@picarro.com>
 ##
@@ -8,7 +8,7 @@
 ##
 ## @code
 ##     ### Target name. This can be used as a downstream dependency.
-##     set(TARGET txg_YOURAPP_protodefs)
+##     set(TARGET picarro_YOURAPP_protodefs)
 ##
 ##     ### What kind of library we are building (STATIC|SHARED|OBJECT|...)
 ##     ### See: https://cmake.org/cmake/help/latest/command/add_library.html.
@@ -16,11 +16,11 @@
 ##     set(LIB_TYPE OBJECT)
 ##
 ##     ### ProtoBuf dependencies from other applications on which we depend (if applicable).
-##     set(PROTO_DEPS txg_shared_protodefs)
+##     set(PROTO_DEPS picarro_shared_protodefs)
 ##
 ##     ### Static/shared library dependencies, either from this build or provided by
 ##     ### the system. Only direct dependencies are needed; if you include
-##     ### "txg_shared_protodefs" in PROTO_DEPS you do not need "grpc++" or "protobuf"
+##     ### "picarro_shared_protodefs" in PROTO_DEPS you do not need "grpc++" or "protobuf"
 ##     ### here.
 ##     set(LIB_DEPS grpc++ protobuf)
 ##
@@ -56,7 +56,7 @@ protobuf_generate_cpp(PROTO_SRC PROTO_HDR ${SOURCES})
 grpc_generate_cpp(GRPC_SRC GRPC_HDR ${CMAKE_CURRENT_BINARY_DIR} ${SOURCES})
 
 ### Python support
-if (USE_PYTHON)
+if (BUILD_PYTHON)
   protobuf_generate_python(PROTO_PY ${SOURCES})
   grpc_generate_python(GRPC_PY ${CMAKE_CURRENT_BINARY_DIR} ${SOURCES})
   install(FILES ${PROTO_PY} ${GRPC_PY} DESTINATION ${PYTHON_INSTALL_DIR})
@@ -71,10 +71,10 @@ if (NOT LIB_TYPE)
 endif()
 
 ### Build targets
-###
+##
 ### Fugly hack: Python ProtoBuf/gRPC output files listed here to force
 ### generation, though not actually included in the archive.
-###
+##
 add_library("${TARGET}" "${LIB_TYPE}" ${PROTO_SRC} ${GRPC_SRC} ${PROTO_PY} ${GRPC_PY})
 
 ### Libraries required to link downstream consumers of this library

@@ -7,8 +7,16 @@
 
 #pragma once
 #include "implementations.h++"
-#include "argparse/server.h++"
+
+#if USE_DDS
 #include "dds-options-server.h++"
+using OptionsBase = picarro::argparse::DDSServiceOptions;
+
+#else
+#include "argparse/server.h++"
+using OptionsBase = picarro::argparse::ServerOptions;
+
+#endif
 
 namespace picarro::demo
 {
@@ -19,9 +27,9 @@ namespace picarro::demo
     //    get DDS logging capabilities. To build without DDS logging, we could
     //    inherit directly from `picarro::argparse::ServerOptions`.
 
-    class Options : public picarro::argparse::DDSServiceOptions
+    class Options : public OptionsBase
     {
-        using Super = picarro::argparse::DDSServiceOptions;
+        using Super = OptionsBase;
 
     public:
         Options();

@@ -1,16 +1,18 @@
 ## -*- cmake -*-
 #===============================================================================
 ## @file CMakeLists.txt
-## @description Demo application interface - DDS implementation
+## @brief Build IDL encoder/decoder methods for share data types
 ## @author Tor Slettnes <tslettnes@picarro.com>
 #===============================================================================
 
-add_subdirectory(types)
+if(BUILD_IDL)
+  ### Comon IDL data type encoding/decoding
+  add_subdirectory(idl)
+endif()
 
-### Pub/Sub interface
-add_subdirectory(dds-publisher)
-add_subdirectory(dds-subscriber)
+### RTI Data Distribution Service wrappers
+if(BUILD_RTI_DDS)
+  add_subdirectory(rti)
+endif()
 
-### RPC interface
-add_subdirectory(rpc-client)
-add_subdirectory(rpc-server)
+

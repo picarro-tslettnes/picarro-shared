@@ -6,6 +6,7 @@
 ##
 ## To use this file, copy, uncomment, and modify the following in your
 ## "CMakeLists.txt":
+##
 ## @code
 ##     ### Name of this executable. This also becomes the name of the target.
 ##     set(TARGET yourexecutable)

@@ -7,7 +7,7 @@
 find_package(Doxygen)
 
 if (DOXYGEN_FOUND)
-  set(DOXYGEN_PROJECT_BRIEF "Common Core")
+  set(DOXYGEN_PROJECT_BRIEF "Picarro")
   set(DOXYGEN_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/out/reference")
   set(DOXYGEN_EXAMPLE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/source/applications/example")
   set(DOXYGEN_EXTRACT_ALL YES)

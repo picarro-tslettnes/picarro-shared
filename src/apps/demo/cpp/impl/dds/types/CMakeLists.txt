@@ -1,4 +1,3 @@
-##
 ## -*- cmake -*-
 #===============================================================================
 ## @file CMakeLists.txt
@@ -15,7 +14,7 @@ set(LIB_TYPE STATIC)
 set(LIB_DEPS
   picarro_demo_api
   picarro_demo_idl
-  picarro_shared_ipc_rti_idl
+  picarro_shared_ipc_idl
 )
 
 set(SOURCES

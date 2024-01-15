@@ -4,6 +4,7 @@
 ## @brief CMake include file to "build" (install) Python modules
 ## @author Tor Slettnes <tslettnes@picarro.com>
 #===============================================================================
+##
 ## To use this file, copy, uncomment, and modify the following in your "CMakeLists.txt":
 ##
 ## @code
@@ -16,10 +17,11 @@
 ##     ## Subdirectories
 ##     set(DIRECTORIES my_subdirectory ...)
 ##
+##     ## Invoke common installation rules
 ##     include(BuildPython)
 ## @endcode
 
-if (USE_PYTHON)
+if (BUILD_PYTHON)
   if(NOT PYTHON_INSTALL_DIR)
     set(PYTHON_INSTALL_DIR "share/python")
   endif()

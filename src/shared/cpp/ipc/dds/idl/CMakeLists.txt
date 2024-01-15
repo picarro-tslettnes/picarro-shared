@@ -1,4 +1,3 @@
-##
 ## -*- cmake -*-
 #===============================================================================
 ## @file CMakeLists.txt
@@ -6,18 +5,21 @@
 ## @author Tor Slettnes <tslettnes@picarro.com>
 #===============================================================================
 
-### RTI Data Distribution Service wrappers
-add_subdirectory(dds)
+set(TARGET picarro_shared_ipc_idl)
 
-### RTI IDL data type encoding/decoding
-add_subdirectory(idl)
+### Library type.  We use static linking for convenience.
+set(LIB_TYPE STATIC)
 
-### Create interface library to encapsulate the above
-set(TARGET picarro_shared_ipc_rti)
-set(LIB_TYPE INTERFACE)
+### Library dependencies.
 set(LIB_DEPS
-  picarro_shared_ipc_rti_dds
-  picarro_shared_ipc_rti_idl)
+  picarro_shared_idl
+  picarro_shared_platform)
 
+set(SOURCES
+  translate-idl-variant.c++
+  translate-idl-common.c++
+  translate-idl-eventtypes.c++
+)
+
+### Recepies to build the library
 include(BuildLibrary)
-

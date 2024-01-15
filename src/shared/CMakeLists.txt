@@ -1,4 +1,3 @@
-##
 ## -*- cmake -*-
 #===============================================================================
 ## @file CMakeLists.txt
@@ -6,19 +5,19 @@
 ## @author Tor Slettnes <tslettnes@picarro.com>
 #===============================================================================
 
-if(USE_CPP)
+if(BUILD_CPP)
   add_subdirectory(cpp)
 endif()
 
-if(USE_PYTHON)
+if(BUILD_PYTHON)
   add_subdirectory(python)
 endif()
 
-if(USE_RTI_DDS)
+if(BUILD_IDL)
   add_subdirectory(idl)
 endif()
 
-if(USE_GRPC)
+if(BUILD_PROTOBUF)
   add_subdirectory(proto)
 endif()
 
@@ -29,9 +28,20 @@ set(LIB_DEPS
   picarro_shared_core
   picarro_shared_platform
   picarro_shared_ipc_api
-  picarro_shared_idl
-  picarro_shared_protodefs
+)
+
+if(BUILD_RTI_DDS)
+  list(APPEND LIB_DEPS
+    picarro_shared_idl
   )
+endif()
+
+if(BUILD_PROTOBUF)
+  list(APPEND LIB_DEPS
+    picarro_shared_protodefs
+  )
+endif()
+
 
 include(BuildLibrary)
 
