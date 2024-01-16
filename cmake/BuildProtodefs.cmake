@@ -47,23 +47,36 @@ foreach(PROTO_DEP ${PROTO_DEPS})
   list(APPEND PROTOBUF_IMPORT_DIRS ${source_dirs})
 endforeach()
 
-### Load ProtoBuf and gRPC support modules
-find_package(Protobuf REQUIRED)
-find_package(grpc REQUIRED)
+if(BUILD_CPP)
+  ### Generate Protocol Buffers C++ source
+  if(BUILD_PROTOBUF)
+    find_package(Protobuf REQUIRED)
+    protobuf_generate_cpp(PROTO_SRC PROTO_HDR ${SOURCES})
 
-### Rules to generate .cc and .h files
-protobuf_generate_cpp(PROTO_SRC PROTO_HDR ${SOURCES})
-grpc_generate_cpp(GRPC_SRC GRPC_HDR ${CMAKE_CURRENT_BINARY_DIR} ${SOURCES})
+    ### Global ProtoBuf include folder
+    include_directories(${PROTOBUF_INCLUDE_DIRS})
+  endif()
+
+  ### Generate gRPC C++ source
+  if(BUILD_GRPC)
+    find_package(grpc REQUIRED)
+    grpc_generate_cpp(GRPC_SRC GRPC_HDR ${CMAKE_CURRENT_BINARY_DIR} ${SOURCES})
+  endif()
+endif()
+
 
 ### Python support
 if (BUILD_PYTHON)
-  protobuf_generate_python(PROTO_PY ${SOURCES})
-  grpc_generate_python(GRPC_PY ${CMAKE_CURRENT_BINARY_DIR} ${SOURCES})
-  install(FILES ${PROTO_PY} ${GRPC_PY} DESTINATION ${PYTHON_INSTALL_DIR})
-endif()
+  if(BUILD_PROTOBUF)
+    protobuf_generate_python(PROTO_PY ${SOURCES})
+    install(FILES ${PROTO_PY} DESTINATION ${PYTHON_INSTALL_DIR})
+  endif()
 
-### Global ProtoBuf include folder
-include_directories(${PROTOBUF_INCLUDE_DIRS})
+  if(BUILD_GRPC)
+    grpc_generate_python(GRPC_PY ${CMAKE_CURRENT_BINARY_DIR} ${SOURCES})
+    install(FILES ${GRPC_PY} DESTINATION ${PYTHON_INSTALL_DIR})
+  endif()
+endif()
 
 ### Unless LIB_TYPE is defined, set it to OBJECT
 if (NOT LIB_TYPE)
