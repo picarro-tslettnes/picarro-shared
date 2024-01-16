@@ -1,14 +1,14 @@
 /// -*- c++ -*-
 //==============================================================================
-/// @file translate-protobuf-event.c++
+/// @file protobuf-event-types.c++
 /// @brief Encode/decode routines for common ProtoBuf types
 /// @author Tor Slettnes <tslettnes@picarro.com>
 //==============================================================================
 
-#include "translate-protobuf-event.h++"
-#include "translate-protobuf-google.h++"
-#include "translate-protobuf-variant.h++"
-#include "translate-protobuf-inline.h++"
+#include "protobuf-event-types.h++"
+#include "protobuf-standard-types.h++"
+#include "protobuf-variant-types.h++"
+#include "protobuf-inline-types.h++"
 
 namespace picarro::protobuf
 {
