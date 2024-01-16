@@ -17,10 +17,6 @@ set(DEST_DIR sbin)
 set(LIB_DEPS
   picarro_demo_native)
 
-if(BUILD_RTI_DDS)
-  list(APPEND LIB_DEPS picarro_demo_dds_service)
-endif()
-
 if(BUILD_GRPC)
   list(APPEND LIB_DEPS picarro_demo_grpc_service)
 endif()
@@ -29,7 +25,6 @@ endif()
 set(SOURCES
   main.c++
   options.c++
-  implementations.c++
   )
 
 ## Invoke common CMake rules to build executable

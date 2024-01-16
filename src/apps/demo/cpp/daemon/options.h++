@@ -6,39 +6,24 @@
 //==============================================================================
 
 #pragma once
-#include "implementations.h++"
-
-#if USE_DDS
-#include "dds-options-server.h++"
-using OptionsBase = picarro::argparse::DDSServiceOptions;
-
-#else
 #include "argparse/server.h++"
-using OptionsBase = picarro::argparse::ServerOptions;
-
-#endif
 
 namespace picarro::demo
 {
-    // @brief Command-line options for demo service
+    /// @brief Command-line options for demo service
     ///
-    // @note
-    //    We inherit from `picarro::argparse::DDSServiceOptions` in order to
-    //    get DDS logging capabilities. To build without DDS logging, we could
-    //    inherit directly from `picarro::argparse::ServerOptions`.
+    /// @note
+    ///    We inherit from `picarro::argparse::ServerOptions` in order to get DDS
+    ///    logging capabilities. To build without DDS logging, we could inherit
+    ///    directly from `picarro::argparse::ServerOptions`.
 
-    class Options : public OptionsBase
+    class Options : public picarro::argparse::ServerOptions
     {
-        using Super = OptionsBase;
+        using Super = picarro::argparse::ServerOptions;
 
     public:
         Options();
 
-        void add_options() override;
-
-    public:
-        bool enable_grpc;
-        bool enable_dds;
     };
 
     extern std::unique_ptr<Options> options;

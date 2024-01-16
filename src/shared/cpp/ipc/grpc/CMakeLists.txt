@@ -13,7 +13,7 @@ set(LIB_TYPE STATIC)
 
 ### Library dependencies.
 set(LIB_DEPS
-  picarro_shared_ipc_api
+  picarro_shared_core
   picarro_shared_ipc_protobuf)
 
 set(SOURCES

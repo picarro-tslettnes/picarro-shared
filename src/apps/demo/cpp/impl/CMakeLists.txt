@@ -7,10 +7,6 @@
 
 add_subdirectory(native)
 
-if(BUILD_RTI_DDS)
-  add_subdirectory(dds)
-endif()
-
 if(BUILD_GRPC)
   add_subdirectory(grpc)
 endif()

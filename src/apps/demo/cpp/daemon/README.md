@@ -1,15 +1,12 @@
 Picarro Demo - Server Executable
 ====================================
 
-The `demoserver` executable provides backend/indirect access to the demo app's functionality on behalf of its its clients, such the provided [demo-grpc-tool](../utils/grpc-tool) and [demo-dds-tool](../utils/dds-tool) utilities.  It does so by linking in the following libraries:
+The `demoserver` executable provides backend/indirect access to the demo app's functionality on behalf of its its clients, such the provided [demo-grpc-tool](../utils/grpc-tool) utility.  It does so by linking in the following libraries:
 
 * [picarro_demo_native](../impl/native/README.md), the core library, which is the ultimate endpoint for requests,
 
 * [picarro_demo_grpc_service](../impl/grpc/server), containng the gRPC server.
 
-* [picarro_dds_publisher](../impl/dds/dds-publisher), containing the DDS publisher,
-
-* [picarro_dds_server](../impl/dds/rpc-server), containing the DDS server interface (derived from code generated from [demo-interface.idl](../../idl/demo-interface.idl)).
 
 
 ### Start services

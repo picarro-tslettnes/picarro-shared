@@ -9,10 +9,6 @@
 #include "demo-native.h++"       // Native Example API implementation
 #include "application/init.h++"  // Common init routines
 
-#ifdef USE_DDS
-#include "demo-dds-server.h++"  // DDS server implementation
-#endif
-
 #ifdef USE_GRPC
 #include "demo-grpc-server.h++"  // gRPC server implementation
 #endif
@@ -38,25 +34,10 @@ int main(int argc, char** argv)
     std::list<std::thread> server_threads;
 
 #ifdef USE_GRPC
-    if (picarro::demo::options->enable_grpc)
-    {
-        logf_debug("Spawning gRPC server");
-        server_threads.emplace_back(
-            picarro::demo::grpc::run_grpc_service,
-            api_provider);
-    }
-#endif
-
-#ifdef USE_DDS
-    if (picarro::demo::options->enable_dds)
-    {
-        logf_debug("Spawning DDS server");
-        server_threads.emplace_back(
-            picarro::demo::dds::run_dds_service,
-            api_provider,
-            picarro::demo::options->identity,
-            picarro::demo::options->domain_id);
-    }
+    logf_debug("Spawning gRPC server");
+    server_threads.emplace_back(
+        picarro::demo::grpc::run_grpc_service,
+        api_provider);
 #endif
 
     for (std::thread& t : server_threads)

@@ -8,7 +8,7 @@
 ##
 ## @code
 ##     ### Target name. This can be used as a downstream dependency.
-##     set(TARGET picarro_YOURAPP_protodefs)
+##     set(TARGET cc_YOURAPP_protodefs)
 ##
 ##     ### What kind of library we are building (STATIC|SHARED|OBJECT|...)
 ##     ### See: https://cmake.org/cmake/help/latest/command/add_library.html.
@@ -16,11 +16,11 @@
 ##     set(LIB_TYPE OBJECT)
 ##
 ##     ### ProtoBuf dependencies from other applications on which we depend (if applicable).
-##     set(PROTO_DEPS picarro_shared_protodefs)
+##     set(PROTO_DEPS cc_shared_protodefs)
 ##
 ##     ### Static/shared library dependencies, either from this build or provided by
 ##     ### the system. Only direct dependencies are needed; if you include
-##     ### "picarro_shared_protodefs" in PROTO_DEPS you do not need "grpc++" or "protobuf"
+##     ### "cc_shared_protodefs" in PROTO_DEPS you do not need "grpc++" or "protobuf"
 ##     ### here.
 ##     set(LIB_DEPS grpc++ protobuf)
 ##
@@ -47,23 +47,36 @@ foreach(PROTO_DEP ${PROTO_DEPS})
   list(APPEND PROTOBUF_IMPORT_DIRS ${source_dirs})
 endforeach()
 
-### Load ProtoBuf and gRPC support modules
-find_package(Protobuf REQUIRED)
-find_package(grpc REQUIRED)
+if(BUILD_CPP)
+  ### Generate Protocol Buffers C++ source
+  if(BUILD_PROTOBUF)
+    find_package(Protobuf REQUIRED)
+    protobuf_generate_cpp(PROTO_SRC PROTO_HDR ${SOURCES})
 
-### Rules to generate .cc and .h files
-protobuf_generate_cpp(PROTO_SRC PROTO_HDR ${SOURCES})
-grpc_generate_cpp(GRPC_SRC GRPC_HDR ${CMAKE_CURRENT_BINARY_DIR} ${SOURCES})
+    ### Global ProtoBuf include folder
+    include_directories(${PROTOBUF_INCLUDE_DIRS})
+  endif()
+
+  ### Generate gRPC C++ source
+  if(BUILD_GRPC)
+    find_package(grpc REQUIRED)
+    grpc_generate_cpp(GRPC_SRC GRPC_HDR ${CMAKE_CURRENT_BINARY_DIR} ${SOURCES})
+  endif()
+endif()
+
 
 ### Python support
 if (BUILD_PYTHON)
-  protobuf_generate_python(PROTO_PY ${SOURCES})
-  grpc_generate_python(GRPC_PY ${CMAKE_CURRENT_BINARY_DIR} ${SOURCES})
-  install(FILES ${PROTO_PY} ${GRPC_PY} DESTINATION ${PYTHON_INSTALL_DIR})
-endif()
+  if(BUILD_PROTOBUF)
+    protobuf_generate_python(PROTO_PY ${SOURCES})
+    install(FILES ${PROTO_PY} DESTINATION ${PYTHON_INSTALL_DIR})
+  endif()
 
-### Global ProtoBuf include folder
-include_directories(${PROTOBUF_INCLUDE_DIRS})
+  if(BUILD_GRPC)
+    grpc_generate_python(GRPC_PY ${CMAKE_CURRENT_BINARY_DIR} ${SOURCES})
+    install(FILES ${GRPC_PY} DESTINATION ${PYTHON_INSTALL_DIR})
+  endif()
+endif()
 
 ### Unless LIB_TYPE is defined, set it to OBJECT
 if (NOT LIB_TYPE)

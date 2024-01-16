@@ -14,6 +14,7 @@ set(LIB_TYPE STATIC)
 ### Static/shared library dependencies.
 set(LIB_DEPS
   picarro_shared
+  picarro_demo_protodefs
 )
 
 set(SOURCES

@@ -13,10 +13,6 @@ if(BUILD_PYTHON)
   add_subdirectory(python)
 endif()
 
-if(BUILD_IDL)
-  add_subdirectory(idl)
-endif()
-
 if(BUILD_PROTOBUF)
   add_subdirectory(proto)
 endif()
@@ -27,18 +23,18 @@ set(LIB_TYPE INTERFACE)
 set(LIB_DEPS
   picarro_shared_core
   picarro_shared_platform
-  picarro_shared_ipc_api
 )
-
-if(BUILD_RTI_DDS)
-  list(APPEND LIB_DEPS
-    picarro_shared_idl
-  )
-endif()
 
 if(BUILD_PROTOBUF)
   list(APPEND LIB_DEPS
     picarro_shared_protodefs
+    picarro_shared_ipc_protobuf
+  )
+endif()
+
+if(BUILD_GRPC)
+  list(APPEND LIB_DEPS
+    picarro_shared_ipc_grpc
   )
 endif()
 

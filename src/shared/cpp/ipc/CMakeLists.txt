@@ -5,7 +5,10 @@
 ## @author Tor Slettnes <tslettnes@picarro.com>
 #===============================================================================
 
-### Abstract service interface, agnostic to communications bus
-add_subdirectory(api)
-add_subdirectory(dds)
-add_subdirectory(google)
+if(BUILD_PROTOBUF)
+  add_subdirectory(protobuf)
+endif()
+
+if(BUILD_GRPC)
+  add_subdirectory(grpc)
+endif()
