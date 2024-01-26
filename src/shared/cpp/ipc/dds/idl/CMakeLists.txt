@@ -13,7 +13,8 @@ set(LIB_TYPE STATIC)
 ### Library dependencies.
 set(LIB_DEPS
   picarro_shared_idl
-  picarro_shared_platform)
+  picarro_shared_core
+)
 
 set(SOURCES
   translate-idl-variant.c++

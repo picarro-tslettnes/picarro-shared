@@ -25,7 +25,8 @@ namespace picarro::grpc
         if (!service_settings)
         {
             service_settings = SettingsStore::create_shared(
-                types::PathList({SETTINGS_FILE_PRODUCT, SETTINGS_FILE_COMMON}));
+                types::PathList({SETTINGS_FILE_PRODUCT,
+                                 SETTINGS_FILE_COMMON}));
         }
     }
 
@@ -45,7 +46,7 @@ namespace picarro::grpc
                                          const std::string &hostOption,
                                          const std::string &portOption,
                                          std::string defaultHost,
-                                         unsigned int defaultPort) const
+                                         uint defaultPort) const
     {
         std::string personality;
         std::string host;

@@ -20,16 +20,17 @@ int main(int argc, char** argv)
 
     logf_debug("Creating gRPC demo provider");
     picarro::demo::provider = picarro::demo::grpc::ClientImpl::create_shared(
-        picarro::demo::options->identity);
+        picarro::demo::options->identity,
+        picarro::demo::options->host);
 
     logf_debug("Initializing gRPC demo provider");
     picarro::demo::provider->initialize();
 
+    logf_debug("Handling command in gRPC demo provider");
     bool success = picarro::demo::options->handle_command();
 
     logf_debug("Deinitializing gRPC demo provider");
     picarro::demo::provider->deinitialize();
-    picarro::demo::provider.reset();
 
     picarro::application::deinitialize();
     return success ? 0 : -1;

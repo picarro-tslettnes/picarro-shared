@@ -16,9 +16,9 @@
 #define LOG_TO_DDS_SINK "log to dds"
 #define LOG_TO_DL_SINK  "log to distributed logger"
 
-namespace picarro::argparse
+namespace picarro::dds
 {
-    void DDSServiceOptions::add_log_options()
+    void ServerOptions::add_log_options()
     {
         Super::add_log_options();
 
@@ -37,17 +37,17 @@ namespace picarro::argparse
 #endif
     }
 
-    void DDSServiceOptions::register_loggers()
+    void ServerOptions::register_loggers()
     {
         Super::register_loggers();
         if (this->log_to_dds)
         {
-            if (auto sink = logging::DDSLogger::create_shared(
+            if (auto sink = DDSLogger::create_shared(
                     platform::path->exec_name(true),  // identity
                     this->domain_id))
             {
                 logging::message_dispatcher.add_sink(sink);
-                sink->set_include_source(this->log_source);
+                sink->set_include_context(this->log_context);
 
                 types::KeyValueMap config = this->logsink_setting(LOG_TO_DDS_SINK);
                 this->set_threshold_from_config(sink, config);
@@ -57,7 +57,7 @@ namespace picarro::argparse
 #ifdef USE_RTI_RTI_LOGGER
         if (this->log_to_dl)
         {
-            if (auto sink = logging::DDSLogger::create_shared(
+            if (auto sink = RTILogger::create_shared(
                     platform::path->exec_name(true),  // identity
                     this->domain_id))
             {

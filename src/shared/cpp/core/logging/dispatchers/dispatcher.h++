@@ -6,9 +6,8 @@
 //==============================================================================
 
 #pragma once
-#include "sinks/sink.h++"
+#include "logging/sinks/sink.h++"
 #include "types/loggable.h++"
-#include "thread/blockingqueue.h++"
 
 #include <memory>
 #include <set>
@@ -26,15 +25,10 @@ namespace picarro::logging
         virtual void deinitialize();
 
         virtual bool is_applicable(const types::Loggable &item) const;
-        virtual void submit(const types::Loggable::Ref &item);
+        virtual void submit(const types::Loggable::Ref &item) = 0;
 
-    private:
-        void worker();
-
-    private:
+    protected:
         std::set<Sink::Ref> sinks_;
-        std::thread workerthread_;
-        types::BlockingQueue<types::Loggable::Ref> queue_;
     };
 
 }  // namespace picarro::logging

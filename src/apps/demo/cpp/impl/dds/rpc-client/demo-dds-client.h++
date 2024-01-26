@@ -26,7 +26,7 @@ namespace picarro::demo::dds
 
     class ClientImpl
         : public API,
-          public picarro::dds::DDS_Client_Wrapper<Picarro::Demo::DemoServiceClient>,
+          public picarro::dds::Client_Wrapper<Picarro::Demo::DemoServiceClient>,
           public picarro::types::enable_create_shared<ClientImpl>
     {
         // Convencience alias

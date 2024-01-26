@@ -8,6 +8,7 @@
 #pragma once
 #include "types/streamable.h++"
 #include "logging/message/scope.h++"
+#include "platform/symbols.h++"
 
 #include <string>
 
@@ -21,12 +22,19 @@ namespace picarro::ipc
     class Channel : public types::Streamable
     {
     protected:
-        Channel(const std::string &class_name, const std::string &instance_name = {});
-        virtual ~Channel();
+        /// @brief A generic communications channel, agnostic to platform
+        /// @param[in] class_name
+        ///     Final implementation class, used for handles, debugging, etc.
+        /// @param[in] channel_name
+        ///     Name used to identify communications channel,
+        ///     e.g. look up communication parameters between peers.
+        Channel(const std::string &class_name,
+                const std::string &channel_name);
+        ~Channel();
 
     public:
         const std::string &class_name() const;
-        const std::string &instance_name() const;
+        const std::string &channel_name() const;
 
         virtual void initialize() {}
         virtual void deinitialize() {}
@@ -35,7 +43,7 @@ namespace picarro::ipc
         void to_stream(std::ostream &stream) const override;
 
     private:
+        std::string channel_name_;
         std::string class_name_;
-        std::string instance_name_;
     };
 }  // namespace picarro::ipc

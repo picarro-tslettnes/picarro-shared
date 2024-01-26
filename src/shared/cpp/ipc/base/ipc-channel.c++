@@ -6,6 +6,7 @@
 //==============================================================================
 
 #include "ipc-channel.h++"
+#include "string/format.h++"
 
 #include <iomanip>
 
@@ -15,9 +16,9 @@ namespace picarro::ipc
     // @class Channel
 
     Channel::Channel(const std::string &class_name,
-                     const std::string &instance_name)
+                     const std::string &channel_name)
         : class_name_(class_name),
-          instance_name_(instance_name)
+          channel_name_(channel_name)
     {
     }
 
@@ -31,19 +32,14 @@ namespace picarro::ipc
         return this->class_name_;
     }
 
-    const std::string &Channel::instance_name() const
+    const std::string &Channel::channel_name() const
     {
-        return this->instance_name_;
+        return this->channel_name_;
     }
 
     void Channel::to_stream(std::ostream &stream) const
     {
-        stream << this->class_name() << "(";
-        if (!this->instance_name().empty())
-        {
-            stream << std::quoted(this->instance_name());
-        }
-        stream << ")";
+        str::format(stream, "%s(%r)", this->class_name(), this->channel_name());
     }
 
 }  // namespace picarro::ipc

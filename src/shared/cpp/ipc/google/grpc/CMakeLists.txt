@@ -14,7 +14,13 @@ set(LIB_TYPE STATIC)
 ### Library dependencies.
 set(LIB_DEPS
   picarro_shared_ipc_api
-  picarro_shared_ipc_protobuf)
+  picarro_shared_ipc_protobuf
+)
+
+### External package dependencies, configured via `pkg-config`.
+set(PKG_DEPS
+  grpc++
+)
 
 set(SOURCES
   grpc-status.c++
@@ -22,6 +28,7 @@ set(SOURCES
   grpc-clientwrapper.c++
   grpc-serverwrapper.c++
 )
+
 
 ### Recepies to build the library
 include(BuildLibrary)

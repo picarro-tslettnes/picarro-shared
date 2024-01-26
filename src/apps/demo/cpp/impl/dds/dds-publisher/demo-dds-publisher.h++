@@ -19,15 +19,15 @@ namespace picarro::demo::dds
     // @class Publisher
     // @brief Publish locally-emitted demo signals over DDS
 
-    class Publisher : public picarro::dds::DDS_Publisher,
+    class Publisher : public picarro::dds::Publisher,
                       public picarro::types::enable_create_shared<Publisher>
     {
         // Convencience alias
         using This = Publisher;
-        using Super = picarro::dds::DDS_Publisher;
+        using Super = picarro::dds::Publisher;
 
     protected:
-        Publisher(const std::string &name, int domain_id);
+        Publisher(const std::string &channel_name, int domain_id);
 
     public:
         void initialize() override;

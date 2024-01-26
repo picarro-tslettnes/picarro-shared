@@ -5,7 +5,7 @@
 /// @author Tor Slettnes <tslettnes@picarro.com>
 //==============================================================================
 
-#include "demo-dds-server.h++"
+#include "demo-dds-run.h++"
 #include "dds-server.h++"          // RPC service
 #include "demo-dds-publisher.h++"  // DDS publisher
 #include "demo-dds-service.h++"    // RPC service
@@ -18,7 +18,7 @@ namespace picarro::demo::dds
         int domain_id)
     {
         // A server provides the execution environment for one or more RPC services
-        auto server = picarro::dds::DDS_Server(identity);
+        auto server = picarro::dds::Server();
 
         // Instantiate Publisher to relay asynchronous events over DDS
         auto dds_publisher = picarro::demo::dds::Publisher::create_shared(identity, domain_id);
@@ -35,20 +35,20 @@ namespace picarro::demo::dds
         logf_debug("Initializing Demo DDS RPC service: %s", rpc_service);
         rpc_service.initialize();
 
-        logf_debug("Initializing Demo DDS RPC server: %s", server);
+        logf_debug("Initializing Demo DDS RPC server");
         server.initialize();
 
         //======================================================================
         // Run
 
-        logf_info("Demo DDS service is ready");
+        logf_info("Demo DDS service is ready in domain %d", domain_id);
         server.run();
         logf_info("Demo DDS service is shutting down");
 
         //======================================================================
         // Shut down
 
-        logf_debug("Deinitializing Demo DDS RPC server: %s", server);
+        logf_debug("Deinitializing Demo DDS RPC server");
         server.deinitialize();
 
         logf_debug("Deinitializing Demo DDS RPC service: %s", rpc_service);
@@ -56,5 +56,7 @@ namespace picarro::demo::dds
 
         logf_debug("Deinitializing Demo DDS publisher %s", *dds_publisher);
         dds_publisher->deinitialize();
+
+        logf_debug("Demo DDS service ended");
     }
 }  // namespace picarro::demo::dds

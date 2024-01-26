@@ -9,7 +9,8 @@
 #include "demo-api.h++"
 #include "demo-signals.h++"
 #include "protobuf-demo-types.h++"
-#include "protobuf-inline-types.h++"
+#include "protobuf-message.h++"
+#include "protobuf-inline.h++"
 
 namespace picarro::demo::grpc
 {
@@ -22,7 +23,7 @@ namespace picarro::demo::grpc
         // These will re-emit the decoded payload as signals within this client
         // process.
 
-        this->addHandler(
+        this->add_handler(
             Picarro::Demo::Signal::kGreeting,
             [&](const Picarro::Demo::Signal &signal) {
                 signal_greeting.emit(
@@ -31,7 +32,7 @@ namespace picarro::demo::grpc
                     protobuf::decoded<Greeting>(signal.greeting()));
             });
 
-        this->addHandler(
+        this->add_handler(
             Picarro::Demo::Signal::kTime,
             [](const Picarro::Demo::Signal &signal) {
                 signal_time.emit(

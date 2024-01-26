@@ -5,7 +5,7 @@
 /// @author Tor Slettnes <tslettnes@picarro.com>
 //==============================================================================
 
-#include "demo-grpc-server.h++"
+#include "demo-grpc-run.h++"
 #include "demo-grpc-requesthandler.h++"
 #include "application/init.h++"
 #include "chrono/date-time.h++"

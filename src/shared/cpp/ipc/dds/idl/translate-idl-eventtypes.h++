@@ -7,7 +7,7 @@
 
 #pragma once
 #include "event-types.hpp"  // Generated from `event-types.idl`
-#include "status/error.h++"
+#include "status/event.h++"
 #include "logging/message/message.h++"
 #include "translate-idl-common.h++"
 #include "translate-idl-variant.h++"
@@ -25,6 +25,11 @@ namespace picarro::idl
     void decode(const Picarro::Status::Level &idl, picarro::status::Level *native) noexcept;
 
     //==========================================================================
+    // Flow
+    void encode(const picarro::status::Flow &native, Picarro::Status::Flow *idl) noexcept;
+    void decode(const Picarro::Status::Flow &idl, picarro::status::Flow *native) noexcept;
+
+    //==========================================================================
     // Event
     void encode(const picarro::status::Event &native, Picarro::Status::Event *idl) noexcept;
     void decode(const Picarro::Status::Event &idl, picarro::status::Event *native) noexcept;
@@ -35,9 +40,4 @@ namespace picarro::idl
     void encode(const picarro::logging::Message &native, Picarro::Status::LogMessage *idl) noexcept;
     picarro::logging::Message decoded_logmessage(Picarro::Status::LogMessage idl) noexcept;
 
-    //==========================================================================
-    // ErrorEvent
-    void encode(const picarro::status::Error &native, Picarro::Status::ErrorEvent *idl) noexcept;
-    void decode(const Picarro::Status::ErrorEvent &idl, picarro::status::Error *native) noexcept;
-    picarro::status::Error decoded_error(const Picarro::Status::ErrorEvent &idl) noexcept;
 }  // namespace picarro::idl

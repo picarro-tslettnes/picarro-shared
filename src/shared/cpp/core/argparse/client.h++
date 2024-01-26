@@ -23,6 +23,7 @@ namespace picarro::argparse
         void add_options() override;
 
     public:
+        std::string host;
         uint timeout;
     };
 }  // namespace picarro::argparse

@@ -12,9 +12,9 @@ module Picarro
 {
     const string NAMESPACE = "Picarro/";
 
-    module Shared
+    module Common
     {
-        const string NAMESPACE = Picarro::NAMESPACE + "Shared/";
+        const string NAMESPACE = Picarro::NAMESPACE + "Common/";
 
         struct Empty
         {

@@ -13,7 +13,7 @@ set(LIB_TYPE STATIC)
 
 ### Library dependencies.
 set(LIB_DEPS
-  picarro_shared_platform)
+  picarro_shared_core)
 
 ### Source files, roughly in dependency order
 set(SOURCES

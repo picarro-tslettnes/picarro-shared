@@ -8,7 +8,7 @@
 #ifndef _demo_types_idl_
 #define _demo_types_idl_
 
-// Bring in common types and symbols from Shared Components.
+// Bring in common types and symbols
 #include "common-types.idl"
 #include "variant-types.idl"
 
@@ -42,10 +42,10 @@ module Picarro
             string implementation;
 
             // When was the greeter created
-            Picarro::Shared::Timestamp birth;
+            Picarro::Common::Timestamp birth;
 
             // Arbitrary key/value pairs associated with the greeting
-            Picarro::Shared::TaggedValueList data;
+            Picarro::Variant::TaggedValueList data;
         };
 
 
@@ -78,7 +78,7 @@ module Picarro
         struct TimeData
         {
             // Common timestamp
-            Picarro::Shared::Timestamp timestamp;
+            Picarro::Common::Timestamp timestamp;
 
             // Local calendar time
             TimeStruct local_time;

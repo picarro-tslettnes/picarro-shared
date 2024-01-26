@@ -8,7 +8,7 @@
 #include "protobuf-event-types.h++"
 #include "protobuf-standard-types.h++"
 #include "protobuf-variant-types.h++"
-#include "protobuf-inline-types.h++"
+#include "protobuf-inline.h++"
 
 namespace picarro::protobuf
 {
@@ -39,13 +39,29 @@ namespace picarro::protobuf
     }
 
     //==========================================================================
+    // status::Flow encoding to/decoding from Picarro::Status::Flow
+
+    void encode(status::Flow flow, Picarro::Status::Flow *encoded) noexcept
+    {
+        *encoded = static_cast<Picarro::Status::Flow>(flow);
+    }
+
+    void decode(Picarro::Status::Flow flow, status::Flow *decoded) noexcept
+    {
+        *decoded = static_cast<status::Flow>(flow);
+    }
+
+    //==========================================================================
     // status::Event encoding to/decoding from status::Details
 
     void encode(const status::Event &event, Picarro::Status::Details *msg) noexcept
     {
         msg->set_domain(encoded<Picarro::Status::Domain>(event.domain()));
         msg->set_origin(event.origin());
+        msg->set_code(event.code());
+        msg->set_symbol(event.symbol());
         msg->set_level(encoded<Picarro::Status::Level>(event.level()));
+        msg->set_flow(encoded<Picarro::Status::Flow>(event.flow()));
         encode(event.timepoint(), msg->mutable_timestamp());
         encode(event.attributes(), msg->mutable_attributes());
         msg->set_text(event.text());
@@ -57,30 +73,10 @@ namespace picarro::protobuf
             msg.text(),
             decoded<status::Domain>(msg.domain()),
             msg.origin(),
-            decoded<status::Level>(msg.level()),
-            decoded<dt::TimePoint>(msg.timestamp()),
-            decoded<types::KeyValueMap>(msg.attributes()));
-    }
-
-    //==========================================================================
-    // status::Error encoding to/decoding from Picarro::Status::::Details
-
-    void encode(const status::Error &error, Picarro::Status::Details *msg) noexcept
-    {
-        encode(static_cast<status::Event>(error), msg);
-        msg->set_code(error.code());
-        msg->set_symbol(error.symbol());
-    }
-
-    void decode(const Picarro::Status::Details &msg, status::Error *error) noexcept
-    {
-        *error = status::Error(
-            msg.text(),
-            decoded<status::Domain>(msg.domain()),
-            msg.origin(),
             msg.code(),
             msg.symbol(),
             decoded<status::Level>(msg.level()),
+            decoded<status::Flow>(msg.flow()),
             decoded<dt::TimePoint>(msg.timestamp()),
             decoded<types::KeyValueMap>(msg.attributes()));
     }

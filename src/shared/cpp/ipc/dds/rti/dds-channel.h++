@@ -7,7 +7,6 @@
 
 #pragma once
 #include "ipc-channel.h++"
-#include "common-types.hpp"  // Generated from `common-types.idl'
 #include <dds/core/policy/CorePolicy.hpp>
 #include <dds/domain/DomainParticipant.hpp>
 
@@ -18,16 +17,16 @@ namespace picarro::dds
     //==========================================================================
     /// @brief Mix-in base for publishers & subscribers
 
-    class DDS_Channel : public ipc::Channel
+    class Channel : public ipc::Channel
     {
-        using This = DDS_Channel;
+        using This = Channel;
         using Super = ipc::Channel;
 
     protected:
         // Inherit constructor
-        DDS_Channel(const std::string &class_name,
-                    const std::string &instance_name,
-                    int domain_id);
+        Channel(const std::string &class_name,
+                const std::string &channel_name,
+                int domain_id);
 
         template <class QoS>
         static QoS pubsub_policy(bool reliable = true,

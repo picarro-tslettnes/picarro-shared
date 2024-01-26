@@ -12,6 +12,7 @@
 
 namespace picarro::logging
 {
+
     //==========================================================================
     /// \class Sink
     /// \brief Abstract data receiver

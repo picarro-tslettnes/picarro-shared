@@ -16,12 +16,13 @@ namespace picarro::demo
     constexpr const char *TIMER_TASK_HANDLE = "demo-timer";
 
     NativeImpl::NativeImpl(const std::string &identity)
-        : Super(identity, TYPE_NAME_BASE(This))
+        : Super(identity, "Native")
     {
     }
 
     void NativeImpl::say_hello(const Greeting &greeting)
     {
+        log_notice("Received and redistributing greeting: ", greeting);
         /// Emit `signal_greeting` to registered slots/callbacks.
         picarro::demo::signal_greeting.emit(greeting.identity, greeting);
     }
@@ -34,6 +35,7 @@ namespace picarro::demo
     void NativeImpl::start_ticking()
     {
         // Schedule a task to emit a new TimeData update every second
+        log_notice("Starting periodic time updates");
         picarro::scheduler.add_if_missing(
             TIMER_TASK_HANDLE,
             [](const picarro::dt::TimePoint &tp) {
@@ -46,6 +48,7 @@ namespace picarro::demo
     void NativeImpl::stop_ticking()
     {
         // Cancel any existing TimeData update task
+        log_notice("Stopping periodic time updates");
         picarro::scheduler.remove(TIMER_TASK_HANDLE);
     }
 }  // namespace picarro::demo

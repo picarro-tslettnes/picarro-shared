@@ -13,12 +13,12 @@ namespace picarro::idl
     // Encode/decode Boolean value
 
     void encode(bool native,
-                Picarro::Shared::BoolValue *idl) noexcept
+                Picarro::Common::BoolValue *idl) noexcept
     {
         idl->value(native);
     }
 
-    void decode(const Picarro::Shared::BoolValue &idl,
+    void decode(const Picarro::Common::BoolValue &idl,
                 bool *native) noexcept
     {
         *native = idl.value();
@@ -28,12 +28,12 @@ namespace picarro::idl
     // Encode/decode Unsigned Integer value
 
     void encode(picarro::types::largest_uint native,
-                Picarro::Shared::UnsignedValue *idl) noexcept
+                Picarro::Common::UnsignedValue *idl) noexcept
     {
         idl->value(native);
     }
 
-    void decode(const Picarro::Shared::UnsignedValue &idl,
+    void decode(const Picarro::Common::UnsignedValue &idl,
                 picarro::types::largest_uint *native) noexcept
     {
         *native = idl.value();
@@ -43,12 +43,12 @@ namespace picarro::idl
     // Encode/decode Signed Integer value
 
     void encode(picarro::types::largest_sint native,
-                Picarro::Shared::SignedValue *idl) noexcept
+                Picarro::Common::SignedValue *idl) noexcept
     {
         idl->value(native);
     }
 
-    void decode(const Picarro::Shared::SignedValue &idl,
+    void decode(const Picarro::Common::SignedValue &idl,
                 picarro::types::largest_sint *native) noexcept
     {
         *native = idl.value();
@@ -58,12 +58,12 @@ namespace picarro::idl
     // Encode/decode real value
 
     void encode(double native,
-                Picarro::Shared::RealValue *idl) noexcept
+                Picarro::Common::RealValue *idl) noexcept
     {
         idl->value(native);
     }
 
-    void decode(const Picarro::Shared::RealValue &idl,
+    void decode(const Picarro::Common::RealValue &idl,
                 double *native) noexcept
     {
         *native = idl.value();
@@ -73,13 +73,13 @@ namespace picarro::idl
     // Encode/decode Complex value
 
     void encode(const picarro::types::complex &native,
-                Picarro::Shared::ComplexValue *idl) noexcept
+                Picarro::Common::ComplexValue *idl) noexcept
     {
         idl->real(native.real());
         idl->imag(native.imag());
     }
 
-    void decode(const Picarro::Shared::ComplexValue &idl,
+    void decode(const Picarro::Common::ComplexValue &idl,
                 picarro::types::complex *native) noexcept
     {
         native->real(idl.real());
@@ -90,14 +90,14 @@ namespace picarro::idl
     // Encode/decode Timestamp
 
     void encode(const picarro::dt::TimePoint &native,
-                Picarro::Shared::Timestamp *idl) noexcept
+                Picarro::Common::Timestamp *idl) noexcept
     {
         timespec tspec = picarro::dt::to_timespec(native);
         idl->seconds(tspec.tv_sec);
         idl->nanoseconds(tspec.tv_nsec);
     }
 
-    void decode(const Picarro::Shared::Timestamp &idl,
+    void decode(const Picarro::Common::Timestamp &idl,
                 picarro::dt::TimePoint *native) noexcept
     {
         *native = picarro::dt::to_timepoint(idl.seconds(), idl.nanoseconds());
@@ -107,7 +107,7 @@ namespace picarro::idl
     // Encode/decode Duration
 
     void encode(const picarro::dt::Duration &native,
-                Picarro::Shared::Duration *idl) noexcept
+                Picarro::Common::Duration *idl) noexcept
     {
         auto secs = std::chrono::duration_cast<std::chrono::seconds>(native);
         if (secs > native)
@@ -117,7 +117,7 @@ namespace picarro::idl
         idl->nanoseconds(static_cast<std::uint32_t>(nanos.count()));
     }
 
-    void decode(const Picarro::Shared::Duration &idl,
+    void decode(const Picarro::Common::Duration &idl,
                 picarro::dt::Duration *native) noexcept
     {
         *native = std::chrono::duration_cast<picarro::dt::Duration>(
@@ -129,12 +129,12 @@ namespace picarro::idl
     // Encode/decode String value
 
     void encode(std::string native,
-                Picarro::Shared::StringValue *idl) noexcept
+                Picarro::Common::StringValue *idl) noexcept
     {
         idl->value(native);
     }
 
-    void decode(const Picarro::Shared::StringValue &idl,
+    void decode(const Picarro::Common::StringValue &idl,
                 std::string *native) noexcept
     {
         *native = idl.value();

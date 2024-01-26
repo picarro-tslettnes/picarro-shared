@@ -15,25 +15,25 @@ namespace picarro::idl
     // Encode/decode VariantValue
 
     void encode(const picarro::types::Value &native,
-                Picarro::Shared::VariantValue *idl) noexcept;
+                Picarro::Variant::Value *idl) noexcept;
 
-    void decode(const Picarro::Shared::VariantValue &idl,
+    void decode(const Picarro::Variant::Value &idl,
                 picarro::types::Value *native) noexcept;
 
     //==========================================================================
     // Encode/decode TaggedValue
 
     void encode(const picarro::types::TaggedValue &native,
-                Picarro::Shared::TaggedValue *idl) noexcept;
+                Picarro::Variant::TaggedValue *idl) noexcept;
 
-    void decode(const Picarro::Shared::TaggedValue &idl,
+    void decode(const Picarro::Variant::TaggedValue &idl,
                 picarro::types::TaggedValue *native) noexcept;
 
     void encode(const picarro::types::Tag &tag,
                 const picarro::types::Value &value,
-                Picarro::Shared::TaggedValue *idl) noexcept;
+                Picarro::Variant::TaggedValue *idl) noexcept;
 
-    void decode(const Picarro::Shared::TaggedValue &idl,
+    void decode(const Picarro::Variant::TaggedValue &idl,
                 std::string *tag,
                 picarro::types::Value *value) noexcept;
 
@@ -41,35 +41,35 @@ namespace picarro::idl
     // Encode/decode ValueList
 
     void encode(const picarro::types::ValueList &native,
-                Picarro::Shared::VariantValueList *idl) noexcept;
+                Picarro::Variant::ValueList *idl) noexcept;
 
-    void decode(const Picarro::Shared::VariantValueList &idl,
+    void decode(const Picarro::Variant::ValueList &idl,
                 picarro::types::ValueList *native) noexcept;
 
-    void decode(std::vector<Picarro::Shared::VariantValue>::const_iterator begin,
-                std::vector<Picarro::Shared::VariantValue>::const_iterator end,
+    void decode(std::vector<Picarro::Variant::Value>::const_iterator begin,
+                std::vector<Picarro::Variant::Value>::const_iterator end,
                 picarro::types::ValueList *native) noexcept;
 
     //==========================================================================
     // Encode/decode TaggedValueList
 
     void encode(const picarro::types::TaggedValueList &native,
-                Picarro::Shared::TaggedValueList *idl) noexcept;
+                Picarro::Variant::TaggedValueList *idl) noexcept;
 
-    void decode(const Picarro::Shared::TaggedValueList &idl,
+    void decode(const Picarro::Variant::TaggedValueList &idl,
                 picarro::types::TaggedValueList *native) noexcept;
 
-    void decode(std::vector<Picarro::Shared::TaggedValue>::const_iterator begin,
-                std::vector<Picarro::Shared::TaggedValue>::const_iterator end,
+    void decode(std::vector<Picarro::Variant::TaggedValue>::const_iterator begin,
+                std::vector<Picarro::Variant::TaggedValue>::const_iterator end,
                 picarro::types::TaggedValueList *native) noexcept;
 
     //==========================================================================
     // Encode/decode KeyValueMap
 
     void encode(const picarro::types::KeyValueMap &native,
-                Picarro::Shared::TaggedValueList *idl) noexcept;
+                Picarro::Variant::TaggedValueList *idl) noexcept;
 
-    void decode(const Picarro::Shared::TaggedValueList &idl,
+    void decode(const Picarro::Variant::TaggedValueList &idl,
                 picarro::types::KeyValueMap *native) noexcept;
 
 }  // namespace picarro::idl

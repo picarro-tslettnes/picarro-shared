@@ -1,24 +1,24 @@
 // -*- javascript -*-
 //==============================================================================
-/// @file common-services.json
-/// @brief Service settings for core applications
+/// @file common-grpc-services.json
+/// @brief gRPC service settings for core applications
 /// @author Tor Slettnes <tslettnes@picarro.com>
 //==============================================================================
 
 {
     // Default service settings for common applications. In addtiion to these,
     // settings for product-specific applications can be found in
-    // `PRODUCT_NAME-services.json`, where PRODUCT_NAME is provided at build
-    // time.
-    ///
+    // `grpc-services-PRODUCT_NAME.json`, where PRODUCT_NAME is provided at
+    // build time.
+    //
     // For now, the following attributes are defined per service:
     //  - "host" and "port" settings for clients, specifying where to connect
     //  - "interface" and "port" for servers, specifying the listener address.
-    ///
+    //
     // The syntax for the service address provided to both the C++ and Python
     // gRPC wrappers is as follows:
     //   [PERSONALITY@][HOST][:PORT]
-    ///
+    //
     // * If HOST and/or PORT is explicitly provided it takes precendence.
     // * If either is missing, PERSONALITY is used to lookup the corresponding
     //   value from a matching profile in the "personalities" section, below.

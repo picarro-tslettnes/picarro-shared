@@ -28,6 +28,8 @@
 
 namespace picarro::protobuf
 {
+    using google::protobuf::Empty;
+
     //==========================================================================
     // Simple protobuf types
 

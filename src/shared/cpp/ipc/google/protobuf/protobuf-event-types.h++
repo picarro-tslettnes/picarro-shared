@@ -8,7 +8,7 @@
 #pragma once
 #include "event_types.pb.h"  // generated from `common-types.proto`
 #include "status/event.h++"
-#include "status/error.h++"
+#include "status/event.h++"
 
 /// ProtoBuf message conversions.
 ///
@@ -31,15 +31,15 @@ namespace picarro::protobuf
     void decode(Picarro::Status::Level level, status::Level *decoded) noexcept;
 
     //==========================================================================
+    // status::Level encoding to/decoding from Picarro::Status::Level
+
+    void encode(status::Flow flow, Picarro::Status::Flow *encoded) noexcept;
+    void decode(Picarro::Status::Flow flow, status::Flow *decoded) noexcept;
+
+    //==========================================================================
     // status::Event encoding to/decoding from Picarro::Status::::EventData
 
     void encode(const status::Event &event, Picarro::Status::Details *msg) noexcept;
     void decode(const Picarro::Status::Details &msg, status::Event *event) noexcept;
-
-    //==========================================================================
-    // status::Error encoding to/decoding from Picarro::Status::::Details
-
-    void encode(const status::Error &error, Picarro::Status::Details *msg) noexcept;
-    void decode(const Picarro::Status::Details &msg, status::Error *error) noexcept;
 
 }  // namespace picarro::protobuf

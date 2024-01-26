@@ -15,7 +15,8 @@ set(DEST_DIR sbin)
 ### system. Only direct dependencies are needed; e.g., do not list "picarro_shared"
 ### if you also list another library that depends on it.
 set(LIB_DEPS
-  picarro_demo_native)
+  picarro_demo_native
+)
 
 if(BUILD_RTI_DDS)
   list(APPEND LIB_DEPS picarro_demo_dds_service)
@@ -25,11 +26,14 @@ if(BUILD_GRPC)
   list(APPEND LIB_DEPS picarro_demo_grpc_service)
 endif()
 
+if(BUILD_ZMQ)
+  list(APPEND LIB_DEPS picarro_demo_zmq_service)
+endif()
+
 ### Source files
 set(SOURCES
   main.c++
   options.c++
-  implementations.c++
   )
 
 ## Invoke common CMake rules to build executable

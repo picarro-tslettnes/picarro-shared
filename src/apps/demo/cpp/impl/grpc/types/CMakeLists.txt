@@ -5,7 +5,7 @@
 ## @author Tor Slettnes <tslettnes@picarro.com>
 #===============================================================================
 
-set(TARGET picarro_demo_protobuf)
+set(TARGET picarro_demo_protobuf_types)
 
 ### Library type.  We use static linking for convenience.
 set(LIB_TYPE STATIC)
@@ -15,11 +15,6 @@ set(LIB_DEPS
   picarro_demo_api
   picarro_demo_protodefs
   picarro_shared_ipc_protobuf
-)
-
-### External package dependencies, configured via `pkg-config`.
-set(PKG_DEPS
-  protobuf
 )
 
 set(SOURCES

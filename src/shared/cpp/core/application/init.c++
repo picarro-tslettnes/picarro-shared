@@ -16,6 +16,8 @@ namespace picarro::application
 {
     void shutdown_handler(int signal)
     {
+        ::signal(SIGINT, SIG_IGN);
+        ::signal(SIGTERM, SIG_IGN);
         signal_shutdown.emit(signal);
     }
 

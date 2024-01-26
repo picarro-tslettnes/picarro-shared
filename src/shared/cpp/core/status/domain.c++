@@ -16,6 +16,7 @@ namespace picarro::status
         {Domain::SYSTEM, "SYSTEM"},
         {Domain::PROCESS, "PROCESS"},
         {Domain::PERIPHERAL, "PERIPHERAL"},
+        {Domain::SERVICE, "SERVICE"},
     };
 
     std::ostream &operator<<(std::ostream &stream, Domain domain)

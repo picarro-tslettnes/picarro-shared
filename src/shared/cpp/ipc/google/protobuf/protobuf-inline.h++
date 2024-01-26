@@ -1,6 +1,6 @@
 /// -*- c++ -*-
 //==============================================================================
-/// @file protobuf-inline-types.h++
+/// @file protobuf-inline.h++
 /// @brief Convenience templates for ProtoBuf encoding/decoding
 /// @author Tor Slettnes <tslettnes@picarro.com>
 ///
@@ -97,46 +97,6 @@ namespace picarro::protobuf
         auto ref = std::make_shared<NativeType>();
         decode(msg, ref.get());
         return ref;
-    }
-
-    //==========================================================================
-
-    /// Convert a serialized byte array to a ProtoBuf message of type ProtoBufType.
-    template <class ProtoBufType>
-    inline void from_bytes(
-        const ByteArray &bytes,
-        ProtoBufType *msg)
-    {
-        msg->ParseFromArray(bytes.data(), bytes.size());
-    }
-
-    /// Convert a serialized byte array to a ProtoBuf message of type ProtoBufType.
-    template <class ProtoBufType>
-    inline ProtoBufType from_bytes(
-        const ByteArray &bytes)
-    {
-        ProtoBufType msg;
-        msg.ParseFromArray(bytes.data(), bytes.size());
-        return msg;
-    }
-
-    /// Convert a serialized byte array to a ProtoBuf message of type ProtoBufType.
-    template <class ProtoBufType>
-    inline void from_packed_string(
-        const std::string &packed_string,
-        ProtoBufType *msg)
-    {
-        msg->ParseFromString(packed_string);
-    }
-
-    /// Convert a serialized byte array to a ProtoBuf message of type ProtoBufType.
-    template <class ProtoBufType>
-    inline ProtoBufType from_packed_string(
-        const std::string &packed_string)
-    {
-        ProtoBufType msg;
-        msg.ParseFromString(packed_string);
-        return msg;
     }
 
 }  // namespace picarro::protobuf

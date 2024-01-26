@@ -28,27 +28,10 @@ namespace picarro::logging
 
     void Dispatcher::initialize()
     {
-        if (!this->workerthread_.joinable())
-        {
-            for (const Sink::Ref &sink : this->sinks())
-            {
-                sink->open();
-            }
-            this->workerthread_ = std::thread(&Dispatcher::worker, this);
-        }
     }
 
     void Dispatcher::deinitialize()
     {
-        if (this->workerthread_.joinable())
-        {
-            this->queue_.cancel();
-            this->workerthread_.join();
-            for (const Sink::Ref &sink : this->sinks_)
-            {
-                sink->close();
-            }
-        }
     }
 
     bool Dispatcher::is_applicable(const types::Loggable &item) const
@@ -65,20 +48,11 @@ namespace picarro::logging
 
     void Dispatcher::submit(const types::Loggable::Ref &item)
     {
-        this->queue_.put(item);
-    }
-
-    void Dispatcher::worker()
-    {
-        while (const std::optional<types::Loggable::Ref> &opt_item = this->queue_.get())
+        for (const Sink::Ref &sink : this->sinks())
         {
-            for (const Sink::Ref &sink : this->sinks())
+            if (sink->is_applicable(*item))
             {
-                const types::Loggable::Ref &item = *opt_item;
-                if (sink->is_applicable(*item))
-                {
-                    sink->capture(item);
-                }
+                sink->capture(item);
             }
         }
     }

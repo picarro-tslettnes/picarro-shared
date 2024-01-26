@@ -20,14 +20,14 @@ namespace picarro::demo::dds
     /// Received messages are re-emitted locally via
     /// @sa picarro::demo::signal_time and @sa picarro::demo::signal_greeting.
 
-    class Subscriber : public picarro::dds::DDS_Subscriber,
+    class Subscriber : public picarro::dds::Subscriber,
                        public picarro::types::enable_create_shared<Subscriber>
     {
         using This = Subscriber;
-        using Super = picarro::dds::DDS_Subscriber;
+        using Super = picarro::dds::Subscriber;
 
     protected:
-        Subscriber(const std::string &name, int domain_id);
+        Subscriber(const std::string &channel_name, int domain_id);
 
     private:
         static void on_time_update(

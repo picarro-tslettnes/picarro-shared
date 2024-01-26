@@ -32,10 +32,10 @@ namespace picarro
                                     const Invocation &invocation,
                                     const dt::Duration &interval,
                                     const Alignment align,
+                                    status::Level loglevel,
                                     uint count,
                                     uint retries,
-                                    bool catchup,
-                                    status::Level loglevel)
+                                    bool catchup)
     {
         if (interval <= dt::Duration::zero())
         {
@@ -54,15 +54,15 @@ namespace picarro
                                                const Invocation &invocation,
                                                const dt::Duration &interval,
                                                const Alignment align,
+                                               status::Level loglevel,
                                                uint count,
                                                uint retries,
-                                               bool catchup,
-                                               status::Level loglevel)
+                                               bool catchup)
     {
         auto it = this->find(id);
         if (it == this->end())
         {
-            return this->add(id, invocation, interval, align, count, retries, catchup, loglevel);
+            return this->add(id, invocation, interval, align, loglevel, count, retries, catchup);
         }
         else
         {
@@ -315,9 +315,9 @@ namespace picarro
         {
             const Invocation &f = this->invocation;
             logf_message(this->loglevel,
-                         "Scheduled task %r invocation (variant %d)",
-                         this->id,
-                         f.index());
+                  "Scheduled task %r invocation (variant %d)",
+                  this->id,
+                  f.index());
             switch (f.index())
             {
             case 0:

@@ -22,14 +22,14 @@ set(PKG_DEPS
 ### Static/shared library dependencies, either from this build or provided by the system.
 set(LIB_DEPS
   picarro_demo_api
-  picarro_demo_protobuf
+  picarro_demo_protobuf_types
   picarro_shared_ipc_grpc)
 
 ### Source files
 set(SOURCES
   demo-grpc-signalqueue.c++
   demo-grpc-requesthandler.c++
-  demo-grpc-server.c++
+  demo-grpc-run.c++
 )
 
 
