@@ -1,0 +1,11 @@
+/// -*- javascript -*-
+//==============================================================================
+/// @file demo-dds-tool.json
+/// @brief Settings for `demo-dds-tool` utility
+/// @author Tor Slettnes <tslettnes@picarro.com>
+//==============================================================================
+
+{
+    "log-default" : "info",
+    "log-source" : true
+}

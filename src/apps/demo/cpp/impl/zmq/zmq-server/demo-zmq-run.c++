@@ -1,0 +1,58 @@
+// -*- c++ -*-
+//==============================================================================
+/// @file demo-zmq-run.c++
+/// @brief C++ demo - Launch ZeroMQ server implementation
+/// @author Tor Slettnes <tslettnes@picarro.com>
+//==============================================================================
+
+#include "demo-zmq-run.h++"
+#include "demo-zmq-publisher.h++"
+#include "demo-zmq-server.h++"
+
+namespace picarro::demo::zmq
+{
+    void run_zmq_service(
+        std::shared_ptr<picarro::demo::API> api_provider,
+        const std::string &channel_name,
+        const std::string &bind_address)
+    {
+        // Instantiate Publisher to relay asynchronous events over ZeroMQ
+        auto zmq_publisher = picarro::demo::zmq::Publisher::create_shared(
+            bind_address,
+            channel_name);
+
+        // Instantiate Server to handle incoming requests from client
+        auto zmq_server = picarro::demo::zmq::Server::create_shared(
+            api_provider,
+            bind_address,
+            channel_name);
+
+        //======================================================================
+        // Initialize
+
+        try
+        {
+            log_debug("Initializing Demo ZeroMQ publisher");
+            zmq_publisher->initialize();
+            log_info("Demo ZeroMQ publisher is ready on ", zmq_publisher->bind_address());
+
+            log_debug("Initializing Demo ZeroMQ command server");
+            zmq_server->initialize();
+            log_info("Demo ZeroMQ command server is ready on ", zmq_server->bind_address());
+            zmq_server->run();
+            log_info("Demo ZeroMQ command server is shutting down");
+
+            log_debug("Deinitializing Demo ZeroMQ server");
+            zmq_server->deinitialize();
+
+            log_debug("Deinitializing Demo ZeroMQ publisher");
+            zmq_publisher->deinitialize();
+        }
+        catch (const std::exception &e)
+        {
+            std::cerr << e.what() << std::endl;
+            throw;
+        }
+    }
+
+}  // namespace picarro::demo::zmq

@@ -1,0 +1,11 @@
+/// -*- javascript -*-
+//==============================================================================
+/// @file demo-zmq-tool.json
+/// @brief Settings for `demo-zmq-tool` utility
+/// @author Tor Slettnes <tslettnes@picarro.com>
+//==============================================================================
+
+{
+    "log-default" : "info",
+    "log-source" : true
+}
