@@ -15,10 +15,9 @@
 namespace picarro::zmq
 {
     ProtoBufClient::ProtoBufClient(const std::string &host_address,
-                                   const std::string &class_name,
                                    const std::string &channel_name,
                                    const std::string &interface_name)
-        : Super(host_address, class_name, channel_name),
+        : Super(host_address, channel_name),
           interface_name_(interface_name),
           client_id(++ProtoBufClient::last_client_id),
           last_request_id(0)

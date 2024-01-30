@@ -18,7 +18,7 @@
 namespace picarro::demo::dds
 {
     Subscriber::Subscriber(const std::string &channel_name, int domain_id)
-        : Super(TYPE_NAME_FULL(Subscriber), channel_name, domain_id),
+        : Super(channel_name, domain_id),
           time_reader(this->create_reader<Picarro::Demo::TimeData>(
               Picarro::Demo::TIMEDATA_TOPIC,    // topic_name
               Subscriber::on_time_update,  // handler

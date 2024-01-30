@@ -47,7 +47,8 @@ int main(int argc, char** argv)
         logf_debug("Spawning gRPC server");
         server_threads.emplace_back(
             picarro::demo::grpc::run_grpc_service,
-            api_provider);
+            api_provider,
+            "");
     }
 #endif
 
@@ -70,7 +71,6 @@ int main(int argc, char** argv)
         server_threads.emplace_back(
             picarro::demo::zmq::run_zmq_service,
             api_provider,
-            picarro::demo::zmq::CHANNEL_NAME,
             "");
     }
 #endif

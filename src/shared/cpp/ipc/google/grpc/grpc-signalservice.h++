@@ -1,0 +1,103 @@
+/// -*- c++ -*-
+//==============================================================================
+/// @file grpc-signalservice.h++
+/// @brief Picarro service provider with signal emitting capability
+/// @author Tor Slettnes <tslettnes@picarro.com>
+//==============================================================================
+
+#pragma once
+#include "grpc-servicehandler.h++"
+#include "grpc-signalqueue.h++"
+#include "protobuf-message.h++"
+
+#include "platform/symbols.h++"
+
+namespace picarro::grpc
+{
+    //==========================================================================
+    /// @class SignalServiceWrapper<ServiceT>
+    /// @brief Service wrapper with signalling interface
+    /// @tparam ServiceT
+    ///     gRPC service type
+    /// @tparam SignalT
+    ///     Signal class, derfined in .proto file
+
+    template <class ServiceT>
+    class SignalServiceWrapper : public ServiceHandler<ServiceT>
+    {
+        using Super = ServiceHandler<ServiceT>;
+
+    protected:
+        using Super::Super;
+
+        // Serve requests to watch for signal changes
+        template <class SignalT,
+                  class SignalQueueT,
+                  class SignalFilterT = Picarro::Signal::Filter>
+        inline ::grpc::Status stream_signals(::grpc::ServerContext *cxt,
+                                             const SignalFilterT *req,
+                                             ::grpc::ServerWriter<SignalT> *writer)
+        {
+            try
+            {
+                SignalQueueT queue(*req, platform::symbols->uuid());
+                queue.initialize();
+
+                while (true)
+                {
+                    std::optional<SignalT> msg = queue.get();
+                    if (cxt->IsCancelled())
+                    {
+                        break;
+                    }
+                    if (msg)
+                    {
+                        logf_trace("Feeding signal to client %s: %s", cxt->peer(), *msg);
+                        writer->Write(*msg);
+                    }
+                }
+
+                queue.deinitialize();
+                return ::grpc::Status::OK;
+            }
+            catch (...)
+            {
+                return this->failure(std::current_exception(), *req, cxt->peer());
+            }
+        }
+    };
+
+    //==========================================================================
+    /// @class SignalWatchService
+    /// @brief Service wrapper with signalling interface
+    /// @tparam ServiceT
+    ///     gRPC service type
+    /// @tparam SignalT
+    ///     Signal class, derfined in .proto file
+    /// @tparam SignalQueueT
+    ///     Signal queue class, holding signals to be sent to client
+    /// @tparam SignalFilterT
+    ///     Signal queue class
+
+    template <class ServiceT,
+              class SignalT,
+              class SignalQueueT,
+              class SignalFilterT = Picarro::Signal::Filter>
+    class SignalWatchService : public SignalServiceWrapper<ServiceT>
+    {
+        using Super = SignalServiceWrapper<ServiceT>;
+
+    protected:
+        using Super::Super;
+
+        // Serve requests to watch for signal changes
+        inline ::grpc::Status watch(::grpc::ServerContext *cxt,
+                                    const SignalFilterT *req,
+                                    ::grpc::ServerWriter<SignalT> *writer) override
+        {
+            return this->template stream_signals<SignalT, SignalQueueT, SignalFilterT>(
+                cxt, req, writer);
+        }
+    };
+
+}  // namespace picarro::grpc

@@ -13,19 +13,16 @@ namespace picarro::demo::zmq
 {
     void run_zmq_service(
         std::shared_ptr<picarro::demo::API> api_provider,
-        const std::string &channel_name,
         const std::string &bind_address)
     {
         // Instantiate Publisher to relay asynchronous events over ZeroMQ
         auto zmq_publisher = picarro::demo::zmq::Publisher::create_shared(
-            bind_address,
-            channel_name);
+            bind_address);
 
         // Instantiate Server to handle incoming requests from client
         auto zmq_server = picarro::demo::zmq::Server::create_shared(
             api_provider,
-            bind_address,
-            channel_name);
+            bind_address);
 
         //======================================================================
         // Initialize

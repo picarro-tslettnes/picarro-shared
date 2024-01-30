@@ -14,5 +14,6 @@
 namespace picarro::demo::grpc
 {
     void run_grpc_service(
-        std::shared_ptr<picarro::demo::API> api_provider);
+        std::shared_ptr<picarro::demo::API> api_provider,
+        const std::string &listen_address = {});
 }  // namespace picarro::demo::grpc

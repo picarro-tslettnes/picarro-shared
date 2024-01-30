@@ -8,7 +8,7 @@
 #pragma once
 #include "demo-grpc-signalqueue.h++"
 #include "demo-api.h++"
-#include "grpc-signalserver.h++"
+#include "grpc-signalservice.h++"
 
 #include "demo_service.grpc.pb.h"  // generated from `demo_service.proto`
 
@@ -20,9 +20,9 @@ namespace picarro::demo::grpc
     // @class RequestHandler
     // @brief Process requests from Demo clients
 
-    using RequestHandlerBase = picarro::grpc::SignalWatchServer<Picarro::Demo::Demo,
-                                                           Picarro::Demo::Signal,
-                                                           SignalQueue>;
+    using RequestHandlerBase = picarro::grpc::SignalWatchService<Picarro::Demo::Demo,
+                                                            Picarro::Demo::Signal,
+                                                            SignalQueue>;
 
     class RequestHandler : public RequestHandlerBase,
                            public types::enable_create_shared<RequestHandler>

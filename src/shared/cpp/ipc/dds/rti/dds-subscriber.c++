@@ -7,18 +7,15 @@
 
 #include "dds-subscriber.h++"
 #include "logging/logging.h++"
+#include "platform/symbols.h++"
 
 namespace picarro::dds
 {
-    Subscriber::Subscriber(
-        const std::string &class_name,
-        const std::string &channel_name,
-        int domain_id)
-        : Super(class_name, channel_name, domain_id),
+    Subscriber::Subscriber(const std::string &channel_name, int domain_id)
+        : Super("subscriber", channel_name, domain_id),
           ::dds::sub::Subscriber(this->get_participant()),
           keep_listening(false)
     {
-        log_trace("Subscriber() constructor");
     }
 
     Subscriber::~Subscriber()

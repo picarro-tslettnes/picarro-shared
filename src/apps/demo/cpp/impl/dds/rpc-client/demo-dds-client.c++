@@ -17,7 +17,7 @@ namespace picarro::demo::dds
 {
     ClientImpl::ClientImpl(const std::string &identity, int domain_id)
         : API(identity, "DDS Client"),
-          Client_Wrapper(TYPE_NAME_FULL(This), Picarro::Demo::SERVICE_ID, domain_id)
+          Client_Wrapper(Picarro::Demo::SERVICE_ID, domain_id)
     {
     }
 

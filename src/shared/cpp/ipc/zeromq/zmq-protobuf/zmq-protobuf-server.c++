@@ -13,10 +13,9 @@
 namespace picarro::zmq
 {
     ProtoBufServer::ProtoBufServer(const std::string &bind_address,
-                                   const std::string &class_name,
                                    const std::string &channel_name,
                                    RequestHandlerMap &&handler_map)
-        : Super(bind_address, class_name, channel_name),
+        : Super(bind_address, channel_name),
           handler_map(std::move(handler_map))
     {
     }
@@ -58,7 +57,7 @@ namespace picarro::zmq
                 Picarro::RR::STATUS_INVALID,
                 "Failed to deserialize ProtoBuf request",
                 picarro::status::Flow::CANCELLED,
-                {{"service", this->channel_name()},
+                {{"channel", this->channel_name()},
                  {"payload", packed_request.to_hex(true, 4)}});
         }
 
@@ -79,7 +78,7 @@ namespace picarro::zmq
                 Picarro::RR::STATUS_INVALID,
                 "No such interface",
                 picarro::status::Flow::CANCELLED,
-                {{"service", this->channel_name()},
+                {{"channel", this->channel_name()},
                  {"interface", request.interface_name()}});
         }
     }

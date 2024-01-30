@@ -23,10 +23,11 @@ set(PKG_DEPS
 )
 
 set(SOURCES
-  grpc-status.c++
-  grpc-basewrapper.c++
+  grpc-base.c++
   grpc-clientwrapper.c++
-  grpc-serverwrapper.c++
+  grpc-serverbuilder.c++
+  grpc-servicehandler.c++
+  grpc-status.c++
 )
 
 

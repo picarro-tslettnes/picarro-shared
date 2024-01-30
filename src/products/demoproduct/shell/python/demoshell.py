@@ -8,19 +8,21 @@
 ### Make the contents of Python client modules available in namespaces roughly
 ### corresponding to the package names of the corresponding `.proto` files
 
-import grpc_client
-import demo_client
+from ipc.google.protobuf     import ProtoBuf
+from ipc.google.grpc.client  import ArgParser as _ArgParser
 
-from protobuf_standard_types import ProtoBuf
+import demo_grpc_client
+import demo_zmq_client
+import logging
 
 ### Container class for ProtoBuf message types from mutiple services
 ### (e.g. "Picarro.Demo.Signal").
 
-class Picarro (demo_client.Picarro):
+class Picarro (demo_grpc_client.Picarro):
     pass
 
 ### Add a few arguments to the base argparser
-class ArgParser (grpc_client.ArgParser):
+class ArgParser (_ArgParser):
     def __init__ (self, host=None, identity="DemoShell", *args, **kwargs):
         super().__init__(host, *args, **kwargs);
 
@@ -29,18 +31,30 @@ class ArgParser (grpc_client.ArgParser):
                           default=identity,
                           help="Identity of this client")
 
+        self.add_argument('--debug',
+                          default=False,
+                          action='store_const',
+                          const=True,
+                          help='Print debug messages')
+
+
 def legend ():
     '''
     Interactive Service Control.  Subsystems loaded:
 
-        demo   - DemoClient: Simple Reference Application
+        demo_grpc  - Simple gRPC communications example
+        demo_zmq   - Simple ZeroMQ communications example
 
     Use 'help(subsystem)' to list available methods
     '''
     print(legend.__doc__)
 
 if __name__ == "__main__":
-    args      = ArgParser().parse_args()
+    args   = ArgParser().parse_args()
 
-    demo      = demo_client.DemoClient(args.host)
+    logger = logging.getLogger()
+    logger.setLevel((logging.INFO, logging.DEBUG)[args.debug])
+
+    demo_grpc = demo_grpc_client.DemoClient(args.host)
+    demo_zmq  = demo_zmq_client.DemoClient(args.host)
     legend()
