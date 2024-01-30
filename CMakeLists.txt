@@ -9,7 +9,7 @@ cmake_minimum_required(VERSION 3.15)
 
 if (NOT PROJECT_NAME)
   project(picarro_core
-    VERSION 0.0.1)
+    VERSION 0.0.2)
 endif()
 
 
@@ -27,8 +27,8 @@ option(BUILD_PROTOBUF   "Build support for Google Protocol Buffers" ON)
 ### Messaging frameworks
 option(BUILD_ZMQ        "Build support for ZeroMQ" ON)
 option(BUILD_GRPC       "Build support for gRPC Remote Procedure Calls" ON)
-option(BUILD_RTI_DDS    "Build support for RTI ConnextDDS" ON)
-option(BUILD_RTI_LOGGER "Build support for RTI Distributed Logger" ${BUILD_RTI_DDS})
+option(BUILD_RTI_DDS    "Build support for RTI ConnextDDS" OFF)
+option(BUILD_RTI_LOGGER "Build support for RTI Distributed Logger" OFF)
 option(BUILD_IDL        "Build Interface Definition Language types (IDL)" OFF)
 
 ### C# components
