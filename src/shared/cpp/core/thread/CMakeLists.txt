@@ -5,7 +5,8 @@
 ## @author Tor Slettnes <tslettnes@picarro.com>
 #===============================================================================
 
-target_sources(${TARGET} PUBLIC
+target_sources(${TARGET} PRIVATE
   signaltemplate.c++
   binaryevent.c++
+  blockingqueue.c++
 )

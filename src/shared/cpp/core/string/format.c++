@@ -91,7 +91,7 @@ namespace picarro::str
     Formatter::Modifiers Formatter::apply_format(const Part &part, uint bytesize)
     {
         Formatter::Modifiers mods;
-
+        this->stream.imbue(std::locale("C"));
         this->apply_flags(part.flags, &mods);
 
         if (part.width)
@@ -102,11 +102,12 @@ namespace picarro::str
         {
             this->stream << std::setw(this->varwidth.value());
         }
-
         this->varwidth.reset();
 
         if (part.precision)
+        {
             this->stream << std::setprecision(part.precision.value());
+        }
         this->apply_conversion(part.conversion, bytesize, &mods);
         return mods;
     }

@@ -28,6 +28,11 @@ namespace picarro::zmq
         return this->status_code_;
     }
 
+    status::Domain ProtoBufError::domain() const noexcept
+    {
+        return status::Domain::APPLICATION;
+    }
+
     std::string ProtoBufError::class_name() const noexcept
     {
         return "Error";

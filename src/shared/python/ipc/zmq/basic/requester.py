@@ -5,8 +5,10 @@
 ## @author Tor Slettnes <tslettnes@picarro.com>
 #===============================================================================
 
+### Modules relative to install folder
 from .satellite   import Satellite
 
+### Third-party modules
 import zmq
 
 class Requester (Satellite):

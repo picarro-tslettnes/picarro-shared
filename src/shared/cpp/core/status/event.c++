@@ -261,7 +261,14 @@ namespace picarro::status
             return this->as_service_error();
 
         default:
-            return {};
+            if (this->code() || !this->symbol().empty())
+            {
+                return this->as_application_error();
+            }
+            else
+            {
+                return {};
+            }
         }
     }
 

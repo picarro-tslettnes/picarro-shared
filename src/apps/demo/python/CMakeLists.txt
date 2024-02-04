@@ -7,8 +7,8 @@
 
 ### Modules to be installed as programs, with execute permissionss
 set(PROGRAMS
-  demo_grpc_client.py
-  demo_zmq_client.py
+  demo-grpc-server.py
+  demo-zmq-server.py
 )
 
 ### Modules to be installed as supporting files, without execute permissions
@@ -17,8 +17,8 @@ set(FILES
 
 ### Subdirectories
 set(DIRECTORIES
+  demo
 )
 
 ### Common recipe
 include(BuildPython)
-

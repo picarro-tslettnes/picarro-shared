@@ -15,6 +15,7 @@ set(LIB_TYPE STATIC)
 set(LIB_DEPS
   picarro_shared_ipc_api
   picarro_shared_ipc_protobuf
+  picarro_shared_platform
 )
 
 ### External package dependencies, configured via `pkg-config`.

@@ -54,7 +54,7 @@ if(BUILD_GRPC)
 endif()
 
 
-### Rules to generate .cc and .h files
+### Rules to generate C++ files
 if (BUILD_CPP)
   protobuf_generate_cpp(PROTO_SRC PROTO_HDR ${SOURCES})
   if(BUILD_GRPC)
@@ -69,7 +69,7 @@ if (BUILD_PYTHON)
   if (BUILD_GRPC)
     grpc_generate_python(GRPC_PY ${CMAKE_CURRENT_BINARY_DIR} ${SOURCES})
   endif()
-  install(FILES ${PROTO_PY} ${GRPC_PY} DESTINATION ${PYTHON_INSTALL_DIR})
+  install(FILES ${PROTO_PY} ${GRPC_PY} DESTINATION ${PYTHON_INSTALL_DIR}/generated)
 endif()
 
 ### Global ProtoBuf include folder

@@ -26,6 +26,11 @@ if (BUILD_PYTHON)
     set(PYTHON_INSTALL_DIR "share/python")
   endif()
 
+  if(MODULE)
+    string(REPLACE "." "/" MODULE_DIR "${MODULE}")
+    set(PYTHON_INSTALL_DIR "${PYTHON_INSTALL_DIR}/${MODULE_DIR}")
+  endif()
+
   if(PROGRAMS)
     install(
       PROGRAMS ${PROGRAMS}

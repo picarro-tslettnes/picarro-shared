@@ -20,7 +20,6 @@
 
 namespace picarro::grpc
 {
-    using namespace std::literals;
     //==========================================================================
     /// @class ClientBase
     /// @brief

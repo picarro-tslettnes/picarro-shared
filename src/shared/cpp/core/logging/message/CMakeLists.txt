@@ -5,7 +5,7 @@
 ## @author Tor Slettnes <tslettnes@picarro.com>
 #===============================================================================
 
-target_sources(${TARGET} PUBLIC
+target_sources(${TARGET} PRIVATE
   scope.c++
   message.c++
   builder.c++

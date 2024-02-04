@@ -15,6 +15,7 @@ set(LIB_TYPE STATIC)
 set(LIB_DEPS
   picarro_shared_ipc_api
   picarro_shared_ipc_idl
+  picarro_shared_platform
 )
 
 set(SOURCES

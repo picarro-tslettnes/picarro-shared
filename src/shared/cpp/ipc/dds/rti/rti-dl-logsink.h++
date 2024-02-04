@@ -16,15 +16,15 @@
 
 namespace picarro::logging
 {
-    class RTILogger : public MessageSink,
-                      public picarro::types::enable_create_shared<RTILogger>
+    class RTIDistributedLogger : public MessageSink,
+                                 public picarro::types::enable_create_shared<RTIDistributedLogger>
     {
-        using This = RTILogger;
+        using This = RTIDistributedLogger;
         using Super = MessageSink;
 
     protected:
-        RTILogger(const std::string &identity,
-                  int domain_id);
+        RTIDistributedLogger(const std::string &identity,
+                             int domain_id);
 
     public:
         void set_threshold(status::Level threshold) override;

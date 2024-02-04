@@ -58,7 +58,7 @@ namespace picarro::zmq
             break;
 
         default:
-            logf_warning("%s %s: [%s] %s", this, action, e.num(), e.what());
+            logf_warning("%s %s: [%s] %s", *this, action, e.num(), e.what());
             break;
         }
     }

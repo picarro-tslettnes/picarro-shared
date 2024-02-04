@@ -5,5 +5,6 @@
 ## @author Tor Slettnes <tslettnes@picarro.com>
 #===============================================================================
 
+add_subdirectory(shell)
 
 install(DIRECTORY settings TYPE DATA)
