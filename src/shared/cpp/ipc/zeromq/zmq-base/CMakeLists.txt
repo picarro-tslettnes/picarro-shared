@@ -13,7 +13,7 @@ set(LIB_TYPE STATIC)
 
 ### Library dependencies.
 set(LIB_DEPS
-  picarro_shared_ipc_api
+  picarro_shared_ipc_common
   picarro_shared_platform
 )
 
@@ -30,6 +30,8 @@ set(SOURCES
   zmq-filter.c++
   zmq-publisher.c++
   zmq-subscriber.c++
+  zmq-messagehandler.c++
+  zmq-messagewriter.c++
   zmq-requester.c++
   zmq-responder.c++
 )

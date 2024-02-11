@@ -49,9 +49,9 @@ namespace picarro::zmq
         {
             while (this->keep_listening)
             {
-                if (const std::optional<types::ByteArray> &request = this->receive())
+                if (auto request = this->receive())
                 {
-                    types::ByteArray reply;
+                    types::ByteVector reply;
                     this->process_binary_request(*request, &reply);
                     this->send(reply);
                 }
@@ -61,23 +61,6 @@ namespace picarro::zmq
         {
             this->log_zmq_error("could not continue receiving requests", e);
         }
-    }
-
-    void Responder::process_zmq_request(const ::zmq::message_t &request_msg,
-                                        types::ByteArray *packed_reply)
-    {
-        // We get here only if the derived responder class does not override
-        // this method. We assume that in this case, it _does_ override
-        // the 2nd overload, which accepts a `ByteArray` input.
-
-        const std::string_view &sv = request_msg.to_string_view();
-        this->process_binary_request(types::ByteArray(sv.begin(), sv.end()),
-                                     packed_reply);
-    }
-
-    void Responder::process_binary_request(const types::ByteArray &packed_request,
-                                           types::ByteArray *packed_reply)
-    {
     }
 
 }  // namespace picarro::zmq

@@ -1,32 +1,30 @@
 /// -*- c++ -*-
 //==============================================================================
-/// @file zmq-protobuf-subscriber.h++
+/// @file zmq-pickle-subscriber.h++
 /// @brief ZeroMQ subscriber with methods to handle ProtoBuf payloads
 /// @author Tor Slettnes <tslettnes@picarro.com>
 //==============================================================================
 
 #pragma once
+#include "python-pickle.h++"
 #include "zmq-subscriber.h++"
-#include "protobuf-message.h++"
 
 namespace picarro::zmq
 {
-    class ProtoBufSubscriber : public Subscriber
+    class PyPickleSubscriber : public Subscriber
     {
-        using This = ProtoBufSubscriber;
+        using This = PyPickleSubscriber;
         using Super = Subscriber;
 
-        template <class ProtoType>
-        using Callback = std::function<void(const ProtoType &msg)>;
+        using Callback = std::function<void(const python::ContainerObject &obj)>;
 
     protected:
         using Super::Super;
 
-        template <class ProtoType>
-        inline void subscribe(const Callback<ProtoType> &callback)
+        inline void subscribe(const Callback &callback)
         {
-            Super::subscribe([](const types::ByteArray &bytes) {
-                callback(protobuf::to_message<ProtoType>(bytes));
+            Super::subscribe([](const types::ByteVector &bytes) {
+                callback(python::pickler.unpickle(bytes));
             });
         }
     };

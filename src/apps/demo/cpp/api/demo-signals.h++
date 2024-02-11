@@ -37,7 +37,7 @@ namespace picarro::demo
     /// ```
     extern picarro::signal::Signal<TimeData> signal_time;
 
-    /// @brief MappedSignal emitted whenever someone issues a greeting.
+    /// @brief MappingSignal emitted whenever someone issues a greeting.
     /// @sa `picarro::demo::say_hello()`.
     ///
     /// The mapping key in this case is the identity of the greeter.
@@ -69,5 +69,5 @@ namespace picarro::demo
     /// `picarro::signal::MAP_ADDITION`. Subsequent invocations will take place
     /// as this signal is emitted, with `change` being either `MAP_ADDITION`,
     /// `MAP_UPDATE`, or `MAP_REMOVAL`.
-    extern picarro::signal::MappedSignal<Greeting> signal_greeting;
+    extern picarro::signal::MappingSignal<Greeting> signal_greeting;
 }  // namespace picarro::demo

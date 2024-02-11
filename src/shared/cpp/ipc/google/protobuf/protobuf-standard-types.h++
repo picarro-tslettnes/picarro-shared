@@ -7,10 +7,7 @@
 
 #pragma once
 #include "chrono/date-time.h++"
-#include "types/variant-value.h++"
-#include "types/variant-list.h++"
-#include "types/variant-kvmap.h++"
-#include "types/variant-tvlist.h++"
+#include "types/value.h++"
 
 #include <google/protobuf/message.h>
 #include <google/protobuf/text_format.h>
@@ -80,11 +77,11 @@ namespace picarro::protobuf
     void decode(const google::protobuf::BoolValue &msg,
                 bool *b) noexcept;
 
-    void encode(const picarro::types::ByteArrayBase &b,
+    void encode(const picarro::types::Bytes &b,
                 google::protobuf::BytesValue *msg) noexcept;
 
     void decode(const google::protobuf::BytesValue &msg,
-                picarro::types::ByteArrayBase *b) noexcept;
+                picarro::types::Bytes *b) noexcept;
 
     //==========================================================================
     // Timestamp encoding/decoding

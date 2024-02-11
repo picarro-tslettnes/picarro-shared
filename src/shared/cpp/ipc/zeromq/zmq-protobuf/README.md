@@ -22,7 +22,7 @@ Publish/Subscribe
 
 * [picarro::zmq::ProtoBufSignalSubscriber<>()](zmq-protobuf-signalsubscriber.h++) is
   a template class that builds on the preceding as well as
-  [picarro::protobuf::SignalReceiver()](../../google/protobuf/protobuf-signal.h++) to
+  [picarro::protobuf::SignalReceiver()](../../google/protobuf/protobuf-signalreceiver.h++) to
   *implicitly* subscribe to specialized `Signal()` messages, as described in
   [signal_types.proto](../../../../proto/signal_types.proto).
 

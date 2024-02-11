@@ -17,69 +17,23 @@ namespace picarro::demo::zmq
 {
     Publisher::Publisher(const std::string &bind_address,
                          const std::string &channel_name)
-        : Super(bind_address, channel_name)
+        : Super(bind_address, channel_name)// ,
+          // signal_writer(SignalWriter::create_shared(
+          //                   this->shared_from_this()))
     {
     }
 
     void Publisher::initialize()
     {
         Super::initialize();
-
-        using namespace std::placeholders;
-
-        // Connect signals from `demo/signals.hpp` to our callback
-        // functions.
-
-        // Invoke `on_time_update` whenever there is a time update.
-        // This signal is based on the `picarro::signal::Signal<>` template,
-        // so the callback function will receive one argument: the payload.
-        signal_time.connect(
-            this->to_string(),
-            std::bind(&Publisher::on_time_update, this, _1));
-
-        // Invoke `on_greeting_update` whenever someone sends a greeting.
-        // This signal is based on `picarro::signal::MappedSignal<>`, so
-        // the callback function will receive three arguments:
-        //   - The change type (MAP_ADDITION, MAP_UPDATE, MAP_REMOVAL)
-        //   - The key (in this case we use the greeter's identity)
-        //   - The payload.
-        signal_greeting.connect(
-            this->to_string(),
-            std::bind(&Publisher::on_greeting_update, this, _1, _2, _3));
+        this->signal_writer = SignalWriter::create_shared(this->shared_from_this());
+        this->signal_writer->initialize();
     }
 
     void Publisher::deinitialize()
     {
-        // We are about to be destroyed, so the callback pointers
-        // will no longer remain valid. Disconnect from active signals.
-        signal_greeting.disconnect(this->to_string());
-        signal_time.disconnect(this->to_string());
-
+        this->signal_writer->deinitialize();
+        this->signal_writer.reset();
         Super::deinitialize();
     }
-
-    void Publisher::on_time_update(const TimeData &time_data)
-    {
-        logf_trace("Received time update; publishing over ZeroMQ: %s", time_data);
-        Picarro::Demo::Signal msg;
-        protobuf::encode(time_data, msg.mutable_time());
-        this->publish(msg);
-    }
-
-    void Publisher::on_greeting_update(picarro::signal::MappingChange change,
-                                       const std::string &identity,
-                                       const Greeting &greeting)
-    {
-        logf_trace("Received greeting %s from %r; publishing over ZeroMQ: %s",
-                   change,
-                   identity,
-                   greeting);
-
-        Picarro::Demo::Signal msg;
-        msg.set_change(static_cast<Picarro::Signal::MappingChange>(change));
-        msg.set_key(identity);
-        protobuf::encode(greeting, msg.mutable_greeting());
-        this->publish(msg);
-    }
-
 }  // namespace picarro::demo::zmq

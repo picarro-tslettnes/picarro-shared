@@ -43,8 +43,8 @@ namespace picarro::protobuf
             msg->set_value_string(value.as_string());
             break;
 
-        case types::ValueType::BYTEARRAY:
-            msg->set_value_bytes(value.as_bytearray().to_string());
+        case types::ValueType::BYTEVECTOR:
+            msg->set_value_bytes(value.as_bytevector().to_string());
             break;
 
         case types::ValueType::TIMEPOINT:
@@ -95,7 +95,7 @@ namespace picarro::protobuf
             break;
 
         case Picarro::Variant::Value::kValueBytes:
-            *value = ByteArray(msg.value_bytes().begin(), msg.value_bytes().end());
+            *value = ByteVector(msg.value_bytes().begin(), msg.value_bytes().end());
             break;
 
         case Picarro::Variant::Value::kValueTimestamp:

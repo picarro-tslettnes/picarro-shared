@@ -11,5 +11,5 @@
 namespace picarro::demo
 {
     picarro::signal::Signal<TimeData> signal_time("picarro::demo::signal_time");
-    picarro::signal::MappedSignal<Greeting> signal_greeting("picarro::demo::signal_greeting", true);
+    picarro::signal::MappingSignal<Greeting> signal_greeting("picarro::demo::signal_greeting", true);
 }  // namespace picarro::demo

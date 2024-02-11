@@ -34,8 +34,8 @@ namespace picarro::zmq
         void deinitialize() override;
 
     protected:
-        void process_binary_request(const types::ByteArray &packed_request,
-                                    types::ByteArray *packed_reply) override;
+        void process_binary_request(const types::ByteVector &packed_request,
+                                    types::ByteVector *packed_reply) override;
 
         void process_protobuf_request(const Picarro::RR::Request &request,
                                       Picarro::RR::Reply *reply);

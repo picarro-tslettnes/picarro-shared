@@ -6,11 +6,10 @@
 //==============================================================================
 
 #pragma once
-#include "zmq-protobuf-signalsubscriber.h++"
 #include "demo-zmq-common.h++"
+#include "zmq-protobuf-signalhandler.h++"
+#include "zmq-subscriber.h++"
 #include "types/create-shared.h++"
-
-#include "demo_types.pb.h"
 
 namespace picarro::demo::zmq
 {
@@ -21,11 +20,11 @@ namespace picarro::demo::zmq
     /// Received messages are re-emitted locally via
     /// @sa picarro::demo::signal_time and @sa picarro::demo::signal_greeting.
 
-    class Subscriber : public picarro::zmq::ProtoBufSignalSubscriber<Picarro::Demo::Signal>,
+    class Subscriber : public picarro::zmq::Subscriber,
                        public picarro::types::enable_create_shared<Subscriber>
     {
         using This = Subscriber;
-        using Super = picarro::zmq::ProtoBufSignalSubscriber<Picarro::Demo::Signal>;
+        using Super = picarro::zmq::Subscriber;
 
     protected:
         Subscriber(const std::string &host_address = "",
@@ -33,6 +32,7 @@ namespace picarro::demo::zmq
 
     public:
         void initialize() override;
+        void deinitialize() override;
     };
 
 }  // namespace picarro::demo::zmq

@@ -6,23 +6,23 @@
 //==============================================================================
 
 #pragma once
-#include "types/bytearray.h++"
+#include "types/bytevector.h++"
 
 #include <memory>
 #include <vector>
 
 namespace picarro::zmq
 {
-    class Filter : public types::ByteArray
+    class Filter : public types::ByteVector
     {
         using This = Filter;
-        using Super = types::ByteArray;
+        using Super = types::ByteVector;
 
     public:
         using Super::Super;
 
-        static std::shared_ptr<Filter> create_from_data(void *data, std::size_t size);
-        static std::shared_ptr<Filter> create_from_topic(const std::string &topic);
+        static Filter create_from_data(void *data, std::size_t size);
+        static Filter create_from_topic(const std::string &topic);
         static std::vector<types::Byte> encoded_size(std::size_t size);
 
     private:

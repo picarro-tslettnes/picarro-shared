@@ -47,10 +47,9 @@ namespace picarro::zmq
     {
         try
         {
-            ::zmq::message_t msg;
-            if (this->receive(&msg, flags))
+            if (auto bytes = this->receive(flags))
             {
-                return reply->ParseFromArray(msg.data(), msg.size());
+                return reply->ParseFromArray(bytes->data(), bytes->size());
             }
             else
             {
@@ -162,7 +161,7 @@ namespace picarro::zmq
         this->send_invocation(method_name, request_param, send_flags);
     }
 
-    bool ProtoBufClient::read_protobuf_result(types::ByteArray *bytes,
+    bool ProtoBufClient::read_protobuf_result(types::ByteVector *bytes,
                                               ::zmq::recv_flags recv_flags)
     {
         Picarro::RR::Parameter response_param;

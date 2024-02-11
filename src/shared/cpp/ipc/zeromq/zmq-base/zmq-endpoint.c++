@@ -82,52 +82,38 @@ namespace picarro::zmq
         Super::deinitialize();
     }
 
-    void Endpoint::send(const types::ByteArray &bytes, ::zmq::send_flags flags)
+    void Endpoint::send(const types::ByteVector &bytes, ::zmq::send_flags flags)
     {
         logf_trace("%s sending %d bytes", *this, bytes.size());
         this->socket()->send(::zmq::const_buffer(bytes.data(), bytes.size()), flags);
     }
 
-    void Endpoint::send(::zmq::message_t &&msg, ::zmq::send_flags flags)
-    {
-        logf_trace("%s sending %d bytes", *this, msg.size());
-        this->socket()->send(msg, flags);
-    }
-
-    bool Endpoint::receive(::zmq::message_t *msg, ::zmq::recv_flags flags)
-    {
-        if (this->socket()->recv(*msg, flags).has_value())
-        {
-            logf_trace("%s received %d bytes", *this, msg->size());
-            return true;
-        }
-        else
-        {
-            logf_trace("%s received empty message", *this);
-            return false;
-        }
-    }
-
-    bool Endpoint::receive(types::ByteArray *bytes, ::zmq::recv_flags flags)
+    bool Endpoint::receive(types::ByteVector *bytes, ::zmq::recv_flags flags)
     {
         bool received = false;
         ::zmq::message_t msg;
+        std::vector<std::string> counts;
         do
         {
-            if (this->receive(&msg, flags))
+            if (this->receive_chunk(&msg, flags))
             {
                 types::Byte *data = static_cast<types::Byte *>(msg.data());
                 bytes->insert(bytes->end(), data, data + msg.size());
+                counts.push_back(std::to_string(msg.size()));
                 received = true;
             }
         }
         while (msg.more());
+        logf_trace("%s received %s = %d bytes",
+                   *this,
+                   str::join(counts, "+"),
+                   bytes->size());
         return received;
     }
 
-    std::optional<types::ByteArray> Endpoint::receive(::zmq::recv_flags flags)
+    std::optional<types::ByteVector> Endpoint::receive(::zmq::recv_flags flags)
     {
-        types::ByteArray bytes;
+        types::ByteVector bytes;
         if (this->receive(&bytes, flags))
         {
             return bytes;
@@ -137,6 +123,24 @@ namespace picarro::zmq
             return {};
         }
     }
+
+    bool Endpoint::receive_chunk(::zmq::message_t *msg, ::zmq::recv_flags flags)
+    {
+        if (this->socket()->recv(*msg, flags).has_value())
+        {
+            logf_trace("%s received %d bytes: %s",
+                       *this,
+                       msg->size(),
+                       msg->to_string_view());
+            return true;
+        }
+        else
+        {
+            logf_trace("%s received empty message", *this);
+            return false;
+        }
+    }
+
 
     std::string Endpoint::realaddress(const std::string &address,
                                       const std::string &schemeOption,

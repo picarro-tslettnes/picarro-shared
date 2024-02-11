@@ -39,7 +39,7 @@ package Picarro.Demo;
 message Signal
 {
     // Mapping type, one of: MAP_NONE, MAP_ADDITION, MAP_REMOVAL, MAP_UPDATE.
-    // In the case of a MappedSignal (like `Greeting` below), indicates
+    // In the case of a MappingSignal (like `Greeting` below), indicates
     // whether this instance is added, updated, or removed.
     Picarro.Signal.MappingChange change = 1;
 

@@ -50,8 +50,8 @@ namespace picarro::idl
             idl->value_string(value.as_string());
             break;
 
-        case picarro::types::ValueType::BYTEARRAY:
-            idl->value_bytearray(value.as_bytearray());
+        case picarro::types::ValueType::BYTEVECTOR:
+            idl->value_bytearray(value.as_bytevector());
             break;
 
         case picarro::types::ValueType::TIMEPOINT:
@@ -119,7 +119,7 @@ namespace picarro::idl
         case Picarro::Variant::ValueType::VT_BYTEARRAY:
         {
             const auto &sequence = idl.value_bytearray();
-            value->emplace<ByteArray>(sequence.cbegin(), sequence.cend());
+            value->emplace<ByteVector>(sequence.cbegin(), sequence.cend());
             break;
         }
 

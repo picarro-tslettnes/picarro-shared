@@ -7,6 +7,7 @@
 
 // Application specific modules
 #include "demo-zmq-subscriber.h++"
+#include "demo-zmq-signalhandler.h++"
 #include "demo-signals.h++"
 #include "protobuf-demo-types.h++"
 
@@ -27,25 +28,13 @@ namespace picarro::demo::zmq
 
     void Subscriber::initialize()
     {
-        using namespace std::placeholders;
-
-        this->add_handler(
-            Picarro::Demo::Signal::kGreeting,
-            [&](const Picarro::Demo::Signal &signal) {
-                signal_greeting.emit(
-                    static_cast<signal::MappingChange>(signal.change()),
-                    signal.key(),
-                    protobuf::decoded<Greeting>(signal.greeting()));
-            });
-
-        this->add_handler(
-            Picarro::Demo::Signal::kTime,
-            [](const Picarro::Demo::Signal &signal) {
-                signal_time.emit(
-                    protobuf::decoded<TimeData>(signal.time()));
-            });
-
+        this->add(SignalHandler::create_shared());
         Super::initialize();
     }
 
+    void Subscriber::deinitialize()
+    {
+        Super::deinitialize();
+        this->remove(SignalHandler::create_shared());
+    }
 }  // namespace picarro::demo::zmq
