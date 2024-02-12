@@ -10,11 +10,11 @@
 #include "demo-api.h++"
 #include "thread/signaltemplate.h++"
 
-namespace picarro::demo
+namespace demo
 {
-    class Options : public picarro::argparse::CommandOptions
+    class Options : public shared::argparse::CommandOptions
     {
-        using Super = picarro::argparse::CommandOptions;
+        using Super = shared::argparse::CommandOptions;
 
     public:
         Options(const std::string &implementation);
@@ -26,11 +26,11 @@ namespace picarro::demo
         void on_monitor_start() override;
         void on_monitor_end() override;
 
-        void on_time(const picarro::demo::TimeData &time);
+        void on_time(const demo::TimeData &time);
 
-        void on_greeting(picarro::signal::MappingChange change,
+        void on_greeting(shared::signal::MappingChange change,
                          const std::string &identity,
-                         const picarro::demo::Greeting &greeting);
+                         const demo::Greeting &greeting);
 
         void say_hello();
         void get_current_time();
@@ -44,4 +44,4 @@ namespace picarro::demo
 
     extern std::unique_ptr<Options> options;
 
-}  // namespace picarro::demo
+}  // namespace demo

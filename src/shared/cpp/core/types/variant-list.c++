@@ -7,7 +7,7 @@
 
 #include "variant-list.h++"
 
-namespace picarro::types
+namespace shared::types
 {
     void ValueList::to_stream(std::ostream &stream) const
     {
@@ -61,4 +61,4 @@ namespace picarro::types
         return tvlist;
     }
 
-}  // namespace picarro::types
+}  // namespace shared::types

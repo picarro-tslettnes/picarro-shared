@@ -11,17 +11,17 @@
 
 #include "demo_types.pb.h"
 
-namespace picarro::demo::zmq
+namespace demo::zmq
 {
-    class SignalHandler : public picarro::zmq::ProtoBufSignalHandler<Picarro::Demo::Signal>,
-                          public picarro::types::enable_create_shared<SignalHandler>
+    class SignalHandler : public shared::zmq::ProtoBufSignalHandler<Picarro::Demo::Signal>,
+                          public shared::types::enable_create_shared<SignalHandler>
     {
         using This = SignalHandler;
-        using Super = picarro::zmq::ProtoBufSignalHandler<Picarro::Demo::Signal>;
+        using Super = shared::zmq::ProtoBufSignalHandler<Picarro::Demo::Signal>;
 
     protected:
         void initialize() override;
         void handle_message(const Picarro::Demo::Signal &message) override;
     };
 
-}  // namespace picarro::demo::zmq
+}  // namespace demo::zmq

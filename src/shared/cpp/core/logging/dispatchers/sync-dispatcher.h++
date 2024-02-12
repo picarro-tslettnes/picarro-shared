@@ -9,7 +9,7 @@
 #include "dispatcher.h++"
 #include <mutex>
 
-namespace picarro::logging
+namespace shared::logging
 {
     class SyncDispatcher : public Dispatcher
     {
@@ -22,4 +22,4 @@ namespace picarro::logging
         std::mutex mtx_;
     };
 
-}  // namespace picarro::logging
+}  // namespace shared::logging

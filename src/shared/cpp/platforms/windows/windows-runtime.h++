@@ -8,7 +8,7 @@
 #pragma once
 #include "platform/runtime.h++"
 
-namespace picarro::platform
+namespace shared::platform
 {
     /// @brief Abstract provider for runtime related functions
     class WindowsRunTimeProvider : public RunTimeProvider
@@ -26,4 +26,4 @@ namespace picarro::platform
         /// @brief Return the maximum length of a filesystem path.
         void putenv(const std::string &envstring) override;
     };
-}  // namespace picarro::platform
+}  // namespace shared::platform

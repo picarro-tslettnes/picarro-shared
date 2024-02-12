@@ -11,7 +11,7 @@
 #include <regex>
 #include <sstream>  // std::stringstream
 
-namespace picarro::argparse
+namespace shared::argparse
 {
     //==========================================================================
     // BaseOption methods
@@ -42,7 +42,7 @@ namespace picarro::argparse
                 }
                 else
                 {
-                    throwf(picarro::exception::InvalidArgument,
+                    throwf(shared::exception::InvalidArgument,
                            "Invalid option key",
                            key);
                 }
@@ -121,4 +121,4 @@ namespace picarro::argparse
         return opts;
     }
 
-}  // namespace picarro::argparse
+}  // namespace shared::argparse

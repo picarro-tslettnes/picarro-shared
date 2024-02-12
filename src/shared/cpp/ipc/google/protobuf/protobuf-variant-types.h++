@@ -16,93 +16,93 @@
 /// ("decode...()") "common" ProtoBuf messages (including those defined in
 /// "common_types.proto").
 
-namespace picarro::protobuf
+namespace protobuf
 {
     using RepeatedValue = google::protobuf::RepeatedPtrField<Picarro::Variant::Value>;
 
     //==========================================================================
     // Variant Value encoding/decoding
 
-    void encode(const picarro::types::Value &value,
+    void encode(const shared::types::Value &value,
                 Picarro::Variant::Value *msg) noexcept;
 
     void decode(const Picarro::Variant::Value &msg,
-                picarro::types::Value *value) noexcept;
+                shared::types::Value *value) noexcept;
 
     //==========================================================================
     // TaggedValue encoding/decoding
 
-    void encode(const picarro::types::TaggedValue &tv,
+    void encode(const shared::types::TaggedValue &tv,
                 Picarro::Variant::Value *msg) noexcept;
 
     void decode(const Picarro::Variant::Value &msg,
-                picarro::types::TaggedValue *tv) noexcept;
+                shared::types::TaggedValue *tv) noexcept;
 
-    void encode(const picarro::types::Tag &tag,
-                const picarro::types::Value &value,
+    void encode(const shared::types::Tag &tag,
+                const shared::types::Value &value,
                 Picarro::Variant::Value *msg) noexcept;
 
     void decode(const Picarro::Variant::Value &msg,
                 std::string *tag,
-                picarro::types::Value *value) noexcept;
+                shared::types::Value *value) noexcept;
 
     //==========================================================================
     // TaggedValueList encoding/decoding
 
     /// \brief
-    ///    Encode picarro::types::TaggedValueList to Picarro::Variant::ValueList protobuf message
-    void encode(const picarro::types::TaggedValueList &tvlist,
+    ///    Encode shared::types::TaggedValueList to Picarro::Variant::ValueList protobuf message
+    void encode(const shared::types::TaggedValueList &tvlist,
                 Picarro::Variant::ValueList *msg) noexcept;
 
     /// \brief
-    ///    Decode a Picarro::Variant::Value vector into picarro::types::TaggeValueList.
+    ///    Decode a Picarro::Variant::Value vector into shared::types::TaggeValueList.
     void decode(const Picarro::Variant::ValueList &msg,
-                picarro::types::TaggedValueList *tvlist) noexcept;
+                shared::types::TaggedValueList *tvlist) noexcept;
 
     /// \brief
-    ///    Encode picarro::types::TaggedValueList to a repeated Picarro::Variant::Valuef field.
-    void encode(const picarro::types::TaggedValueList &tvlist,
+    ///    Encode shared::types::TaggedValueList to a repeated Picarro::Variant::Valuef field.
+    void encode(const shared::types::TaggedValueList &tvlist,
                 RepeatedValue *msg) noexcept;
 
     /// \brief
     ///    Decode a repeated Picarro::Variant::Valuef field to TaggedValueList
     void decode(const RepeatedValue &msgs,
-                picarro::types::TaggedValueList *tvlist) noexcept;
+                shared::types::TaggedValueList *tvlist) noexcept;
 
     //==========================================================================
     // KeyValueMap encoding/decoding
 
-    void encode(const picarro::types::KeyValueMap &map,
+    void encode(const shared::types::KeyValueMap &map,
                 Picarro::Variant::ValueList *msg) noexcept;
 
     void decode(const Picarro::Variant::ValueList &msg,
-                picarro::types::KeyValueMap *map) noexcept;
+                shared::types::KeyValueMap *map) noexcept;
 
-    void encode(const picarro::types::KeyValueMap &map,
+    void encode(const shared::types::KeyValueMap &map,
                 RepeatedValue *msg) noexcept;
 
     void decode(const RepeatedValue &msgs,
-                picarro::types::KeyValueMap *kvmap) noexcept;
+                shared::types::KeyValueMap *kvmap) noexcept;
 
-    void encode(const picarro::types::KeyValueMap &map,
+    void encode(const shared::types::KeyValueMap &map,
                 google::protobuf::Map<std::string, Picarro::Variant::Value> *msg) noexcept;
 
     void decode(const google::protobuf::Map<std::string, Picarro::Variant::Value> &nmsg,
-                picarro::types::KeyValueMap *map) noexcept;
+                shared::types::KeyValueMap *map) noexcept;
 
     //==========================================================================
     // VariantValueList encoding/decoding
 
-    void encode(const picarro::types::ValueList &list,
+    void encode(const shared::types::ValueList &list,
                 Picarro::Variant::ValueList *msg) noexcept;
 
     void decode(const Picarro::Variant::ValueList &msg,
-                picarro::types::ValueList *list) noexcept;
+                shared::types::ValueList *list) noexcept;
 
     void decode(const RepeatedValue &msgs,
-                picarro::types::ValueList *list) noexcept;
+                shared::types::ValueList *list) noexcept;
 
     void decode(const Picarro::Variant::ValueList &msg,
-                picarro::types::Value *value) noexcept;
+                shared::types::Value *value) noexcept;
 
-}  // namespace picarro::protobuf
+}  // namespace shared::protobuf

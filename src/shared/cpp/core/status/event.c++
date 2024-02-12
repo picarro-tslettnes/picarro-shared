@@ -9,7 +9,7 @@
 #include "exceptions.h++"
 #include <algorithm>
 
-namespace picarro::status
+namespace shared::status
 {
     //==========================================================================
     /// @class Event
@@ -317,4 +317,4 @@ namespace picarro::status
                                 : false;
     }
 
-}  // namespace picarro::status
+}  // namespace shared::status

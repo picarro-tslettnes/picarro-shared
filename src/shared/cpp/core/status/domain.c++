@@ -7,7 +7,7 @@
 
 #include "domain.h++"
 
-namespace picarro::status
+namespace shared::status
 {
     /// Names for printing.
     const types::SymbolMap<Domain> DomainNames = {
@@ -37,4 +37,4 @@ namespace picarro::status
         return DomainNames.from_stream(stream, &domain, Domain::NONE, false);
     }
 
-}  // namespace picarro::status
+}  // namespace shared::status

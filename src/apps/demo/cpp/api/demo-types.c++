@@ -12,7 +12,7 @@
 #include "types/value.h++"
 #include "types/partslist.h++"
 
-namespace picarro::demo
+namespace demo
 {
     //==========================================================================
     /// @class Greeting
@@ -20,8 +20,8 @@ namespace picarro::demo
     Greeting::Greeting(const std::string &text,
                        const std::string &identity,
                        const std::string &implementation,
-                       const picarro::dt::TimePoint &birth,
-                       const picarro::types::KeyValueMap &data)
+                       const shared::dt::TimePoint &birth,
+                       const shared::types::KeyValueMap &data)
         : text(text),
           identity(identity),
           implementation(implementation),
@@ -32,12 +32,12 @@ namespace picarro::demo
 
     void Greeting::to_stream(std::ostream &stream) const
     {
-        picarro::types::PartsList parts;
+        shared::types::PartsList parts;
         parts.add("text", this->text);
         parts.add("identity", this->identity);
         parts.add("implementation", this->implementation, !this->implementation.empty());
-        parts.add("birth", this->birth, this->birth != picarro::dt::TimePoint());
-        parts.add("uptime", picarro::dt::Clock::now() - this->birth);
+        parts.add("birth", this->birth, this->birth != shared::dt::TimePoint());
+        parts.add("uptime", shared::dt::Clock::now() - this->birth);
         parts.add("data", this->data, !this->data.empty());
         stream << parts;
     }
@@ -46,14 +46,14 @@ namespace picarro::demo
     /// @class TimeData
     /// @brief Time representation from the server.
 
-    TimeData::TimeData(const picarro::dt::TimePoint &tp)
+    TimeData::TimeData(const shared::dt::TimePoint &tp)
         : timepoint(tp),
-          localtime(picarro::dt::localtime(tp)),
-          utctime(picarro::dt::gmtime(tp))
+          localtime(shared::dt::localtime(tp)),
+          utctime(shared::dt::gmtime(tp))
     {
     }
 
-    TimeData::TimeData(const picarro::dt::TimePoint &tp,
+    TimeData::TimeData(const shared::dt::TimePoint &tp,
                        const std::tm &localtime,
                        const std::tm &utctime)
         : timepoint(tp),
@@ -64,11 +64,11 @@ namespace picarro::demo
 
     void TimeData::to_stream(std::ostream &stream) const
     {
-        picarro::str::format(stream,
+        shared::str::format(stream,
                         "TimeData(epoch=%s, local=%s, utc=%s)",
-                        picarro::dt::to_time_t(this->timepoint),
-                        picarro::dt::to_string(this->localtime),
-                        picarro::dt::to_string(this->utctime));
+                        shared::dt::to_time_t(this->timepoint),
+                        shared::dt::to_string(this->localtime),
+                        shared::dt::to_string(this->utctime));
     }
 
-}  // namespace picarro::demo
+}  // namespace demo

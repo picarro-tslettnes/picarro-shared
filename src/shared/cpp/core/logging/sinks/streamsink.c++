@@ -15,7 +15,7 @@
 #include <ostream>
 #include <string>
 
-namespace picarro::logging
+namespace shared::logging
 {
     constexpr auto LOG_STYLES_SETTING = "log styles";
 
@@ -27,7 +27,7 @@ namespace picarro::logging
           stream(stream)
     {
 #ifndef _WIN32
-        this->load_styles(picarro::settings->get(LOG_STYLES_SETTING).as_kvmap());
+        this->load_styles(shared::settings->get(LOG_STYLES_SETTING).as_kvmap());
 #endif
     }
 
@@ -96,4 +96,4 @@ namespace picarro::logging
             }
         }
     }
-}  // namespace picarro::logging
+}  // namespace shared::logging

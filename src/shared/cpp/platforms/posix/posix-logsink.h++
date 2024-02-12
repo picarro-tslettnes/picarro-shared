@@ -10,7 +10,7 @@
 #include "types/valuemap.h++"
 #include "status/level.h++"
 
-namespace picarro::platform
+namespace shared::platform
 {
     class PosixLogSinkProvider : public LogSinkProvider
     {
@@ -29,4 +29,4 @@ namespace picarro::platform
         static const types::ValueMap<status::Level, int> levelmap;
     };
 
-}  // namespace picarro::platform
+}  // namespace shared::platform

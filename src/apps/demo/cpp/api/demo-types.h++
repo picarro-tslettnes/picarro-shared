@@ -17,7 +17,7 @@
 #include <ctime>
 #include <functional>
 
-namespace picarro::demo
+namespace demo
 {
     // Classes defined below.
     class Greeting;
@@ -33,14 +33,14 @@ namespace picarro::demo
     //==========================================================================
     /// @class Greeting
     /// @brief Data used to introduce ourselves to our peers
-    class Greeting : public picarro::types::Streamable
+    class Greeting : public shared::types::Streamable
     {
     public:
         Greeting(const std::string &text = {},
                  const std::string &identity = {},
                  const std::string &implementation = {},
-                 const picarro::dt::TimePoint &birth = {},
-                 const picarro::types::KeyValueMap &data = {});
+                 const shared::dt::TimePoint &birth = {},
+                 const shared::types::KeyValueMap &data = {});
 
     protected:
         void to_stream(std::ostream &stream) const override;
@@ -56,21 +56,21 @@ namespace picarro::demo
         std::string implementation;
 
         // Timepoint when this process was launched
-        picarro::dt::TimePoint birth;
+        shared::dt::TimePoint birth;
 
         // Arbitrary key/value pairs associated with the greeting
-        picarro::types::KeyValueMap data;
+        shared::types::KeyValueMap data;
     };
 
     //==========================================================================
     /// @class TimeData
     /// @brief Time representation from the server.
 
-    class TimeData : public picarro::types::Streamable
+    class TimeData : public shared::types::Streamable
     {
     public:
-        TimeData(const picarro::dt::TimePoint &tp = {});
-        TimeData(const picarro::dt::TimePoint &tp,
+        TimeData(const shared::dt::TimePoint &tp = {});
+        TimeData(const shared::dt::TimePoint &tp,
                  const std::tm &localtime,
                  const std::tm &utctime);
 
@@ -78,9 +78,9 @@ namespace picarro::demo
         void to_stream(std::ostream &stream) const override;
 
     public:
-        picarro::dt::TimePoint timepoint;
+        shared::dt::TimePoint timepoint;
         std::tm localtime;
         std::tm utctime;
     };
 
-}  // namespace picarro::demo
+}  // namespace demo

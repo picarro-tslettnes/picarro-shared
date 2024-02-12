@@ -15,7 +15,7 @@
 
 using uint = unsigned int;
 
-namespace picarro::types
+namespace shared::types
 {
     using Byte = std::uint8_t;
 
@@ -99,15 +99,15 @@ namespace picarro::types
         /// \exception exception::InvalidArgument Invalid hexadecimal digits encountered
         static ByteVector from_hex(const std::string &string);
     };
-}  // namespace picarro::types
+}  // namespace shared::types
 
 // Make ByteVector hashable (for unordered_map, unordered_set, etc)
 namespace std
 {
     template <>
-    struct hash<picarro::types::ByteVector>
+    struct hash<shared::types::ByteVector>
     {
-        inline std::size_t operator()(const picarro::types::ByteVector &b) const
+        inline std::size_t operator()(const shared::types::ByteVector &b) const
         {
             return std::hash<std::string_view>()(b.stringview());
         }
@@ -115,5 +115,5 @@ namespace std
 }  // namespace std
 
 // Aliases for backwards compatiblity
-using Byte = picarro::types::Byte;
-using ByteVector = picarro::types::ByteVector;
+using Byte = shared::types::Byte;
+using ByteVector = shared::types::ByteVector;

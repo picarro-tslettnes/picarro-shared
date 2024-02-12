@@ -7,7 +7,7 @@
 
 #include "qnx-path.h++"
 
-namespace picarro::platform
+namespace shared::platform
 {
     QNXPathProvider::QNXPathProvider(const std::string &exec_path)
         : Super("QNXPathProvider", exec_path)
@@ -20,4 +20,4 @@ namespace picarro::platform
         return path.empty() ? Super::exec_path() : path;
     }
 
-}  // namespace picarro::platform
+}  // namespace shared::platform

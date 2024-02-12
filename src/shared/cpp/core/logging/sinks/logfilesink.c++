@@ -12,7 +12,7 @@
 
 #include <iomanip>
 
-namespace picarro::logging
+namespace shared::logging
 {
     LogFileSink::LogFileSink(const std::string &path_template,
                              const dt::Duration &rotation_interval)
@@ -73,4 +73,4 @@ namespace picarro::logging
         }
     }
 
-}  // namespace picarro::logging
+}  // namespace shared::logging

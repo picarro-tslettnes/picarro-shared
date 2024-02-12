@@ -8,7 +8,7 @@
 #pragma once
 #include "posix-symbols.h++"
 
-namespace picarro::platform
+namespace shared::platform
 {
     class QNXSymbolsProvider : public PosixSymbolsProvider
     {
@@ -21,4 +21,4 @@ namespace picarro::platform
         std::string uuid() const noexcept override;
     };
 
-}  // namespace picarro::platform
+}  // namespace shared::platform

@@ -19,7 +19,7 @@
 
 #include <functional>
 
-namespace picarro::grpc
+namespace shared::grpc
 {
     //==========================================================================
     /// @class SignalClient<ServiceT, SignalT>
@@ -241,4 +241,4 @@ namespace picarro::grpc
         types::BinaryEvent completion_event;
     };
 
-}  // namespace picarro::grpc
+}  // namespace shared::grpc

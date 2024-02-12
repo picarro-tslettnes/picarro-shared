@@ -8,7 +8,7 @@
 #include "message.h++"
 #include "platform/process.h++"
 
-namespace picarro::logging
+namespace shared::logging
 {
     //==========================================================================
     // Message
@@ -95,4 +95,4 @@ namespace picarro::logging
         }
     }
 
-}  // namespace picarro::logging
+}  // namespace shared::logging

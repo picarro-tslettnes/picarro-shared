@@ -7,11 +7,11 @@
 #pragma once
 #include "thread/signaltemplate.h++"
 
-namespace picarro::application
+namespace shared::application
 {
     void initialize(int argc, char **argv);
     void deinitialize();
 
-    extern picarro::signal::Signal<int> signal_shutdown;
+    extern shared::signal::Signal<int> signal_shutdown;
 
-}  // namespace picarro::application
+}  // namespace shared::application

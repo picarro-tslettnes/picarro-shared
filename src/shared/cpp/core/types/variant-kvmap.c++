@@ -10,7 +10,7 @@
 #include "variant-tvlist.h++"
 #include "string/misc.h++"
 
-namespace picarro::types
+namespace shared::types
 {
     const Value &KeyValueMap::get(const std::string &key,
                                   const Value &fallback,
@@ -225,4 +225,4 @@ namespace picarro::types
         }
         stream << "}";
     }
-}  // namespace picarro::types
+}  // namespace shared::types

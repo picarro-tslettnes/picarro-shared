@@ -8,7 +8,7 @@
 #pragma once
 #include <memory>
 
-namespace picarro::types
+namespace shared::types
 {
     /// @class create_shared
     /// @brief Create a `shared_ptr<Class>` to a `Class` with protected constructor
@@ -78,4 +78,4 @@ namespace picarro::types
                : *lhs == *rhs   ? true
                                 : false;
     }
-}  // namespace picarro::types
+}  // namespace shared::types

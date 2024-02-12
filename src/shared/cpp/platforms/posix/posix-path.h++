@@ -8,7 +8,7 @@
 #pragma once
 #include "platform/path.h++"
 
-namespace picarro::platform
+namespace shared::platform
 {
     class PosixPathProvider : public PathProvider
     {
@@ -29,4 +29,4 @@ namespace picarro::platform
                         const std::string &suffix = {}) override;
     };
 
-}  // namespace picarro::platform
+}  // namespace shared::platform

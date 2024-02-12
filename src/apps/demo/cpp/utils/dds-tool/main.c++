@@ -13,25 +13,25 @@
 
 int main(int argc, char** argv)
 {
-    picarro::application::initialize(argc, argv);
+    shared::application::initialize(argc, argv);
 
-    picarro::demo::options = std::make_unique<picarro::demo::Options>("RTI DDS");
-    picarro::demo::options->apply(argc, argv);
+    demo::options = std::make_unique<demo::Options>("RTI DDS");
+    demo::options->apply(argc, argv);
 
     logf_debug("Creating DDS demo provider");
-    picarro::demo::provider = picarro::demo::dds::ClientImpl::create_shared(
-        picarro::demo::options->identity,
-        picarro::demo::options->domain_id);
+    demo::provider = demo::dds::ClientImpl::create_shared(
+        demo::options->identity,
+        demo::options->domain_id);
 
     logf_debug("Initializing DDS demo provider");
-    picarro::demo::provider->initialize();
+    demo::provider->initialize();
 
-    bool success = picarro::demo::options->handle_command();
+    bool success = demo::options->handle_command();
 
     logf_debug("Deinitializing DDS demo provider");
-    picarro::demo::provider->deinitialize();
-    picarro::demo::provider.reset();
+    demo::provider->deinitialize();
+    demo::provider.reset();
 
-    picarro::application::deinitialize();
+    shared::application::deinitialize();
     return success ? 0 : -1;
 }

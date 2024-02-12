@@ -8,7 +8,7 @@
 #pragma once
 #include "provider.h++"
 
-namespace picarro::platform
+namespace shared::platform
 {
     enum StdFileNo
     {
@@ -35,4 +35,4 @@ namespace picarro::platform
     };
 
     extern ProviderProxy<RunTimeProvider> runtime;
-}  // namespace picarro::platform
+}  // namespace shared::platform

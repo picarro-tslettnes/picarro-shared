@@ -16,7 +16,7 @@
 #include <string>
 #include <algorithm>
 
-namespace picarro
+namespace shared
 {
     namespace dt
     {
@@ -503,25 +503,25 @@ namespace picarro
                               decimals);
         }
     }  // namespace steady
-}  // namespace picarro
+}  // namespace shared
 
 namespace std::chrono
 {
-    std::ostream &operator<<(std::ostream &stream, const picarro::dt::TimePoint &tp)
+    std::ostream &operator<<(std::ostream &stream, const shared::dt::TimePoint &tp)
     {
-        picarro::dt::tp_to_stream(stream, tp);
+        shared::dt::tp_to_stream(stream, tp);
         return stream;
     }
 
-    std::ostream &operator<<(std::ostream &stream, const picarro::dt::Duration &dur)
+    std::ostream &operator<<(std::ostream &stream, const shared::dt::Duration &dur)
     {
-        picarro::dt::dur_to_stream(stream, dur);
+        shared::dt::dur_to_stream(stream, dur);
         return stream;
     }
 
-    std::ostream &operator<<(std::ostream &stream, const picarro::steady::TimePoint &stp)
+    std::ostream &operator<<(std::ostream &stream, const shared::steady::TimePoint &stp)
     {
-        picarro::steady::tp_to_stream(stream, stp);
+        shared::steady::tp_to_stream(stream, stp);
         return stream;
     }
 

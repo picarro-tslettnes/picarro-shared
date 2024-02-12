@@ -14,12 +14,12 @@
 
 #include <memory>
 
-namespace picarro::demo::zmq
+namespace demo::zmq
 {
-    class RequestHandler : public picarro::zmq::ProtoBufRequestHandler,
-                           public types::enable_create_shared<RequestHandler>
+    class RequestHandler : public shared::zmq::ProtoBufRequestHandler,
+                           public shared::types::enable_create_shared<RequestHandler>
     {
-        using Super = picarro::zmq::ProtoBufRequestHandler;
+        using Super = shared::zmq::ProtoBufRequestHandler;
 
     protected:
         RequestHandler(const std::shared_ptr<API> &api,
@@ -37,4 +37,4 @@ namespace picarro::demo::zmq
 
     };
 
-}  // namespace picarro::demo::zmq
+}  // namespace demo::zmq

@@ -9,7 +9,7 @@
 #include "platform/symbols.h++"
 #include "logging/logging.h++"
 
-namespace picarro::demo::dds
+namespace demo::dds
 {
     Service::Service(const ::dds::rpc::Server &server,
                      int domain_id,
@@ -20,4 +20,4 @@ namespace picarro::demo::dds
                 RequestHandler::create_shared(api_provider))
     {
     }
-}  // namespace picarro::demo::dds
+}  // namespace demo::dds

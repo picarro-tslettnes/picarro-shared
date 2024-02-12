@@ -7,7 +7,7 @@
 
 #include "options.h++"
 
-namespace picarro::demo
+namespace demo
 {
     Options::Options()
         : Super(),
@@ -27,7 +27,7 @@ namespace picarro::demo
             {"--grpc", "--enable-grpc"},
             "Enable gRPC service",
             &this->enable_grpc,
-            picarro::settings->get("enable grpc", true).as_bool());
+            shared::settings->get("enable grpc", true).as_bool());
 #endif
 
 #if USE_DDS
@@ -35,7 +35,7 @@ namespace picarro::demo
             {"--dds", "--enable-dds"},
             "Enable DDS service",
             &this->enable_dds,
-            picarro::settings->get("enable dds", true).as_bool());
+            shared::settings->get("enable dds", true).as_bool());
 #endif
 
 #if USE_ZMQ
@@ -43,9 +43,9 @@ namespace picarro::demo
             {"--zmq", "--enable-zmq"},
             "Enable ZeroMQ service",
             &this->enable_zmq,
-            picarro::settings->get("enable zmq", true).as_bool());
+            shared::settings->get("enable zmq", true).as_bool());
 #endif
     }
 
     std::unique_ptr<Options> options;
-}  // namespace picarro::demo
+}  // namespace demo

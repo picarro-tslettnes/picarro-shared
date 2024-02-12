@@ -9,7 +9,7 @@
 #include <sstream>
 #include <string>
 
-namespace picarro::types
+namespace shared::types
 {
     class Streamable
     {
@@ -30,4 +30,4 @@ namespace picarro::types
         virtual std::string to_literal() const;
     };
 
-}  // namespace picarro::types
+}  // namespace shared::types

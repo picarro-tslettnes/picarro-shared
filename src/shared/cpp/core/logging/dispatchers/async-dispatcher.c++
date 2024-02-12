@@ -7,7 +7,7 @@
 
 #include "async-dispatcher.h++"
 
-namespace picarro::logging
+namespace shared::logging
 {
     void AsyncDispatcher::initialize()
     {
@@ -55,4 +55,4 @@ namespace picarro::logging
             }
         }
     }
-}  // namespace picarro::logging
+}  // namespace shared::logging

@@ -14,7 +14,7 @@
 #include <dds/rpc/ServiceParams.hpp>
 #include <dds/rpc/Server.hpp>
 
-namespace picarro::dds
+namespace shared::dds
 {
     //==========================================================================
     // DDS service Implementation template
@@ -45,4 +45,4 @@ namespace picarro::dds
         }
     };
 
-}  // namespace picarro::dds
+}  // namespace shared::dds

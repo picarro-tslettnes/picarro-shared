@@ -8,7 +8,7 @@
 #pragma once
 #include "argparse/server.h++"
 
-namespace picarro::dds
+namespace shared::dds
 {
     class ServerOptions : public argparse::ServerOptions
     {
@@ -26,4 +26,4 @@ namespace picarro::dds
         bool log_to_dl;
     };
 
-}  // namespace picarro::argparse
+}  // namespace shared::argparse

@@ -10,7 +10,7 @@
 
 #include <memory>
 
-namespace picarro::logging
+namespace shared::logging
 {
 
     //==========================================================================
@@ -32,4 +32,4 @@ namespace picarro::logging
         virtual inline bool is_applicable(const types::Loggable &) const { return true; }
         virtual bool capture(const types::Loggable::Ref &loggable) = 0;
     };
-}  // namespace picarro::logging
+}  // namespace shared::logging

@@ -8,7 +8,7 @@
 #pragma once
 #include "platform/symbols.h++"
 
-namespace picarro::platform
+namespace shared::platform
 {
     class PosixSymbolsProvider : public SymbolsProvider
     {
@@ -23,4 +23,4 @@ namespace picarro::platform
             bool stem_only) const noexcept override;
     };
 
-}  // namespace picarro::platform
+}  // namespace shared::platform

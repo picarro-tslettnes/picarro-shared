@@ -13,7 +13,7 @@
 
 #include "request_reply.pb.h"
 
-namespace picarro::zmq
+namespace shared::zmq
 {
     class ProtoBufRequestHandler
     {
@@ -63,4 +63,4 @@ namespace picarro::zmq
 
         MethodHandlerMap handler_map;
     };
-}  // namespace picarro::zmq
+}  // namespace shared::zmq

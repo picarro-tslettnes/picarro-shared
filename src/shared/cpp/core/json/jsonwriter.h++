@@ -21,7 +21,7 @@ namespace rapidjson
 
 #include <fstream>
 
-namespace picarro::json
+namespace shared::json
 {
     using DefaultWriter = rapidjson::Writer<rapidjson::OStreamWrapper>;
     using PrettyWriter = rapidjson::PrettyWriter<rapidjson::OStreamWrapper>;
@@ -55,4 +55,4 @@ namespace picarro::json
 
     using JsonWriter = JsonWriterTemplate<DefaultWriter>;
     using JsonPrettyWriter = JsonWriterTemplate<PrettyWriter>;
-}  // namespace picarro::json
+}  // namespace shared::json

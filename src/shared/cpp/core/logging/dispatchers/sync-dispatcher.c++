@@ -7,7 +7,7 @@
 
 #include "sync-dispatcher.h++"
 
-namespace picarro::logging
+namespace shared::logging
 {
     void SyncDispatcher::submit(const types::Loggable::Ref &item)
     {
@@ -21,4 +21,4 @@ namespace picarro::logging
             }
         }
     }
-}  // namespace picarro::logging
+}  // namespace shared::logging

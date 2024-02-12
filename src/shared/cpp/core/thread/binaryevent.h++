@@ -11,7 +11,7 @@
 #include <mutex>
 #include <functional>
 
-namespace picarro::types
+namespace shared::types
 {
     /// \class Event
     /// \brief Wait for / manage binary event
@@ -89,4 +89,4 @@ namespace picarro::types
         bool ready_;
     };
 
-}  // namespace picarro::types
+}  // namespace shared::types

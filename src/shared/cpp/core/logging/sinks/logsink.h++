@@ -11,7 +11,7 @@
 
 #include <string>
 
-namespace picarro::logging
+namespace shared::logging
 {
     //==========================================================================
     /// \class LogSink
@@ -40,4 +40,4 @@ namespace picarro::logging
     private:
         status::Level threshold_;
     };
-}  // namespace picarro::logging
+}  // namespace shared::logging

@@ -11,7 +11,7 @@
 
 #include <string>
 
-namespace picarro::platform
+namespace shared::platform
 {
     class LogSinkProvider : public logging::MessageSink,
                             public Provider
@@ -33,4 +33,4 @@ namespace picarro::platform
     };
 
     extern ProviderProxy<LogSinkProvider> logsink;
-}  // namespace picarro::platform
+}  // namespace shared::platform

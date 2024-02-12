@@ -11,7 +11,7 @@
 #include "protobuf-message.h++"
 #include "logging/logging.h++"
 
-namespace picarro::zmq
+namespace shared::zmq
 {
     template <class ProtoT>
     class ProtoBufMessageHandler : public ProtoBufMessageBase<ProtoT>,
@@ -36,4 +36,4 @@ namespace picarro::zmq
         virtual void handle_message(const ProtoT &message) = 0;
     };
 
-}  // namespace picarro::zmq
+}  // namespace shared::zmq

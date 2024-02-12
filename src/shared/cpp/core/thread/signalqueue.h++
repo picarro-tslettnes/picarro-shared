@@ -12,7 +12,7 @@
 #include <functional>
 #include <unordered_set>
 
-namespace picarro::signal
+namespace shared::signal
 {
 
     //==========================================================================
@@ -138,4 +138,4 @@ namespace picarro::signal
         std::string id;
         bool filter_polarity;
     };
-}  // namespace picarro::signal
+}  // namespace shared::signal

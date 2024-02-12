@@ -8,7 +8,7 @@
 #include "zmq-host.h++"
 #include "logging/logging.h++"
 
-namespace picarro::zmq
+namespace shared::zmq
 {
     Host::Host(const std::string &bind_address,
                const std::string &endpoint_type,
@@ -44,4 +44,4 @@ namespace picarro::zmq
                                  "tcp",
                                  "*");
     }
-}  // namespace picarro::zmq
+}  // namespace shared::zmq

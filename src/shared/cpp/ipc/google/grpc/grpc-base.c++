@@ -17,7 +17,7 @@
 
 #include <memory>
 
-namespace picarro::grpc
+namespace shared::grpc
 {
     //==========================================================================
     // Base
@@ -110,4 +110,4 @@ namespace picarro::grpc
 
     std::shared_ptr<SettingsStore> Base::settings_;
 
-}  // namespace picarro::grpc
+}  // namespace shared::grpc

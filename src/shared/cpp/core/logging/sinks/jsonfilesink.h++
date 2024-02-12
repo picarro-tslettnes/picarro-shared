@@ -16,7 +16,7 @@
 #include <fstream>
 #include <mutex>
 
-namespace picarro::logging
+namespace shared::logging
 {
     class JsonFileSink : public LogSink,
                          public RotatingPath,
@@ -43,4 +43,4 @@ namespace picarro::logging
     private:
         std::shared_ptr<json::JsonWriter> writer_;
     };
-}  // namespace picarro::logging
+}  // namespace shared::logging

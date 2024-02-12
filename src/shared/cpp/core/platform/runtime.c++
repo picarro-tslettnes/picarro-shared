@@ -7,7 +7,7 @@
 
 #include "runtime.h++"
 
-namespace picarro::platform
+namespace shared::platform
 {
     ProviderProxy<RunTimeProvider> runtime("runtime environment");
-}  // namespace picarro::platform
+}  // namespace shared::platform

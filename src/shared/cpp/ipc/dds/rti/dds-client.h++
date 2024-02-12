@@ -14,7 +14,7 @@
 
 #include <dds/rpc/ClientParams.hpp>
 
-namespace picarro::dds
+namespace shared::dds
 {
     //==========================================================================
     // DDS client Implementation template
@@ -79,4 +79,4 @@ namespace picarro::dds
         Client<ClientT> client_;
     };
 
-}  // namespace picarro::dds
+}  // namespace shared::dds

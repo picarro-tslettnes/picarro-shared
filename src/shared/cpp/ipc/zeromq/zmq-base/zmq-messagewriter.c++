@@ -9,7 +9,7 @@
 #include "status/exceptions.h++"
 #include "logging/logging.h++"
 
-namespace picarro::zmq
+namespace shared::zmq
 {
     MessageWriter::MessageWriter(const std::shared_ptr<Publisher> &publisher,
                                  const Filter &filter)
@@ -37,4 +37,4 @@ namespace picarro::zmq
         }
     }
 
-}  // namespace picarro::zmq
+}  // namespace shared::zmq

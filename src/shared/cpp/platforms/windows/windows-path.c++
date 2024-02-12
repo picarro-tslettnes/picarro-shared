@@ -18,7 +18,7 @@ typedef SSIZE_T ssize_t;
 typedef unsigned int pid_t;
 #endif
 
-namespace picarro::platform
+namespace shared::platform
 {
     WindowsPathProvider::WindowsPathProvider(const std::string &programpath)
         : Super("WindowsPathProvider", programpath)
@@ -100,4 +100,4 @@ namespace picarro::platform
         return "C:";
     }
 
-}  // namespace picarro::platform
+}  // namespace shared::platform

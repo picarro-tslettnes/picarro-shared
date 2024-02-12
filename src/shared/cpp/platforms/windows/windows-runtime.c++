@@ -10,7 +10,7 @@
 #include <io.h>      // _isatty()
 #include <stdlib.h>  // _putenv()
 
-namespace picarro::platform
+namespace shared::platform
 {
     WindowsRunTimeProvider::WindowsRunTimeProvider()
         : Super("WindowsRunTimeProvider")
@@ -26,4 +26,4 @@ namespace picarro::platform
     {
         _putenv(const_cast<char *>(envstring.data()));
     }
-}  // namespace picarro::platform
+}  // namespace shared::platform

@@ -13,7 +13,7 @@
 
 #define TZENV "TZ"
 
-namespace picarro::platform
+namespace shared::platform
 {
     PosixTimeZoneProvider::PosixTimeZoneProvider()
         : Super("PosixTimeZoneProvider")
@@ -94,4 +94,4 @@ namespace picarro::platform
         tzset();
     }
 
-}  // namespace picarro::platform
+}  // namespace shared::platform

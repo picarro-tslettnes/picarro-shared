@@ -7,7 +7,7 @@
 
 #include "demo-zmq-server.h++"
 
-namespace picarro::demo::zmq
+namespace demo::zmq
 {
     Server::Server(const std::shared_ptr<API> &api,
                    const std::string &bind_address,
@@ -26,4 +26,4 @@ namespace picarro::demo::zmq
         //           << std::endl;
     }
 
-}  // namespace picarro::demo::zmq
+}  // namespace demo::zmq

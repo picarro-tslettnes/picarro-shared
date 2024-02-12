@@ -8,7 +8,7 @@
 #pragma once
 #include "posix-path.h++"
 
-namespace picarro::platform
+namespace shared::platform
 {
     class QNXPathProvider : public PosixPathProvider
     {
@@ -20,4 +20,4 @@ namespace picarro::platform
         fs::path exec_path() const noexcept override;
     };
 
-}  // namespace picarro::platform
+}  // namespace shared::platform

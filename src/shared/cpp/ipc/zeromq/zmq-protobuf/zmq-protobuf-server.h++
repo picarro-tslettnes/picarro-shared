@@ -13,7 +13,7 @@
 
 #include "request_reply.pb.h"
 
-namespace picarro::zmq
+namespace shared::zmq
 {
     class ProtoBufServer : public Responder
     {
@@ -44,10 +44,10 @@ namespace picarro::zmq
         void insert_error_response(Picarro::RR::Reply *reply,
                                    Picarro::RR::StatusCode status_code,
                                    const std::string &text,
-                                   picarro::status::Flow flow,
+                                   shared::status::Flow flow,
                                    const types::KeyValueMap &attributes);
 
     private:
         RequestHandlerMap handler_map;
     };
-}  // namespace picarro::zmq
+}  // namespace shared::zmq

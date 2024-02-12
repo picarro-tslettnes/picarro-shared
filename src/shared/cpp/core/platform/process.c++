@@ -7,7 +7,7 @@
 
 #include "process.h++"
 
-namespace picarro::platform
+namespace shared::platform
 {
     PID ProcessProvider::thread_id() const
     {
@@ -72,4 +72,4 @@ namespace picarro::platform
     /// Global instance, populated with the "best" provider for this system.
     ProviderProxy<ProcessProvider> process("process");
 
-}  // namespace picarro::platform
+}  // namespace shared::platform

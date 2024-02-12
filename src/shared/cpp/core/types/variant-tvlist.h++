@@ -10,7 +10,7 @@
 #include "types/streamable.h++"
 #include "types/create-shared.h++"
 
-namespace picarro::types
+namespace shared::types
 {
     class TaggedValueList : public std::vector<TaggedValue>,
                             public Streamable,
@@ -132,4 +132,4 @@ namespace picarro::types
                        const std::string &postfix) const;
     };
 
-}  // namespace picarro::types
+}  // namespace shared::types

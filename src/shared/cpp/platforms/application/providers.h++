@@ -8,8 +8,8 @@
 #pragma once
 #include <string>
 
-namespace picarro::platform
+namespace shared::platform
 {
     void register_providers(const std::string &exec_name);
     void unregister_providers();
-}  // namespace picarro::platform
+}  // namespace shared::platform

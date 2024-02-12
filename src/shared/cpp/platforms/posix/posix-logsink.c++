@@ -9,7 +9,7 @@
 
 #include <syslog.h>
 
-namespace picarro::platform
+namespace shared::platform
 {
     PosixLogSinkProvider::PosixLogSinkProvider(const std::string &identity)
         : Super("PosixLogSinkProvider", identity)
@@ -52,4 +52,4 @@ namespace picarro::platform
 
     };
 
-}  // namespace picarro::platform
+}  // namespace shared::platform

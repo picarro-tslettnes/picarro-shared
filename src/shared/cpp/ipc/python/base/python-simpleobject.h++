@@ -11,7 +11,7 @@
 
 #include "types/value.h++"
 
-namespace picarro::python
+namespace shared::python
 {
     //==========================================================================
     /// @brief
@@ -149,4 +149,4 @@ namespace picarro::python
     protected:
         PyObject *cobj;
     };
-}  // namespace picarro::python
+}  // namespace shared::python

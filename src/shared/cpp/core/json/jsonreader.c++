@@ -15,7 +15,7 @@
 
 #include <fstream>
 
-namespace picarro::json
+namespace shared::json
 {
     JsonReader::JsonReader(const fs::path &path)
         : path_(path)
@@ -89,4 +89,4 @@ namespace picarro::json
         }
         return JsonDecoder::decodeValue(doc);
     }
-}  // namespace picarro::json
+}  // namespace shared::json

@@ -9,15 +9,15 @@
 #include "demo-dds-requesthandler.h++"
 #include "dds-service.h++"
 
-namespace picarro::demo::dds
+namespace demo::dds
 {
     //==========================================================================
     // @class Service
     // @brief Handle requests from DemoService clients
 
-    class Service : public picarro::dds::Service<Picarro::Demo::DemoServiceService>
+    class Service : public shared::dds::Service<Picarro::Demo::DemoServiceService>
     {
-        using Super = picarro::dds::Service<Picarro::Demo::DemoServiceService>;
+        using Super = shared::dds::Service<Picarro::Demo::DemoServiceService>;
 
     public:
         Service(const ::dds::rpc::Server &server,
@@ -25,4 +25,4 @@ namespace picarro::demo::dds
                 const std::shared_ptr<API> &api);
     };
 
-}  // namespace picarro::demo::dds
+}  // namespace demo::dds

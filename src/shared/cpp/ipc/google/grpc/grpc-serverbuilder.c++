@@ -7,7 +7,7 @@
 
 #include "grpc-serverbuilder.h++"
 
-namespace picarro::grpc
+namespace shared::grpc
 {
     ServerBuilder::ServerBuilder(
         const std::string &listen_address,
@@ -66,4 +66,4 @@ namespace picarro::grpc
         return ::grpc::ServerBuilder::BuildAndStart();
     }
 
-}  // namespace picarro::grpc
+}  // namespace shared::grpc

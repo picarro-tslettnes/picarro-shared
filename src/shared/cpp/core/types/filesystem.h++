@@ -12,10 +12,10 @@
 
 namespace fs = std::filesystem;
 
-namespace picarro::types
+namespace shared::types
 {
     using PathList = std::vector<fs::path>;
-}  // namespace picarro::types
+}  // namespace shared::types
 
 namespace std::filesystem
 {

@@ -11,7 +11,7 @@
 #include <stdexcept>
 #include <cstddef>
 
-namespace picarro::types
+namespace shared::types
 {
     static const char pad_char = '=';
 
@@ -221,4 +221,4 @@ namespace picarro::types
         return decoded;
     }
 
-}  // namespace picarro::types
+}  // namespace shared::types

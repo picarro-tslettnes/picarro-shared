@@ -8,7 +8,7 @@
 #include "python-exception.h++"
 #include "python-containerobject.h++"
 
-namespace picarro::python
+namespace shared::python
 {
     Exception::Exception(PyObject *exc, const std::string &module_name)
         : Super(
@@ -53,4 +53,4 @@ namespace picarro::python
         return this->attribute("args").as_valuelist();
     }
 
-}  // namespace picarro::python
+}  // namespace shared::python

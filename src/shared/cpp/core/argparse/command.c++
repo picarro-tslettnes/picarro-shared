@@ -8,7 +8,7 @@
 #include "command.h++"
 #include "status/exceptions.h++"
 
-namespace picarro::argparse
+namespace shared::argparse
 {
     //==========================================================================
     // CommandOptions methods
@@ -251,4 +251,4 @@ namespace picarro::argparse
         this->on_monitor_end();
     }
 
-}  // namespace picarro::argparse
+}  // namespace shared::argparse

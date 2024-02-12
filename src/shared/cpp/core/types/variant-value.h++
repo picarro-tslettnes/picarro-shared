@@ -10,7 +10,7 @@
 #include "types/streamable.h++"
 #include "string/convert.h++"
 
-namespace picarro::types
+namespace shared::types
 {
     //==========================================================================
     /// \class Value
@@ -225,4 +225,4 @@ namespace picarro::types
         //     std::optional<ValueType> type_;
     };
 
-}  // namespace picarro::types
+}  // namespace shared::types

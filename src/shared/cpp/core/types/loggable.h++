@@ -8,7 +8,7 @@
 #pragma once
 #include <memory>
 
-namespace picarro::types
+namespace shared::types
 {
     //==========================================================================
     /// \class Loggable
@@ -28,4 +28,4 @@ namespace picarro::types
         virtual ~Loggable() {}  // Hack to ensure class is polymorphic
     };
 
-}  // namespace picarro::types
+}  // namespace shared::types

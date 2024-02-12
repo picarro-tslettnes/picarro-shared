@@ -13,14 +13,14 @@
 
 #include "types/create-shared.h++"
 
-namespace picarro::demo::grpc
+namespace demo::grpc
 {
-    using ClientImplBase = picarro::grpc::SignalWatchClient<Picarro::Demo::Demo,
+    using ClientImplBase = shared::grpc::SignalWatchClient<Picarro::Demo::Demo,
                                                        Picarro::Demo::Signal>;
 
     class ClientImpl : public demo::API,
                        public ClientImplBase,
-                       public types::enable_create_shared<ClientImpl>
+                       public shared::types::enable_create_shared<ClientImpl>
     {
         using This = ClientImpl;
 
@@ -48,4 +48,4 @@ namespace picarro::demo::grpc
         void start_watching() override;
         void stop_watching() override;
     };
-}  // namespace picarro::demo::grpc
+}  // namespace demo::grpc

@@ -20,7 +20,7 @@
 #pragma once
 #include <dds/core/types.hpp>
 
-namespace picarro::idl
+namespace idl
 {
     //==========================================================================
     // Template to support encode()/decode() semantics for identical types
@@ -119,4 +119,4 @@ namespace picarro::idl
         }
     }
 
-}  // namespace picarro::idl
+}  // namespace idl

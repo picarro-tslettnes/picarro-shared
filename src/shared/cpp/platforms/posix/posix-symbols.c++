@@ -10,7 +10,7 @@
 
 #include <cxxabi.h>
 
-namespace picarro::platform
+namespace shared::platform
 {
     PosixSymbolsProvider::PosixSymbolsProvider(const std::string &name)
         : Super(name)
@@ -33,4 +33,4 @@ namespace picarro::platform
         }
     };
 
-}  // namespace picarro::platform
+}  // namespace shared::platform

@@ -16,7 +16,7 @@
 #include "config/settingsstore.h++"
 #include <grpc++/grpc++.h>
 
-namespace picarro::grpc
+namespace shared::grpc
 {
     define_log_scope("grpc");
 
@@ -107,4 +107,4 @@ namespace picarro::grpc
         const std::string full_service_name_;
     };
 
-}  // namespace picarro::grpc
+}  // namespace shared::grpc

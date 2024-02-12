@@ -7,7 +7,7 @@
 
 #include "client.h++"
 
-namespace picarro::argparse
+namespace shared::argparse
 {
     //==========================================================================
     // ClientOptions methods
@@ -35,4 +35,4 @@ namespace picarro::argparse
             30);
     }
 
-}  // namespace picarro::argparse
+}  // namespace shared::argparse

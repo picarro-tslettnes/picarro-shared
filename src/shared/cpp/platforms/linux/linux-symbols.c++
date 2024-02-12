@@ -9,7 +9,7 @@
 
 #include <uuid.h>
 
-namespace picarro::platform
+namespace shared::platform
 {
     LinuxSymbolsProvider::LinuxSymbolsProvider(const std::string &name)
         : PosixSymbolsProvider(name)
@@ -25,4 +25,4 @@ namespace picarro::platform
         uuid_unparse(uuid, buffer);
         return buffer;
     }
-}  // namespace picarro::platform
+}  // namespace shared::platform

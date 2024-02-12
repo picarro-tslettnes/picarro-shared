@@ -8,7 +8,7 @@
 #pragma once
 #include "zmq-filter.h++"
 
-namespace picarro::zmq
+namespace shared::zmq
 {
     template <class ProtoT>
     class ProtoBufMessageBase
@@ -35,4 +35,4 @@ namespace picarro::zmq
         std::string type_name_;
     };
 
-}  // namespace picarro::zmq
+}  // namespace shared::zmq

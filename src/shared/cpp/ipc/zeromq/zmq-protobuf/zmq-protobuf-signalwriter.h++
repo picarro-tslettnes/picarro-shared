@@ -12,7 +12,7 @@
 #include "logging/logging.h++"
 #include "platform/symbols.h++"
 
-namespace picarro::zmq
+namespace shared::zmq
 {
     template <class ProtoT>
     class ProtoBufSignalWriter : public protobuf::SignalForwarder<ProtoT>,
@@ -42,4 +42,4 @@ namespace picarro::zmq
         }
     };
 
-}  // namespace picarro::zmq
+}  // namespace shared::zmq

@@ -12,7 +12,7 @@
 #include <regex>
 #include <sstream>  // std::stringstream
 
-namespace picarro::argparse
+namespace shared::argparse
 {
     //==========================================================================
     // Parser methods
@@ -158,7 +158,7 @@ namespace picarro::argparse
         }
         catch (const std::out_of_range &)
         {
-            throwf(picarro::exception::InvalidArgument,
+            throwf(shared::exception::InvalidArgument,
                    "No such help section",
                    section);
         }
@@ -230,7 +230,7 @@ namespace picarro::argparse
                     {
                         // No, and there are not more input arguments. This
                         // is an error.
-                        throwf(picarro::exception::InvalidArgument,
+                        throwf(shared::exception::InvalidArgument,
                                "Option requires an argument",
                                optkey);
                     }
@@ -479,4 +479,4 @@ namespace picarro::argparse
         }
     }
 
-}  // namespace picarro::argparse
+}  // namespace shared::argparse

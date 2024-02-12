@@ -9,19 +9,19 @@
 #include "demo-zmq-publisher.h++"
 #include "demo-zmq-server.h++"
 
-namespace picarro::demo::zmq
+namespace demo::zmq
 {
     void run_zmq_service(
-        std::shared_ptr<picarro::demo::API> api_provider,
+        std::shared_ptr<demo::API> api_provider,
         const std::string &bind_address)
     {
         // Instantiate Publisher to relay asynchronous events over ZeroMQ
-        auto zmq_publisher = picarro::demo::zmq::Publisher::create_shared(
+        auto zmq_publisher = demo::zmq::Publisher::create_shared(
             bind_address);
 
 
         // Instantiate Server to handle incoming requests from client
-        auto zmq_server = picarro::demo::zmq::Server::create_shared(
+        auto zmq_server = demo::zmq::Server::create_shared(
             api_provider,
             bind_address);
 
@@ -51,4 +51,4 @@ namespace picarro::demo::zmq
         }
     }
 
-}  // namespace picarro::demo::zmq
+}  // namespace demo::zmq

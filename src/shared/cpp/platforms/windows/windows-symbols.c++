@@ -18,7 +18,7 @@
 //   [in]  DWORD flags
 // );
 
-namespace picarro::platform
+namespace shared::platform
 {
     WindowsSymbolsProvider::WindowsSymbolsProvider()
         : Super("WindowsSymbolsProvider")
@@ -38,4 +38,4 @@ namespace picarro::platform
         }
     };
 
-}  // namespace picarro::platform
+}  // namespace shared::platform

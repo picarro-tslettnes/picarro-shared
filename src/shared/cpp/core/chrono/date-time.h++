@@ -23,7 +23,7 @@
 
 using uint = unsigned int;
 
-namespace picarro
+namespace shared
 {
     /// Date/Time utilities
     namespace dt
@@ -370,11 +370,11 @@ namespace picarro
         // Convert from System Clock to Steady Clock
         TimePoint to_timepoint(dt::TimePoint tp);
     }  // namespace steady
-}  // namespace picarro
+}  // namespace shared
 
 namespace std::chrono
 {
-    std::ostream &operator<<(std::ostream &stream, const picarro::dt::TimePoint &tp);
-    std::ostream &operator<<(std::ostream &stream, const picarro::dt::Duration &dur);
-    std::ostream &operator<<(std::ostream &stream, const picarro::steady::TimePoint &stp);
+    std::ostream &operator<<(std::ostream &stream, const shared::dt::TimePoint &tp);
+    std::ostream &operator<<(std::ostream &stream, const shared::dt::Duration &dur);
+    std::ostream &operator<<(std::ostream &stream, const shared::steady::TimePoint &stp);
 }  // namespace std::chrono

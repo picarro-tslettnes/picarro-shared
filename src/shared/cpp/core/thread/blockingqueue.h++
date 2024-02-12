@@ -14,7 +14,7 @@
 #include <thread>
 #include <algorithm>
 
-namespace picarro::types
+namespace shared::types
 {
     //==========================================================================
     /// @enum OverlowDisposition
@@ -276,4 +276,4 @@ namespace picarro::types
         std::queue<T> queue;
     };
 
-}  // namespace picarro::types
+}  // namespace shared::types

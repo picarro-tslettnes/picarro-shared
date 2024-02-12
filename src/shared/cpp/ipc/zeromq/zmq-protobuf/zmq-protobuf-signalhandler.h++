@@ -10,7 +10,7 @@
 #include "protobuf-signalreceiver.h++"
 #include "logging/logging.h++"
 
-namespace picarro::zmq
+namespace shared::zmq
 {
     template <class SignalT>
     class ProtoBufSignalHandler : public ProtoBufMessageHandler<SignalT>,
@@ -41,4 +41,4 @@ namespace picarro::zmq
         }
     };
 
-}  // namespace picarro::zmq
+}  // namespace shared::zmq

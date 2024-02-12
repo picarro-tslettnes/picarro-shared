@@ -13,18 +13,18 @@
 
 #include "demo_types.pb.h"
 
-namespace picarro::demo::zmq
+namespace demo::zmq
 {
     //==========================================================================
     // @class SignalWriter
     // @brief Connect to local DEMO signals and write via ZMQ
 
-    class SignalWriter : public picarro::zmq::ProtoBufSignalWriter<Picarro::Demo::Signal>,
-                         public picarro::types::enable_create_shared<SignalWriter>
+    class SignalWriter : public shared::zmq::ProtoBufSignalWriter<Picarro::Demo::Signal>,
+                         public shared::types::enable_create_shared<SignalWriter>
     {
         // Convencience alias
         using This = SignalWriter;
-        using Super = picarro::zmq::ProtoBufSignalWriter<Picarro::Demo::Signal>;
+        using Super = shared::zmq::ProtoBufSignalWriter<Picarro::Demo::Signal>;
 
     protected:
         using Super::Super;
@@ -33,4 +33,4 @@ namespace picarro::demo::zmq
         void initialize() override;
         void deinitialize() override;
     };
-}  // namespace picarro::demo::zmq
+}  // namespace demo::zmq

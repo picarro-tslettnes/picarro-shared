@@ -67,15 +67,16 @@
 /// \endcode
 
 #define define_log_scope(...) \
-    inline static ::picarro::logging::Scope::Ref log_scope = ::picarro::logging::Scope::create(__VA_ARGS__)
+    inline static ::shared::logging::Scope::Ref log_scope = \
+        ::shared::logging::Scope::create(__VA_ARGS__)
 
 #define use_log_scope(other) \
-    inline static ::picarro::logging::Scope::Ref log_scope = other
+    inline static ::shared::logging::Scope::Ref log_scope = other
 
 #define use_shared_scope() \
-    use_log_scope(::picarro::log_scope)
+    use_log_scope(::shared::log_scope)
 
-namespace picarro::logging
+namespace shared::logging
 {
 
     //==========================================================================
@@ -123,12 +124,12 @@ namespace picarro::logging
     /// Methods
     status::Level current_threshold();
 
-}  // namespace picarro::logging
+}  // namespace shared::logging
 
-namespace picarro
+namespace shared
 {
-    define_log_scope("picarro", status::Level::INFO);
+    define_log_scope("shared", status::Level::INFO);
 }
 
 /// Global log scope.
-define_log_scope("global", picarro::status::Level::INFO);
+define_log_scope("global", shared::status::Level::INFO);

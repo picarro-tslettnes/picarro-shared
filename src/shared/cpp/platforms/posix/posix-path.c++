@@ -14,7 +14,7 @@
 #include <unistd.h>  // readlink()
 #include <limits.h>  // PATH_MAX
 
-namespace picarro::platform
+namespace shared::platform
 {
     uint PosixPathProvider::path_max_size() const noexcept
     {
@@ -76,4 +76,4 @@ namespace picarro::platform
         return name;
     }
 
-}  // namespace picarro::platform
+}  // namespace shared::platform

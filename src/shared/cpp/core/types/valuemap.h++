@@ -10,7 +10,7 @@
 #include <optional>
 #include <stdexcept>
 
-namespace picarro::types
+namespace shared::types
 {
     template <class K, class V>
     class ValueMap : public std::map<K, V>
@@ -54,4 +54,4 @@ namespace picarro::types
             }
         }
     };
-}  // namespace picarro::types
+}  // namespace shared::types

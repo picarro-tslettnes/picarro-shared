@@ -23,7 +23,7 @@
 /// ("decode...()") "common" ProtoBuf messages (including those defined in
 /// "common_types.proto").
 
-namespace picarro::protobuf
+namespace protobuf
 {
     using google::protobuf::Empty;
 
@@ -77,67 +77,67 @@ namespace picarro::protobuf
     void decode(const google::protobuf::BoolValue &msg,
                 bool *b) noexcept;
 
-    void encode(const picarro::types::Bytes &b,
+    void encode(const shared::types::Bytes &b,
                 google::protobuf::BytesValue *msg) noexcept;
 
     void decode(const google::protobuf::BytesValue &msg,
-                picarro::types::Bytes *b) noexcept;
+                shared::types::Bytes *b) noexcept;
 
     //==========================================================================
     // Timestamp encoding/decoding
 
     /// \brief
-    ///     Encode picarro::dt::TimePoint (a.k.a. std::chrono::system_clock::time_point)
+    ///     Encode shared::dt::TimePoint (a.k.a. std::chrono::system_clock::time_point)
     ///     to Google Protobuf Timestamp message.
 
-    void encode(const picarro::dt::TimePoint &tp,
+    void encode(const shared::dt::TimePoint &tp,
                 google::protobuf::Timestamp *ts) noexcept;
 
     void decode(const google::protobuf::Timestamp &ts,
-                picarro::dt::TimePoint *tp) noexcept;
+                shared::dt::TimePoint *tp) noexcept;
 
     //==========================================================================
     // Duration encoding/decoding
 
-    void encode(const picarro::dt::Duration &duration,
+    void encode(const shared::dt::Duration &duration,
                 google::protobuf::Duration *msg) noexcept;
 
     void decode(const google::protobuf::Duration &msg,
-                picarro::dt::Duration *duration) noexcept;
+                shared::dt::Duration *duration) noexcept;
 
     //==========================================================================
     // Google variant value encoding/decoding
 
-    void encode(const picarro::types::Value &value,
+    void encode(const shared::types::Value &value,
                 google::protobuf::Value *msg) noexcept;
 
     void decode(const google::protobuf::Value &msg,
-                picarro::types::Value *value) noexcept;
+                shared::types::Value *value) noexcept;
 
     //==========================================================================
     // Google variant struct encoding/decoding
 
-    void encode(const picarro::types::KeyValueMap &kvmap,
+    void encode(const shared::types::KeyValueMap &kvmap,
                 google::protobuf::Struct *msg) noexcept;
 
     void decode(const google::protobuf::Struct &msg,
-                picarro::types::KeyValueMap *kvmap) noexcept;
+                shared::types::KeyValueMap *kvmap) noexcept;
 
-    void encode(const picarro::types::TaggedValueList &tvlist,
+    void encode(const shared::types::TaggedValueList &tvlist,
                 google::protobuf::Struct *msg) noexcept;
 
     void decode(const google::protobuf::Struct &msg,
-                picarro::types::TaggedValueList *tvlist) noexcept;
+                shared::types::TaggedValueList *tvlist) noexcept;
 
     //==========================================================================
     // Google variant list encoding/decoding
 
-    void encode(const picarro::types::ValueList &list,
+    void encode(const shared::types::ValueList &list,
                 google::protobuf::ListValue *msg) noexcept;
 
     void decode(const google::protobuf::ListValue &msg,
-                picarro::types::ValueList *list) noexcept;
-}  // namespace picarro::protobuf
+                shared::types::ValueList *list) noexcept;
+}  // namespace shared::protobuf
 
 // /// Add C++ output stream support for ProtoBuf messages (by reference and by pointer)
 // namespace google

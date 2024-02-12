@@ -14,7 +14,7 @@
 
 #include <rti/request/SimpleReplier.hpp>
 
-namespace picarro::dds
+namespace shared::dds
 {
     template <class RequestType = Picarro::Common::Empty,
               class ResponseType = Picarro::Common::Empty>
@@ -42,4 +42,4 @@ namespace picarro::dds
         }
     };
 
-}  // namespace picarro::dds
+}  // namespace shared::dds

@@ -7,7 +7,7 @@
 
 #include "systemservice.h++"
 
-namespace picarro::platform
+namespace shared::platform
 {
     ProviderProxy<SystemServiceProvider> system_service("system service");
 
@@ -24,4 +24,4 @@ namespace picarro::platform
         return this->service_name_;
     }
 
-}  // namespace picarro::platform
+}  // namespace shared::platform

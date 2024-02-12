@@ -12,7 +12,7 @@
 
 #include "grpc-signalqueue.h++"
 
-namespace picarro::demo::grpc
+namespace demo::grpc
 {
     //==========================================================================
     /// @class SignalQueue
@@ -27,13 +27,13 @@ namespace picarro::demo::grpc
     ///
     /// See `service::SignalQueue<T>` for additional info.
 
-    class SignalQueue : public picarro::grpc::SignalQueue<Picarro::Demo::Signal>
+    class SignalQueue : public shared::grpc::SignalQueue<Picarro::Demo::Signal>
     {
-        using Super = picarro::grpc::SignalQueue<Picarro::Demo::Signal>;
+        using Super = shared::grpc::SignalQueue<Picarro::Demo::Signal>;
 
     public:
         using Super::Super;
         void initialize() override;
         void deinitialize() override;
     };
-}  // namespace picarro::demo::grpc
+}  // namespace demo::grpc

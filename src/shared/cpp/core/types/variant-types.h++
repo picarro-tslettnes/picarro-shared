@@ -17,7 +17,7 @@
 #include <variant>
 #include <vector>
 
-namespace picarro::types
+namespace shared::types
 {
     /// Classes implemented here.
     class Boolean;
@@ -100,4 +100,4 @@ namespace picarro::types
     extern std::string typetree(const KeyValueMapRef &kvmap);
     extern std::string typetree(const TaggedValueListRef &tvlist);
 
-}  // namespace picarro::types
+}  // namespace shared::types

@@ -10,9 +10,9 @@
 
 #include <iostream>
 
-namespace picarro
+namespace shared
 {
-    std::shared_ptr<picarro::SettingsStore> settings;
+    std::shared_ptr<shared::SettingsStore> settings;
 
     void init_settings(const types::PathList &files)
     {
@@ -29,4 +29,4 @@ namespace picarro
             }
         }
     }
-}  // namespace picarro
+}  // namespace shared

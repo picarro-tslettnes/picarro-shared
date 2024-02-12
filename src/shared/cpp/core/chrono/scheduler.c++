@@ -10,7 +10,7 @@
 #include "string/format.h++"
 #include "status/exceptions.h++"
 
-namespace picarro
+namespace shared
 {
 
     //==========================================================================
@@ -441,4 +441,4 @@ namespace picarro
     // Global instance
 
     Scheduler scheduler;
-}  // namespace picarro
+}  // namespace shared

@@ -14,7 +14,7 @@
 #include <fstream>
 #include <iostream>
 
-namespace picarro
+namespace shared
 {
     SettingsStore::SettingsStore(const types::PathList &filenames,
                                  const types::PathList &directories)
@@ -216,4 +216,4 @@ namespace picarro
         return result;
     }
 
-}  // namespace picarro
+}  // namespace shared

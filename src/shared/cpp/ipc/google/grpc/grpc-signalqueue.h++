@@ -13,7 +13,7 @@
 #include "protobuf-signalforwarder.h++"
 #include "thread/blockingqueue.h++"
 
-namespace picarro::grpc
+namespace shared::grpc
 {
     //==========================================================================
     /// @class SignalQueue<SignalT>
@@ -45,7 +45,7 @@ namespace picarro::grpc
     /// in turn is created by the `SignalServiceWrapper::stream_signals()` in
     /// response to a gRPC `watch()` invocation by a client.
     ///
-    /// For sample SignalForwarder implementations, see `picarro::demo::SignalForwarder()`
+    /// For sample SignalForwarder implementations, see `demo::SignalForwarder()`
 
     template <class ProtoT>
     class SignalQueue : public protobuf::SignalForwarder<ProtoT>,
@@ -171,6 +171,6 @@ namespace picarro::grpc
         bool filter_polarity;
         std::unordered_set<uint> filter_indices;
     };
-}  // namespace picarro::grpc
+}  // namespace shared::grpc
 
-using picarro::grpc::SignalQueue;
+using shared::grpc::SignalQueue;

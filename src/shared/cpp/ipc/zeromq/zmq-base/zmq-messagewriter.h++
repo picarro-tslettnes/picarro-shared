@@ -9,7 +9,7 @@
 #include "zmq-publisher.h++"
 #include "zmq-filter.h++"
 
-namespace picarro::zmq
+namespace shared::zmq
 {
     class MessageWriter
     {
@@ -32,4 +32,4 @@ namespace picarro::zmq
         Filter filter_;
     };
 
-}  // namespace picarro::zmq
+}  // namespace shared::zmq

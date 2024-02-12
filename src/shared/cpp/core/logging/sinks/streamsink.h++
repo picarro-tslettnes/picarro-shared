@@ -15,7 +15,7 @@
 #include <ostream>
 #include <string>
 
-namespace picarro::logging
+namespace shared::logging
 {
     //==========================================================================
     /// \class StreamSink
@@ -54,4 +54,4 @@ namespace picarro::logging
         std::ostream &stream;
         types::ValueMap<status::Level, StyleMap> styles;
     };
-}  // namespace picarro::logging
+}  // namespace shared::logging

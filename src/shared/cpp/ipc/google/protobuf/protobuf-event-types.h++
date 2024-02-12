@@ -16,30 +16,30 @@
 /// ("decode...()") "common" ProtoBuf messages (including those defined in
 /// "common_types.proto").
 
-namespace picarro::protobuf
+namespace protobuf
 {
     //==========================================================================
     // status::Domain encoding to/decoding from Picarro::Status::Domain
 
-    void encode(status::Domain domain, Picarro::Status::Domain *encoded) noexcept;
-    void decode(Picarro::Status::Domain domain, status::Domain *decoded) noexcept;
+    void encode(shared::status::Domain domain, Picarro::Status::Domain *encoded) noexcept;
+    void decode(Picarro::Status::Domain domain, shared::status::Domain *decoded) noexcept;
 
     //==========================================================================
-    // status::Level encoding to/decoding from Picarro::Status::Level
+    // shared::status::Level encoding to/decoding from Picarro::Status::Level
 
-    void encode(status::Level level, Picarro::Status::Level *encoded) noexcept;
-    void decode(Picarro::Status::Level level, status::Level *decoded) noexcept;
-
-    //==========================================================================
-    // status::Level encoding to/decoding from Picarro::Status::Level
-
-    void encode(status::Flow flow, Picarro::Status::Flow *encoded) noexcept;
-    void decode(Picarro::Status::Flow flow, status::Flow *decoded) noexcept;
+    void encode(shared::status::Level level, Picarro::Status::Level *encoded) noexcept;
+    void decode(Picarro::Status::Level level, shared::status::Level *decoded) noexcept;
 
     //==========================================================================
-    // status::Event encoding to/decoding from Picarro::Status::::EventData
+    // shared::status::Level encoding to/decoding from Picarro::Status::Level
 
-    void encode(const status::Event &event, Picarro::Status::Details *msg) noexcept;
-    void decode(const Picarro::Status::Details &msg, status::Event *event) noexcept;
+    void encode(shared::status::Flow flow, Picarro::Status::Flow *encoded) noexcept;
+    void decode(Picarro::Status::Flow flow, shared::status::Flow *decoded) noexcept;
 
-}  // namespace picarro::protobuf
+    //==========================================================================
+    // shared::status::Event encoding to/decoding from Picarro::Status::::EventData
+
+    void encode(const shared::status::Event &event, Picarro::Status::Details *msg) noexcept;
+    void decode(const Picarro::Status::Details &msg, shared::status::Event *event) noexcept;
+
+}  // namespace shared::protobuf

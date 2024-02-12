@@ -10,7 +10,7 @@
 #include "types/bytevector.h++"
 #include <thread>
 
-namespace picarro::zmq
+namespace shared::zmq
 {
     class Responder : public Host
     {
@@ -35,4 +35,4 @@ namespace picarro::zmq
         bool keep_listening;
     };
 
-}  // namespace picarro::zmq
+}  // namespace shared::zmq

@@ -9,10 +9,10 @@
 #include "demo-api.h++"
 #include "types/create-shared.h++"
 
-namespace picarro::demo
+namespace demo
 {
     class NativeImpl : public API,
-                       public picarro::types::enable_create_shared<NativeImpl>
+                       public shared::types::enable_create_shared<NativeImpl>
     {
         using This = NativeImpl;
         using Super = API;
@@ -26,4 +26,4 @@ namespace picarro::demo
         void start_ticking() override;
         void stop_ticking() override;
     };
-}  // namespace picarro::demo
+}  // namespace demo

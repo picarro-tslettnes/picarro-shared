@@ -13,7 +13,7 @@
 #include <rti/request/Requester.hpp>
 //#include <dds/core/Duration.hpp>
 
-namespace picarro::dds
+namespace shared::dds
 {
     template <class RequestType, class ResponseType>
     class Requester : public Endpoint,
@@ -25,7 +25,7 @@ namespace picarro::dds
     public:
         Requester(const std::string &request_id,
                   int domain_id,
-                  const picarro::dt::Duration &default_timeout = std::chrono::seconds(10))
+                  const shared::dt::Duration &default_timeout = std::chrono::seconds(10))
             : Endpoint("requester", request_id, domain_id),
               BaseRequester(this->requester_params()),
               default_timeout_(default_timeout)
@@ -47,14 +47,14 @@ namespace picarro::dds
         }
 
         inline ResponseType send_receive(const RequestType &req,
-                                         const picarro::dt::Duration &max_wait)
+                                         const shared::dt::Duration &max_wait)
         {
             rti::core::SampleIdentity request_id = this->send_request(req);
             return this->receive_response(request_id, max_wait);
         }
 
         ResponseType receive_response(const rti::core::SampleIdentity &request_id,
-                                      const picarro::dt::Duration &max_wait)
+                                      const shared::dt::Duration &max_wait)
         {
             if (this->wait_for_replies(1, max_wait, request_id))
             {
@@ -72,13 +72,13 @@ namespace picarro::dds
                     }
                 }
             }
-            throwf_args(picarro::exception::Timeout,
+            throwf_args(shared::exception::Timeout,
                         ("Request %r did not receive any responses", this->instance_name()),
                         max_wait);
         }
 
     private:
-        picarro::dt::Duration default_timeout_;
+        shared::dt::Duration default_timeout_;
     };
 
-}  // namespace picarro::dds
+}  // namespace shared::dds

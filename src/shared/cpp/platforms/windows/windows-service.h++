@@ -13,7 +13,7 @@
 
 #include <string>
 
-namespace picarro::platform
+namespace shared::platform
 {
     class WindowsServiceProvider : public SystemServiceProvider
     {
@@ -46,4 +46,4 @@ namespace picarro::platform
         static SERVICE_STATUS service_status;
         static SERVICE_STATUS_HANDLE service_status_handle;
     };
-}  // namespace picarro::platform
+}  // namespace shared::platform

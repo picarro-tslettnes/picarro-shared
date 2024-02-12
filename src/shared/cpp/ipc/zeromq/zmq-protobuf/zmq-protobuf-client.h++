@@ -12,7 +12,7 @@
 
 #include "request_reply.pb.h"
 
-namespace picarro::zmq
+namespace shared::zmq
 {
     class ProtoBufClient : public Requester
     {
@@ -102,4 +102,4 @@ namespace picarro::zmq
         uint client_id;
         uint last_request_id;
     };
-};  // namespace picarro::zmq
+};  // namespace shared::zmq

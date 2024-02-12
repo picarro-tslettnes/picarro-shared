@@ -14,10 +14,10 @@
 #include "chrono/date-time.h++"
 #include "status/exceptions.h++"
 
-namespace picarro::zmq
+namespace shared::zmq
 {
     ProtoBufError::ProtoBufError(const Picarro::RR::StatusCode &code,
-                                 const picarro::status::Event &event)
+                                 const shared::status::Event &event)
         : Event(event),
           status_code_(code)
     {
@@ -66,4 +66,4 @@ namespace picarro::zmq
         }
     }
 
-}  // namespace picarro::zmq
+}  // namespace shared::zmq

@@ -10,23 +10,23 @@
 #include "translate-idl-common.h++"
 #include "translate-idl-variant.h++"
 
-namespace picarro::idl
+namespace idl
 {
     //==========================================================================
     // Greeting
-    void encode(const picarro::demo::Greeting &native,
+    void encode(const demo::Greeting &native,
                 Picarro::Demo::Greeting *idl);
 
     void decode(const Picarro::Demo::Greeting &idl,
-                picarro::demo::Greeting *native);
+                demo::Greeting *native);
 
     //==========================================================================
     // TimeData
-    void encode(const picarro::demo::TimeData &native,
+    void encode(const demo::TimeData &native,
                 Picarro::Demo::TimeData *idl);
 
     void decode(const Picarro::Demo::TimeData &idl,
-                picarro::demo::TimeData *native);
+                demo::TimeData *native);
 
     //==========================================================================
     // TimeStruct
@@ -36,4 +36,4 @@ namespace picarro::idl
     void decode(const Picarro::Demo::TimeStruct &idl,
                 std::tm *native);
 
-}  // namespace picarro::idl
+}  // namespace idl

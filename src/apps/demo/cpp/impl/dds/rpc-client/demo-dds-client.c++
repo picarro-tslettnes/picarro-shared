@@ -13,7 +13,7 @@
 #include "translate-idl-inline.h++"  // `encoded<>` and `decoded<>` templates
 #include "platform/symbols.h++"
 
-namespace picarro::demo::dds
+namespace demo::dds
 {
     ClientImpl::ClientImpl(const std::string &identity, int domain_id)
         : API(identity, "DDS Client"),
@@ -72,4 +72,4 @@ namespace picarro::demo::dds
         }
     }
 
-}  // namespace picarro::demo::dds
+}  // namespace demo::dds

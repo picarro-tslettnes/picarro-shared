@@ -13,7 +13,7 @@
 #include <sstream>
 #include <stdexcept>
 
-namespace picarro::str
+namespace shared::str
 {
     /// @brief
     ///     Expands brace-enclosed keys wihtin to string to corresponding values from map.
@@ -57,4 +57,4 @@ namespace picarro::str
         ss << format.substr(next);
         return ss.str();
     }
-}  // namespace picarro::str
+}  // namespace shared::str

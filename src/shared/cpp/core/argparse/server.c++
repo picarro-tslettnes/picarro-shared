@@ -15,7 +15,7 @@
 #include <fcntl.h>   // O_RDONLY, O_WRONLY
 #include <fstream>
 
-namespace picarro::argparse
+namespace shared::argparse
 {
     //==========================================================================
     // ServerOptions methods
@@ -113,4 +113,4 @@ namespace picarro::argparse
         return pidstream;
     }
 
-}  // namespace picarro::argparse
+}  // namespace shared::argparse

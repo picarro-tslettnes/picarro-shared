@@ -18,7 +18,7 @@
 // 3rd party modules
 #include <dds/domain/DomainParticipant.hpp>
 
-namespace picarro::demo::dds
+namespace demo::dds
 {
     //==========================================================================
     // @class ClientImpl
@@ -26,8 +26,8 @@ namespace picarro::demo::dds
 
     class ClientImpl
         : public API,
-          public picarro::dds::Client_Wrapper<Picarro::Demo::DemoServiceClient>,
-          public picarro::types::enable_create_shared<ClientImpl>
+          public shared::dds::Client_Wrapper<Picarro::Demo::DemoServiceClient>,
+          public shared::types::enable_create_shared<ClientImpl>
     {
         // Convencience alias
         using This = ClientImpl;
@@ -50,4 +50,4 @@ namespace picarro::demo::dds
     private:
         std::shared_ptr<Subscriber> subscriber;
     };
-}  // namespace picarro::demo::dds
+}  // namespace demo::dds

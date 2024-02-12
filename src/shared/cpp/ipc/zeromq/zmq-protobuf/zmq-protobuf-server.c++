@@ -10,7 +10,7 @@
 #include "platform/path.h++"
 #include "logging/logging.h++"
 
-namespace picarro::zmq
+namespace shared::zmq
 {
     ProtoBufServer::ProtoBufServer(const std::string &bind_address,
                                    const std::string &channel_name,
@@ -56,7 +56,7 @@ namespace picarro::zmq
                 &reply,
                 Picarro::RR::STATUS_INVALID,
                 "Failed to deserialize ProtoBuf request",
-                picarro::status::Flow::CANCELLED,
+                shared::status::Flow::CANCELLED,
                 {{"channel", this->channel_name()},
                  {"payload", packed_request.to_hex(true, 4)}});
         }
@@ -80,7 +80,7 @@ namespace picarro::zmq
                 reply,
                 Picarro::RR::STATUS_INVALID,
                 "No such interface",
-                picarro::status::Flow::CANCELLED,
+                shared::status::Flow::CANCELLED,
                 {{"channel", this->channel_name()},
                  {"interface", request.interface_name()}});
         }
@@ -89,18 +89,18 @@ namespace picarro::zmq
     void ProtoBufServer::insert_error_response(Picarro::RR::Reply *reply,
                                                Picarro::RR::StatusCode status_code,
                                                const std::string &text,
-                                               picarro::status::Flow flow,
+                                               shared::status::Flow flow,
                                                const types::KeyValueMap &attributes)
     {
         Picarro::RR::Status *status = reply->mutable_status();
         status->set_code(status_code);
 
         status::Event event(text,
-                            picarro::status::Domain::APPLICATION,
+                            shared::status::Domain::APPLICATION,
                             platform::path->exec_name(),
                             static_cast<status::Event::Code>(status_code),
                             Picarro::RR::StatusCode_Name(status_code),
-                            picarro::status::Level::FAILED,
+                            shared::status::Level::FAILED,
                             flow,
                             {},
                             attributes);
@@ -108,4 +108,4 @@ namespace picarro::zmq
         protobuf::encode(event, status->mutable_details());
     }
 
-}  // namespace picarro::zmq
+}  // namespace shared::zmq

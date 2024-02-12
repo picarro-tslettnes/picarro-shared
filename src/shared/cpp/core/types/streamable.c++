@@ -7,7 +7,7 @@
 
 #include "streamable.h++"
 
-namespace picarro::types
+namespace shared::types
 {
     std::ostream &operator<<(std::ostream &stream, const Streamable &obj)
     {
@@ -34,4 +34,4 @@ namespace picarro::types
         return out.str();
     }
 
-}  // namespace picarro::types
+}  // namespace shared::types

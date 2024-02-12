@@ -17,7 +17,7 @@
 #include "thread/blockingqueue.h++"
 #include "thread/signaltemplate.h++"
 
-namespace picarro::grpc
+namespace shared::grpc
 {
     //==========================================================================
     /// @class SignalWrapper<ServerType, SignalType, SignalQueueType>
@@ -149,4 +149,4 @@ namespace picarro::grpc
             }
         }
     };
-}  // namespace picarro::grpc
+}  // namespace shared::grpc

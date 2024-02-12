@@ -10,7 +10,7 @@
 #include "variant-kvmap.h++"
 #include "status/exceptions.h++"
 
-namespace picarro::types
+namespace shared::types
 {
     TaggedValueList::const_iterator TaggedValueList::find(
         const Tag &tag,
@@ -372,4 +372,4 @@ namespace picarro::types
         stream << postfix;
     }
 
-}  // namespace picarro::types
+}  // namespace shared::types

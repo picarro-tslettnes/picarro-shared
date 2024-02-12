@@ -52,7 +52,7 @@
 ///    \endcode
 ///  * Alternatively, to build a message in steps:
 ///    \code
-///      picarro::Logging::MessageBuilder::Ref msg = create_log_message(status::Level::LEVELNAME);
+///      shared::Logging::MessageBuilder::Ref msg = create_log_message(status::Level::LEVELNAME);
 ///      *msg << arg << ... ;
 ///      ...
 ///      msg->submit();
@@ -82,8 +82,8 @@
 /// file needs to be included.
 
 #define custom_log_msg(level, flow, timepoint, path, lineno, function) \
-    picarro::logging::MessageBuilder::create_shared(                        \
-        &picarro::logging::message_dispatcher,                              \
+    shared::logging::MessageBuilder::create_shared(                        \
+        &shared::logging::message_dispatcher,                              \
         log_scope,                                                     \
         level,                                                         \
         flow,                                                          \
@@ -95,50 +95,50 @@
 #define default_log_msg(level)  \
     custom_log_msg(             \
         level,                  \
-        picarro::status::Flow::NONE, \
-        picarro::dt::Clock::now(),   \
+        shared::status::Flow::NONE, \
+        shared::dt::Clock::now(),   \
         __builtin_FILE(),       \
         __builtin_LINE(),       \
         __builtin_FUNCTION())
 
 #define log_message(level, ...) default_log_msg(level)->add(__VA_ARGS__).dispatch()
-#define log_trace(...)          log_message(picarro::status::Level::TRACE, __VA_ARGS__)
-#define log_debug(...)          log_message(picarro::status::Level::DEBUG, __VA_ARGS__)
-#define log_info(...)           log_message(picarro::status::Level::INFO, __VA_ARGS__)
-#define log_notice(...)         log_message(picarro::status::Level::NOTICE, __VA_ARGS__)
-#define log_warning(...)        log_message(picarro::status::Level::WARNING, __VA_ARGS__)
-#define log_error(...)          log_message(picarro::status::Level::ERROR, __VA_ARGS__)
-#define log_critical(...)       log_message(picarro::status::Level::CRITICAL, __VA_ARGS__)
-#define log_fatal(...)          log_message(picarro::status::Level::FATAL, __VA_ARGS__)
+#define log_trace(...)          log_message(shared::status::Level::TRACE, __VA_ARGS__)
+#define log_debug(...)          log_message(shared::status::Level::DEBUG, __VA_ARGS__)
+#define log_info(...)           log_message(shared::status::Level::INFO, __VA_ARGS__)
+#define log_notice(...)         log_message(shared::status::Level::NOTICE, __VA_ARGS__)
+#define log_warning(...)        log_message(shared::status::Level::WARNING, __VA_ARGS__)
+#define log_error(...)          log_message(shared::status::Level::ERROR, __VA_ARGS__)
+#define log_critical(...)       log_message(shared::status::Level::CRITICAL, __VA_ARGS__)
+#define log_fatal(...)          log_message(shared::status::Level::FATAL, __VA_ARGS__)
 
 /// Construct messages from an format template and corresponding arguments.
 /// Arguments must be supported by the "<<" output stream operator.  See
 /// [string/format.h++](../string/format.h++) for details.
 
 #define logf_message(level, ...) default_log_msg(level)->format(__VA_ARGS__).dispatch()
-#define logf_trace(...)          logf_message(picarro::status::Level::TRACE, __VA_ARGS__)
-#define logf_debug(...)          logf_message(picarro::status::Level::DEBUG, __VA_ARGS__)
-#define logf_info(...)           logf_message(picarro::status::Level::INFO, __VA_ARGS__)
-#define logf_notice(...)         logf_message(picarro::status::Level::NOTICE, __VA_ARGS__)
-#define logf_warning(...)        logf_message(picarro::status::Level::WARNING, __VA_ARGS__)
-#define logf_error(...)          logf_message(picarro::status::Level::FAILED, __VA_ARGS__)
-#define logf_critical(...)       logf_message(picarro::status::Level::CRITICAL, __VA_ARGS__)
-#define logf_fatal(...)          logf_message(picarro::status::Level::FATAL, __VA_ARGS__)
+#define logf_trace(...)          logf_message(shared::status::Level::TRACE, __VA_ARGS__)
+#define logf_debug(...)          logf_message(shared::status::Level::DEBUG, __VA_ARGS__)
+#define logf_info(...)           logf_message(shared::status::Level::INFO, __VA_ARGS__)
+#define logf_notice(...)         logf_message(shared::status::Level::NOTICE, __VA_ARGS__)
+#define logf_warning(...)        logf_message(shared::status::Level::WARNING, __VA_ARGS__)
+#define logf_error(...)          logf_message(shared::status::Level::FAILED, __VA_ARGS__)
+#define logf_critical(...)       logf_message(shared::status::Level::CRITICAL, __VA_ARGS__)
+#define logf_fatal(...)          logf_message(shared::status::Level::FATAL, __VA_ARGS__)
 
 #ifndef NDEBUG
 /// Evaluate a condition, exit with a fatal error if it fails.
 #define assertf(cond, ...)                                                           \
     if (!(cond))                                                                     \
     {                                                                                \
-        logf_message(picarro::status::Level::FATAL, "Assertion failed: "s + __VA_ARGS__); \
+        logf_message(shared::status::Level::FATAL, "Assertion failed: "s + __VA_ARGS__); \
         throw std::terminate;                                                        \
     }
 #else
 #define assertf(cond, ...)
 #endif
 
-namespace picarro::logging
+namespace shared::logging
 {
     extern SyncDispatcher message_dispatcher;
     extern AsyncDispatcher structured_dispatcher;
-}  // namespace picarro::logging
+}  // namespace shared::logging

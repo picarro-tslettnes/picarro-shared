@@ -7,7 +7,7 @@
 
 #include "python-containerobject.h++"
 
-namespace picarro::python
+namespace shared::python
 {
     std::vector<std::string> ContainerObject::dir() const
     {
@@ -65,4 +65,4 @@ namespace picarro::python
         return kvmap;
     }
 
-}  // namespace picarro::python
+}  // namespace shared::python

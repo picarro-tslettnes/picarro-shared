@@ -17,7 +17,7 @@
 #include <optional>
 #include <mutex>
 
-namespace picarro::zmq
+namespace shared::zmq
 {
     define_log_scope("zmq");
 
@@ -135,4 +135,4 @@ namespace picarro::zmq
         ::zmq::socket_type socket_type_;
     };
 
-}  // namespace picarro::zmq
+}  // namespace shared::zmq

@@ -12,7 +12,7 @@
 
 #include <thread>
 
-namespace picarro::dds
+namespace shared::dds
 {
     //==========================================================================
     /// @brief Mix-in base for publishers & subscribers
@@ -56,4 +56,4 @@ namespace picarro::dds
     public:
         int domain_id_;
     };
-}  // namespace picarro::dds
+}  // namespace shared::dds

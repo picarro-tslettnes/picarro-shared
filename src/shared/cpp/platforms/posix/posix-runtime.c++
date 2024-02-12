@@ -12,7 +12,7 @@
 #include <unistd.h>  // isatty()
 #include <stdlib.h>  // putenv()
 
-namespace picarro::platform
+namespace shared::platform
 {
     PosixRunTimeProvider::PosixRunTimeProvider()
         : Super("PosixRunTimeProvider")
@@ -31,4 +31,4 @@ namespace picarro::platform
             throw std::system_error(err, std::system_category());
         }
     }
-}  // namespace picarro::platform
+}  // namespace shared::platform

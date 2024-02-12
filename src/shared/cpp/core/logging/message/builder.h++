@@ -12,7 +12,7 @@
 #include "types/create-shared.h++"
 #include "platform/process.h++"
 
-namespace picarro::logging
+namespace shared::logging
 {
     //==========================================================================
     /// @class MessageBuilder
@@ -111,4 +111,4 @@ namespace picarro::logging
         bool is_applicable_;
     };
 
-}  // namespace picarro::logging
+}  // namespace shared::logging

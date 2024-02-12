@@ -12,7 +12,7 @@
 #include "protobuf-message.h++"
 #include "protobuf-inline.h++"
 
-namespace picarro::demo::grpc
+namespace demo::grpc
 {
     void ClientImpl::initialize()
     {
@@ -27,7 +27,7 @@ namespace picarro::demo::grpc
             Picarro::Demo::Signal::kGreeting,
             [&](const Picarro::Demo::Signal &signal) {
                 signal_greeting.emit(
-                    static_cast<signal::MappingChange>(signal.change()),
+                    static_cast<shared::signal::MappingChange>(signal.change()),
                     signal.key(),
                     protobuf::decoded<Greeting>(signal.greeting()));
             });
@@ -75,4 +75,4 @@ namespace picarro::demo::grpc
         ClientImplBase::stop_watching();
     }
 
-}  // namespace picarro::demo::grpc
+}  // namespace demo::grpc

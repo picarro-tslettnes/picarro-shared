@@ -7,7 +7,7 @@
 
 #include "partslist.h++"
 
-namespace picarro::types
+namespace shared::types
 {
     void PartsList::add(const std::string &tag,
                         const std::string &value,
@@ -31,4 +31,4 @@ namespace picarro::types
         stream << "}";
     }
 
-}  // namespace picarro::types
+}  // namespace shared::types

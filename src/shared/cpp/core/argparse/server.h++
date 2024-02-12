@@ -8,7 +8,7 @@
 #pragma once
 #include "common.h++"
 
-namespace picarro::argparse
+namespace shared::argparse
 {
     //==========================================================================
     /// Option parser for server applications
@@ -35,4 +35,4 @@ namespace picarro::argparse
         // std::string interface;
     };
 
-}  // namespace picarro::argparse
+}  // namespace shared::argparse

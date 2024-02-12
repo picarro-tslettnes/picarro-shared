@@ -11,9 +11,9 @@
 
 #include <memory>
 
-namespace picarro
+namespace shared
 {
-    extern std::shared_ptr<picarro::SettingsStore> settings;
+    extern std::shared_ptr<shared::SettingsStore> settings;
 
     void init_settings(const types::PathList &files = {platform::path->exec_name(true), "defaults"});
-}  // namespace picarro
+}  // namespace shared

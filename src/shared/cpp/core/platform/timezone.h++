@@ -9,7 +9,7 @@
 #include "provider.h++"
 #include "chrono/date-time.h++"
 
-namespace picarro::platform
+namespace shared::platform
 {
     class TimeZoneProvider : public Provider
     {
@@ -31,4 +31,4 @@ namespace picarro::platform
     };
 
     extern ProviderProxy<TimeZoneProvider> timezone;
-}  // namespace picarro::platform
+}  // namespace shared::platform

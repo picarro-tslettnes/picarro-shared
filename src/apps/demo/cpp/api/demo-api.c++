@@ -11,7 +11,7 @@
 // Shared modules
 #include "string/format.h++"
 
-namespace picarro::demo
+namespace demo
 {
     //==========================================================================
     /// @class API
@@ -19,7 +19,7 @@ namespace picarro::demo
     API::API(
         const std::string &identity,
         const std::string &implementation,
-        const picarro::dt::TimePoint &birth)
+        const shared::dt::TimePoint &birth)
         : identity_(identity),
           implementation_(implementation),
           birth_(birth)
@@ -27,7 +27,7 @@ namespace picarro::demo
     }
 
     void API::say_hello(const std::string &message,
-                        const picarro::types::KeyValueMap &data)
+                        const shared::types::KeyValueMap &data)
     {
         this->say_hello(Greeting(message,
                                  this->identity(),
@@ -46,8 +46,8 @@ namespace picarro::demo
         return this->implementation_;
     }
 
-    picarro::dt::TimePoint API::birth() const
+    shared::dt::TimePoint API::birth() const
     {
         return this->birth_;
     }
-}  // namespace picarro::demo
+}  // namespace demo

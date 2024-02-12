@@ -26,7 +26,7 @@
     }
 
 /// Miscellaneous string manipulations
-namespace picarro::str
+namespace shared::str
 {
     //    constexpr auto WHITESPACE = { ' ', '\t', '\r', '\n', 'f', '\0' };
 
@@ -279,4 +279,4 @@ namespace picarro::str
 
     //std::string mangle_name (const std::string &name, const std::regex &tokens="(\\W)");
 
-}  // namespace picarro::str
+}  // namespace shared::str

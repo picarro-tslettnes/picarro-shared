@@ -12,7 +12,7 @@
 
 #include <sstream>
 
-namespace picarro::types
+namespace shared::types
 {
 
     Value::Value()
@@ -937,4 +937,4 @@ namespace picarro::types
                    : static_cast<ValueType>(base.index());
     }
 
-}  // namespace picarro::types
+}  // namespace shared::types

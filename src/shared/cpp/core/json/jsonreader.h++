@@ -10,7 +10,7 @@
 #include "types/value.h++"
 #include "types/filesystem.h++"
 
-namespace picarro::json
+namespace shared::json
 {
     class JsonReader
     {
@@ -31,4 +31,4 @@ namespace picarro::json
     private:
         fs::path path_;
     };
-}  // namespace picarro::json
+}  // namespace shared::json

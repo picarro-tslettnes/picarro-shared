@@ -7,7 +7,7 @@
 
 #include "blockingqueue.h++"
 
-namespace picarro::types
+namespace shared::types
 {
     BlockingQueueBase::BlockingQueueBase(
         unsigned int maxsize,
@@ -61,4 +61,4 @@ namespace picarro::types
             }
         }
     }
-}  // namespace picarro::types
+}  // namespace shared::types

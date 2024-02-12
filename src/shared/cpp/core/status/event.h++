@@ -18,7 +18,7 @@
 #include <string>
 #include <ostream>
 
-namespace picarro::status
+namespace shared::status
 {
     //==========================================================================
     // Symbols provided here.
@@ -119,4 +119,4 @@ namespace picarro::status
 
     bool operator==(const Event::Ref &lhs, const Event::Ref &rhs);
 
-}  // namespace picarro::status
+}  // namespace shared::status

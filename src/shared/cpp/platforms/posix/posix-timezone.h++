@@ -10,7 +10,7 @@
 
 #include <mutex>
 
-namespace picarro::platform
+namespace shared::platform
 {
     class PosixTimeZoneProvider : public TimeZoneProvider
     {
@@ -36,4 +36,4 @@ namespace picarro::platform
     private:
         std::recursive_mutex mtx;
     };
-}  // namespace picarro::platform
+}  // namespace shared::platform

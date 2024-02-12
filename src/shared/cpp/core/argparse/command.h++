@@ -8,7 +8,7 @@
 #pragma once
 #include "client.h++"
 
-namespace picarro::argparse
+namespace shared::argparse
 {
     //==========================================================================
     /// Option parser for command-line utilities with subcommands
@@ -52,7 +52,7 @@ namespace picarro::argparse
 
     protected:
         template <class T>
-        std::optional<T> pop_from_map(const picarro::types::SymbolMap<T> &map)
+        std::optional<T> pop_from_map(const shared::types::SymbolMap<T> &map)
         {
             std::string arg = this->pop_arg(map.joined_symbols());
             if (const std::optional<T> &value = map.from_string(arg))
@@ -78,4 +78,4 @@ namespace picarro::argparse
         std::vector<CommandDescription> command_descriptions;
     };
 
-}  // namespace picarro::argparse
+}  // namespace shared::argparse

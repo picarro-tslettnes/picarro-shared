@@ -7,7 +7,7 @@
 
 #include "scope.h++"
 
-namespace picarro::logging
+namespace shared::logging
 {
     //==========================================================================
     // Scope
@@ -60,4 +60,4 @@ namespace picarro::logging
         return log_scope->threshold;
     }
 
-}  // namespace picarro::logging
+}  // namespace shared::logging

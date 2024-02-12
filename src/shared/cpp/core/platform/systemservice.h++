@@ -9,7 +9,7 @@
 #include "provider.h++"
 #include "types/filesystem.h++"
 
-namespace picarro::platform
+namespace shared::platform
 {
     /// @brief Abstract provider for runtime related functions
     class SystemServiceProvider : public Provider
@@ -36,4 +36,4 @@ namespace picarro::platform
     };
 
     extern ProviderProxy<SystemServiceProvider> system_service;
-}  // namespace picarro::platform
+}  // namespace shared::platform

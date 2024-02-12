@@ -18,7 +18,7 @@
 #include <functional>
 
 
-namespace picarro::demo::zmq
+namespace demo::zmq
 {
     void SignalHandler::initialize()
     {
@@ -26,7 +26,7 @@ namespace picarro::demo::zmq
             Picarro::Demo::Signal::kGreeting,
             [&](const Picarro::Demo::Signal &signal) {
                 signal_greeting.emit(
-                    static_cast<signal::MappingChange>(signal.change()),
+                    static_cast<shared::signal::MappingChange>(signal.change()),
                     signal.key(),
                     protobuf::decoded<Greeting>(signal.greeting()));
             });
@@ -47,4 +47,4 @@ namespace picarro::demo::zmq
         Super::handle_message(message);
     }
 
-}  // namespace picarro::demo::zmq
+}  // namespace demo::zmq

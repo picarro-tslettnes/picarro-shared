@@ -8,7 +8,7 @@
 #pragma once
 #include "platform/process.h++"
 
-namespace picarro::platform
+namespace shared::platform
 {
     /// @brief Process invocation on Linux
     class WindowsProcessProvider : public ProcessProvider
@@ -24,4 +24,4 @@ namespace picarro::platform
         PID process_id() const override;
     };
 
-}  // namespace picarro::platform
+}  // namespace shared::platform

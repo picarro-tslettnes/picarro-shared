@@ -8,7 +8,7 @@
 #include "symbols.h++"
 
 /// Default filesystem paths.
-namespace picarro::platform
+namespace shared::platform
 {
     ProviderProxy<SymbolsProvider> symbols("symbols");
-}  // namespace picarro::platform
+}  // namespace shared::platform

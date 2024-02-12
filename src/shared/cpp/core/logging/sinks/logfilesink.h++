@@ -13,7 +13,7 @@
 
 #include <fstream>
 
-namespace picarro::logging
+namespace shared::logging
 {
     class LogFileSink : public MessageSink,
                         public RotatingPath,
@@ -40,4 +40,4 @@ namespace picarro::logging
     private:
         std::shared_ptr<std::ofstream> stream_;
     };
-}  // namespace picarro::logging
+}  // namespace shared::logging

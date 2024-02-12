@@ -10,7 +10,7 @@
 #include "translate-idl-inline.h++"
 #include "platform/symbols.h++"
 
-namespace picarro::dds
+namespace shared::dds
 {
     DDSLogger::DDSLogger(const std::string &channel_name, int domain_id)
         : Super(),
@@ -37,8 +37,8 @@ namespace picarro::dds
     {
         if (this->log_writer)
         {
-            this->log_writer->write(picarro::idl::encoded<Picarro::Status::LogMessage>(*msg));
+            this->log_writer->write(idl::encoded<Picarro::Status::LogMessage>(*msg));
         }
     }
 
-}  // namespace picarro::logging
+}  // namespace shared::logging

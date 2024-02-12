@@ -13,18 +13,18 @@
 #include "types/create-shared.h++"
 #include <dds/pub/ddspub.hpp>
 
-namespace picarro::demo::dds
+namespace demo::dds
 {
     //==========================================================================
     // @class Publisher
     // @brief Publish locally-emitted demo signals over DDS
 
-    class Publisher : public picarro::dds::Publisher,
-                      public picarro::types::enable_create_shared<Publisher>
+    class Publisher : public shared::dds::Publisher,
+                      public shared::types::enable_create_shared<Publisher>
     {
         // Convencience alias
         using This = Publisher;
-        using Super = picarro::dds::Publisher;
+        using Super = shared::dds::Publisher;
 
     protected:
         Publisher(const std::string &channel_name, int domain_id);
@@ -36,7 +36,7 @@ namespace picarro::demo::dds
     private:
         void on_time_update(const TimeData &time_data);
 
-        void on_greeting_update(picarro::signal::MappingChange change,
+        void on_greeting_update(shared::signal::MappingChange change,
                                 const std::string &identity,
                                 const Greeting &greeting);
 
@@ -44,4 +44,4 @@ namespace picarro::demo::dds
         DataWriterRef<Picarro::Demo::TimeData> time_writer;
         DataWriterRef<Picarro::Demo::Greeting> greeting_writer;
     };
-}  // namespace picarro::demo::dds
+}  // namespace demo::dds

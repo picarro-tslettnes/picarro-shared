@@ -15,7 +15,7 @@
 #include <memory>
 #include <string>
 
-namespace picarro::platform
+namespace shared::platform
 {
     class Provider;
     using ProviderRef = std::shared_ptr<Provider>;
@@ -153,4 +153,4 @@ namespace picarro::platform
         std::string typeName;
         std::shared_ptr<Domain> provider;
     };
-}  // namespace picarro::platform
+}  // namespace shared::platform

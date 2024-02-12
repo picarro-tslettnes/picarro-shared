@@ -18,7 +18,7 @@
 #include <map>
 #include <mutex>
 
-namespace picarro::signal
+namespace shared::signal
 {
     //==========================================================================
     /// @class BaseSignal
@@ -546,4 +546,4 @@ namespace picarro::signal
         std::unordered_map<KeyType, DataType> cached_;
         std::unordered_map<std::string, Slot> slots_;
     };
-}  // namespace picarro::signal
+}  // namespace shared::signal

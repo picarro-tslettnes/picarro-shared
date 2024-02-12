@@ -10,7 +10,7 @@
 #include "chrono/date-time.h++"
 #include "types/value.h++"
 
-namespace picarro::idl
+namespace idl
 {
     //==========================================================================
     // Encode/decode Boolean value
@@ -24,20 +24,20 @@ namespace picarro::idl
     //==========================================================================
     // Encode/decode Unsigned Integer value
 
-    void encode(picarro::types::largest_uint native,
+    void encode(shared::types::largest_uint native,
                 Picarro::Common::UnsignedValue *idl) noexcept;
 
     void decode(const Picarro::Common::UnsignedValue &idl,
-                picarro::types::largest_uint *native) noexcept;
+                shared::types::largest_uint *native) noexcept;
 
     //==========================================================================
     // Encode/decode Signed Integer value
 
-    void encode(picarro::types::largest_sint native,
+    void encode(shared::types::largest_sint native,
                 Picarro::Common::SignedValue *idl) noexcept;
 
     void decode(const Picarro::Common::SignedValue &idl,
-                picarro::types::largest_sint *native) noexcept;
+                shared::types::largest_sint *native) noexcept;
 
     //==========================================================================
     // Encode/decode real value
@@ -51,29 +51,29 @@ namespace picarro::idl
     //==========================================================================
     // Encode/decode Complex value
 
-    void encode(const picarro::types::complex &native,
+    void encode(const shared::types::complex &native,
                 Picarro::Common::ComplexValue *idl) noexcept;
 
     void decode(const Picarro::Common::ComplexValue &idl,
-                picarro::types::complex *native) noexcept;
+                shared::types::complex *native) noexcept;
 
     //==========================================================================
     // Encode/decode Timestamp
 
-    void encode(const picarro::dt::TimePoint &native,
+    void encode(const shared::dt::TimePoint &native,
                 Picarro::Common::Timestamp *idl) noexcept;
 
     void decode(const Picarro::Common::Timestamp &idl,
-                picarro::dt::TimePoint *native) noexcept;
+                shared::dt::TimePoint *native) noexcept;
 
     //==========================================================================
     // Encode/decode Duration
 
-    void encode(const picarro::dt::Duration &native,
+    void encode(const shared::dt::Duration &native,
                 Picarro::Common::Duration *idl) noexcept;
 
     void decode(const Picarro::Common::Duration &idl,
-                picarro::dt::Duration *native) noexcept;
+                shared::dt::Duration *native) noexcept;
 
     //==========================================================================
     // Encode/decode String value
@@ -84,4 +84,4 @@ namespace picarro::idl
     void decode(const Picarro::Common::StringValue &idl,
                 std::string *native) noexcept;
 
-}  // namespace picarro::idl
+}  // namespace idl

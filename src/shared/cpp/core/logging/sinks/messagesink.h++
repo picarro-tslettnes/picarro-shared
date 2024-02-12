@@ -13,7 +13,7 @@
 #include <memory>
 #include <ostream>
 
-namespace picarro::logging
+namespace shared::logging
 {
     //==========================================================================
     /// \class MessageSink
@@ -46,4 +46,4 @@ namespace picarro::logging
     private:
         bool include_context_;
     };
-}  // namespace picarro::logging
+}  // namespace shared::logging

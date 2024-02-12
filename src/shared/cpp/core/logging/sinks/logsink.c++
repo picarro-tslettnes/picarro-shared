@@ -7,7 +7,7 @@
 
 #include "logsink.h++"
 
-namespace picarro::logging
+namespace shared::logging
 {
     //==========================================================================
     // LogSink
@@ -50,4 +50,4 @@ namespace picarro::logging
         return this->threshold_;
     }
 
-}  // namespace picarro::logging
+}  // namespace shared::logging

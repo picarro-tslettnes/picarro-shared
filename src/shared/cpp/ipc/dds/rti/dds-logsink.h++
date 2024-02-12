@@ -11,11 +11,11 @@
 #include "logging/sinks/messagesink.h++"
 #include "types/create-shared.h++"
 
-namespace picarro::dds
+namespace shared::dds
 {
     class DDSLogger : public logging::MessageSink,
                       public Publisher,
-                      public picarro::types::enable_create_shared<DDSLogger>
+                      public shared::types::enable_create_shared<DDSLogger>
     {
         using This = DDSLogger;
         using Super = logging::MessageSink;
@@ -32,4 +32,4 @@ namespace picarro::dds
         DataWriterRef<Picarro::Status::LogMessage> log_writer;
     };
 
-}  // namespace picarro::dds
+}  // namespace shared::dds

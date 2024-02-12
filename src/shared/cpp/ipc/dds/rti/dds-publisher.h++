@@ -12,7 +12,7 @@
 #include <dds/pub/ddspub.hpp>
 #include <dds/domain/DomainParticipant.hpp>
 
-namespace picarro::dds
+namespace shared::dds
 {
     //==========================================================================
     // @class PubSubChannnel
@@ -88,20 +88,20 @@ namespace picarro::dds
 
         template <class T>
         void publish_change(DataWriterRef<T> &writer,
-                            picarro::signal::MappingChange change,
+                            shared::signal::MappingChange change,
                             const T &update)
         {
             switch (change)
             {
-            case picarro::signal::MAP_NONE:
+            case shared::signal::MAP_NONE:
                 break;
 
-            case picarro::signal::MAP_ADDITION:
-            case picarro::signal::MAP_UPDATE:
+            case shared::signal::MAP_ADDITION:
+            case shared::signal::MAP_UPDATE:
                 this->publish<T>(writer, update);
                 break;
 
-            case picarro::signal::MAP_REMOVAL:
+            case shared::signal::MAP_REMOVAL:
                 logf_trace("Disposing: %s", writer->lookup_instance(update));
                 writer->dispose_instance(writer->lookup_instance(update));
                 break;
@@ -109,4 +109,4 @@ namespace picarro::dds
         }
     };
 
-}  // namespace picarro::dds
+}  // namespace shared::dds

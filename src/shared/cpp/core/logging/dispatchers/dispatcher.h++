@@ -12,7 +12,7 @@
 #include <memory>
 #include <set>
 
-namespace picarro::logging
+namespace shared::logging
 {
     class Dispatcher
     {
@@ -31,4 +31,4 @@ namespace picarro::logging
         std::set<Sink::Ref> sinks_;
     };
 
-}  // namespace picarro::logging
+}  // namespace shared::logging

@@ -13,7 +13,7 @@
 #include <thread>
 #include <memory>
 
-namespace picarro::zmq
+namespace shared::zmq
 {
     class Publisher : public Host
     {
@@ -29,4 +29,4 @@ namespace picarro::zmq
                      const types::ByteVector &bytes);
     };
 
-}  // namespace picarro::zmq
+}  // namespace shared::zmq

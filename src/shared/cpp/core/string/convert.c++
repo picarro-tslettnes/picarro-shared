@@ -13,7 +13,7 @@
 #include <unordered_map>
 #include <string>
 
-namespace picarro::str
+namespace shared::str
 {
     void checkstream(const std::istream &is, const std::string &s, const std::type_info &ti)
     {
@@ -21,7 +21,7 @@ namespace picarro::str
         {
             throw std::invalid_argument(
                 "Failed to convert string literal to " +
-                picarro::platform::symbols->cpp_demangle(ti.name(), false) +
+                shared::platform::symbols->cpp_demangle(ti.name(), false) +
                 ": \"" + s + "\"");
         }
     }
@@ -73,4 +73,4 @@ namespace picarro::str
         throw std::invalid_argument("not a boolean value: \"" + s + "\"");
     }
 
-}  // namespace picarro::str
+}  // namespace shared::str

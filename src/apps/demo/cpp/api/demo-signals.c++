@@ -8,8 +8,8 @@
 // Application specific modules
 #include "demo-signals.h++"
 
-namespace picarro::demo
+namespace demo
 {
-    picarro::signal::Signal<TimeData> signal_time("picarro::demo::signal_time");
-    picarro::signal::MappingSignal<Greeting> signal_greeting("picarro::demo::signal_greeting", true);
-}  // namespace picarro::demo
+    shared::signal::Signal<TimeData> signal_time("demo::signal_time");
+    shared::signal::MappingSignal<Greeting> signal_greeting("demo::signal_greeting", true);
+}  // namespace demo

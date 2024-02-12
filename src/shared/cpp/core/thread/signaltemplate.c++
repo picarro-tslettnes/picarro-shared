@@ -9,7 +9,7 @@
 #include "logging/logging.h++"
 #include "status/exceptions.h++"
 
-namespace picarro::signal
+namespace shared::signal
 {
     define_log_scope("signal");
 
@@ -56,4 +56,4 @@ namespace picarro::signal
         }
     }
 
-}  // namespace picarro::signal
+}  // namespace shared::signal

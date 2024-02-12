@@ -8,7 +8,7 @@
 #pragma once
 #include "common.h++"
 
-namespace picarro::argparse
+namespace shared::argparse
 {
     //==========================================================================
     /// Option parser for client apps
@@ -26,4 +26,4 @@ namespace picarro::argparse
         std::string host;
         uint timeout;
     };
-}  // namespace picarro::argparse
+}  // namespace shared::argparse

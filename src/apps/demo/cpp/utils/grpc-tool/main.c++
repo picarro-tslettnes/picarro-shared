@@ -13,25 +13,25 @@
 
 int main(int argc, char** argv)
 {
-    picarro::application::initialize(argc, argv);
+    shared::application::initialize(argc, argv);
 
-    picarro::demo::options = std::make_unique<picarro::demo::Options>("gRPC");
-    picarro::demo::options->apply(argc, argv);
+    demo::options = std::make_unique<demo::Options>("gRPC");
+    demo::options->apply(argc, argv);
 
     logf_debug("Creating gRPC demo provider");
-    picarro::demo::provider = picarro::demo::grpc::ClientImpl::create_shared(
-        picarro::demo::options->identity,
-        picarro::demo::options->host);
+    demo::provider = demo::grpc::ClientImpl::create_shared(
+        demo::options->identity,
+        demo::options->host);
 
     logf_debug("Initializing gRPC demo provider");
-    picarro::demo::provider->initialize();
+    demo::provider->initialize();
 
     logf_debug("Handling command in gRPC demo provider");
-    bool success = picarro::demo::options->handle_command();
+    bool success = demo::options->handle_command();
 
     logf_debug("Deinitializing gRPC demo provider");
-    picarro::demo::provider->deinitialize();
+    demo::provider->deinitialize();
 
-    picarro::application::deinitialize();
+    shared::application::deinitialize();
     return success ? 0 : -1;
 }

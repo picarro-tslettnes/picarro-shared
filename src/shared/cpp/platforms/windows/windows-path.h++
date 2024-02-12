@@ -8,7 +8,7 @@
 #pragma once
 #include "platform/path.h++"
 
-namespace picarro::platform
+namespace shared::platform
 {
     class WindowsPathProvider : public PathProvider
     {
@@ -36,4 +36,4 @@ namespace picarro::platform
         fs::path fs_root() const;
     };
 
-}  // namespace picarro::platform
+}  // namespace shared::platform

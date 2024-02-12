@@ -16,7 +16,7 @@
 #include <mutex>
 #include <thread>
 
-namespace picarro
+namespace shared
 {
     /// @class Scheduler
     /// @brief Schedule callbacks to be invoked at specified time intervals.
@@ -243,4 +243,4 @@ namespace picarro
     };
 
     extern Scheduler scheduler;
-}  // namespace picarro
+}  // namespace shared

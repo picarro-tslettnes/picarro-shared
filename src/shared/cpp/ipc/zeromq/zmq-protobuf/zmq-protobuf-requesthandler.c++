@@ -12,7 +12,7 @@
 #include "logging/logging.h++"
 #include "status/exceptions.h++"
 
-namespace picarro::zmq
+namespace shared::zmq
 {
     ProtoBufRequestHandler::ProtoBufRequestHandler(const std::string &interface_name)
         : interface_name_(interface_name)
@@ -56,7 +56,7 @@ namespace picarro::zmq
 
                 error = std::make_shared<ProtoBufError>(
                     Picarro::RR::STATUS_FAILED,
-                    *picarro::exception::map_to_event(std::current_exception()));
+                    *shared::exception::map_to_event(std::current_exception()));
             }
         }
         else
@@ -96,4 +96,4 @@ namespace picarro::zmq
     {
         this->handler_map.clear();
     }
-}  // namespace picarro::zmq
+}  // namespace shared::zmq

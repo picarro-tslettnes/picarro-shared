@@ -9,7 +9,7 @@
 #include "logging/logging.h++"
 #include "status/exceptions.h++"
 
-namespace picarro::zmq
+namespace shared::zmq
 {
     Satellite::Satellite(const std::string &host_address,
                          const std::string &endpoint_type,
@@ -60,4 +60,4 @@ namespace picarro::zmq
                                  "tcp",
                                  "localhost");
     }
-}  // namespace picarro::zmq
+}  // namespace shared::zmq

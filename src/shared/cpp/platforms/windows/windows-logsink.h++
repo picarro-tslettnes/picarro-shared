@@ -12,7 +12,7 @@
 
 #include <windows.h>
 
-namespace picarro::platform
+namespace shared::platform
 {
     class WindowsLogSinkProvider : public LogSinkProvider
     {
@@ -32,4 +32,4 @@ namespace picarro::platform
         HANDLE event_log;
     };
 
-}  // namespace picarro::platform
+}  // namespace shared::platform

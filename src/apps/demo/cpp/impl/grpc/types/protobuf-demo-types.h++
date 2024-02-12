@@ -10,7 +10,7 @@
 #include "demo_types.pb.h"
 #include <ctime>
 
-namespace picarro::protobuf
+namespace protobuf
 {
     //==========================================================================
     // Greeting
@@ -26,4 +26,4 @@ namespace picarro::protobuf
     // TimeStruct
     void encode(const std::tm &tm, Picarro::Demo::TimeStruct *msg);
     void decode(const Picarro::Demo::TimeStruct &msg, std::tm *tm);
-}  // namespace picarro::protobuf
+}  // namespace shared::protobuf

@@ -9,7 +9,7 @@
 #include "zmq-filter.h++"
 #include "logging/logging.h++"
 
-namespace picarro::zmq
+namespace shared::zmq
 {
     Publisher::Publisher(const std::string &bind_address,
                          const std::string &channel_name)
@@ -31,4 +31,4 @@ namespace picarro::zmq
         this->send(bytes);
     }
 
-}  // namespace picarro::zmq
+}  // namespace shared::zmq

@@ -8,71 +8,71 @@
 #include "translate-idl-variant.h++"
 #include "translate-idl-inline.h++"
 
-namespace picarro::idl
+namespace idl
 {
     //==========================================================================
     // Encode/decode Value
 
-    void encode(const picarro::types::Value &value,
+    void encode(const shared::types::Value &value,
                 Picarro::Variant::Value *idl) noexcept
     {
         switch (value.type())
         {
-        case picarro::types::ValueType::NONE:
+        case shared::types::ValueType::NONE:
             idl->_d() = Picarro::Variant::ValueType::VT_NONE;
             break;
 
-        case picarro::types::ValueType::BOOL:
+        case shared::types::ValueType::BOOL:
             idl->value_bool(value.as_bool());
             break;
 
-        case picarro::types::ValueType::UINT:
+        case shared::types::ValueType::UINT:
             idl->value_uint(value.as_uint());
             break;
 
-        case picarro::types::ValueType::SINT:
+        case shared::types::ValueType::SINT:
             idl->value_sint(value.as_sint());
             break;
 
-        case picarro::types::ValueType::REAL:
+        case shared::types::ValueType::REAL:
             idl->value_real(value.as_real());
             break;
 
-        case picarro::types::ValueType::COMPLEX:
+        case shared::types::ValueType::COMPLEX:
             encode(value.as_complex(), &idl->value_complex());
             break;
 
-        case picarro::types::ValueType::CHAR:
+        case shared::types::ValueType::CHAR:
             idl->value_char(value.as_char());
             break;
 
-        case picarro::types::ValueType::STRING:
+        case shared::types::ValueType::STRING:
             idl->value_string(value.as_string());
             break;
 
-        case picarro::types::ValueType::BYTEVECTOR:
+        case shared::types::ValueType::BYTEVECTOR:
             idl->value_bytearray(value.as_bytevector());
             break;
 
-        case picarro::types::ValueType::TIMEPOINT:
+        case shared::types::ValueType::TIMEPOINT:
             encode(value.as_timepoint(), &idl->value_timestamp());
             break;
 
-        case picarro::types::ValueType::DURATION:
+        case shared::types::ValueType::DURATION:
             encode(value.as_duration(), &idl->value_duration());
             break;
 
-        case picarro::types::ValueType::VALUELIST:
+        case shared::types::ValueType::VALUELIST:
             // idl->value_sequence(
             //     encoded_shared<Picarro::Variant::ValueList>(value.as_valuelist()).list());
             break;
 
-        case picarro::types::ValueType::KVMAP:
+        case shared::types::ValueType::KVMAP:
             // idl->value_keyvaluemap(
             //     encoded_shared<Picarro::Variant::TaggedValueList>(value.as_kvmap()).list());
             break;
 
-        case picarro::types::ValueType::TVLIST:
+        case shared::types::ValueType::TVLIST:
             // idl->value_taggedsequence(
             //     encoded_shared<Picarro::Variant::TaggedValueList>(value.as_tvlist()).list());
             break;
@@ -80,7 +80,7 @@ namespace picarro::idl
     }
 
     void decode(const Picarro::Variant::Value &idl,
-                picarro::types::Value *value) noexcept
+                shared::types::Value *value) noexcept
     {
         switch (idl._d())
         {
@@ -97,11 +97,11 @@ namespace picarro::idl
             break;
 
         case Picarro::Variant::ValueType::VT_UINT:
-            value->emplace<picarro::types::largest_uint>(idl.value_uint());
+            value->emplace<shared::types::largest_uint>(idl.value_uint());
             break;
 
         case Picarro::Variant::ValueType::VT_SINT:
-            value->emplace<picarro::types::largest_sint>(idl.value_sint());
+            value->emplace<shared::types::largest_sint>(idl.value_sint());
             break;
 
         case Picarro::Variant::ValueType::VT_REAL:
@@ -109,7 +109,7 @@ namespace picarro::idl
             break;
 
         case Picarro::Variant::ValueType::VT_COMPLEX:
-            value->emplace<picarro::types::complex>(idl.value_complex().real(), idl.value_complex().imag());
+            value->emplace<shared::types::complex>(idl.value_complex().real(), idl.value_complex().imag());
             break;
 
         case Picarro::Variant::ValueType::VT_STRING:
@@ -124,17 +124,17 @@ namespace picarro::idl
         }
 
         case Picarro::Variant::ValueType::VT_TIMEPOINT:
-            value->emplace<picarro::dt::TimePoint>(decoded<picarro::dt::TimePoint>(idl.value_timestamp()));
+            value->emplace<shared::dt::TimePoint>(decoded<shared::dt::TimePoint>(idl.value_timestamp()));
             break;
 
         case Picarro::Variant::ValueType::VT_DURATION:
-            value->emplace<picarro::dt::Duration>(decoded<picarro::dt::Duration>(idl.value_duration()));
+            value->emplace<shared::dt::Duration>(decoded<shared::dt::Duration>(idl.value_duration()));
             break;
 
             // case Picarro::Variant::ValueType::VT_SEQUENCE:
             // {
             //     const auto &sequence = idl.value_sequence();
-            //     *value = decoded_shared<picarro::types::ValueList>(
+            //     *value = decoded_shared<shared::types::ValueList>(
             //         sequence.cbegin(),
             //         sequence.cend());
             //     break;
@@ -143,7 +143,7 @@ namespace picarro::idl
             // case Picarro::Variant::ValueType::VT_KEYVALUEMAP:
             // {
             //     const auto &sequence = idl.value_keyvaluemap();
-            //     *value = decoded_shared<picarro::types::KeyValueMap>(
+            //     *value = decoded_shared<shared::types::KeyValueMap>(
             //                  sequence.cbegin(),
             //                  sequence.cend());
             //     break;
@@ -152,7 +152,7 @@ namespace picarro::idl
             // case Picarro::Variant::ValueType::VT_TAGGEDSEQUENCE:
             // {
             //     const auto &sequence = idl.value_taggedsequence();
-            //     *value = decoded_shared<picarro::types::TaggedValueList>(
+            //     *value = decoded_shared<shared::types::TaggedValueList>(
             //         sequence.cbegin(),
             //         sequence.cend());
             //     break;
@@ -163,20 +163,20 @@ namespace picarro::idl
     //==========================================================================
     // Encode/decode TaggedValue
 
-    void encode(const picarro::types::TaggedValue &native,
+    void encode(const shared::types::TaggedValue &native,
                 Picarro::Variant::TaggedValue *idl) noexcept
     {
         encode(native.first, native.second, idl);
     }
 
     void decode(const Picarro::Variant::TaggedValue &idl,
-                picarro::types::TaggedValue *native) noexcept
+                shared::types::TaggedValue *native) noexcept
     {
-        *native = {idl.tag(), decoded<picarro::types::Value>(idl.value())};
+        *native = {idl.tag(), decoded<shared::types::Value>(idl.value())};
     }
 
-    void encode(const picarro::types::Tag &tag,
-                const picarro::types::Value &value,
+    void encode(const shared::types::Tag &tag,
+                const shared::types::Value &value,
                 Picarro::Variant::TaggedValue *idl) noexcept
     {
         idl->tag(tag.value_or(""));
@@ -185,7 +185,7 @@ namespace picarro::idl
 
     void decode(const Picarro::Variant::TaggedValue &idl,
                 std::string *tag,
-                picarro::types::Value *value) noexcept
+                shared::types::Value *value) noexcept
     {
         *tag = idl.tag();
         decode(idl.value(), value);
@@ -194,19 +194,19 @@ namespace picarro::idl
     //==========================================================================
     // Encode/decode ValueList
 
-    void encode(const picarro::types::ValueList &native,
+    void encode(const shared::types::ValueList &native,
                 Picarro::Variant::ValueList *idl) noexcept
     {
         idl->list().resize(native.size());
         auto it = idl->list().begin();
-        for (const picarro::types::Value &value : native)
+        for (const shared::types::Value &value : native)
         {
             encode(value, &*it++);
         }
     }
 
     void decode(const Picarro::Variant::ValueList &idl,
-                picarro::types::ValueList *native) noexcept
+                shared::types::ValueList *native) noexcept
     {
         native->clear();
         native->reserve(idl.list().size());
@@ -218,7 +218,7 @@ namespace picarro::idl
 
     void decode(std::vector<Picarro::Variant::Value>::const_iterator begin,
                 std::vector<Picarro::Variant::Value>::const_iterator end,
-                picarro::types::ValueList *native) noexcept
+                shared::types::ValueList *native) noexcept
     {
         native->clear();
         native->reserve(std::distance(begin, end));
@@ -231,19 +231,19 @@ namespace picarro::idl
     //==========================================================================
     // Encode/decode TaggedValueList
 
-    void encode(const picarro::types::TaggedValueList &native,
+    void encode(const shared::types::TaggedValueList &native,
                 Picarro::Variant::TaggedValueList *idl) noexcept
     {
         idl->list().resize(native.size());
         auto it = idl->list().begin();
-        for (const picarro::types::TaggedValue &tv : native)
+        for (const shared::types::TaggedValue &tv : native)
         {
             encode(tv, &*it++);
         }
     }
 
     void decode(const Picarro::Variant::TaggedValueList &idl,
-                picarro::types::TaggedValueList *native) noexcept
+                shared::types::TaggedValueList *native) noexcept
     {
         native->clear();
         native->reserve(idl.list().size());
@@ -255,7 +255,7 @@ namespace picarro::idl
 
     void decode(std::vector<Picarro::Variant::TaggedValue>::const_iterator begin,
                 std::vector<Picarro::Variant::TaggedValue>::const_iterator end,
-                picarro::types::TaggedValueList *native) noexcept
+                shared::types::TaggedValueList *native) noexcept
     {
         native->clear();
         native->reserve(std::distance(begin, end));
@@ -268,7 +268,7 @@ namespace picarro::idl
     //==========================================================================
     // Encode/decode KeyValueMap
 
-    void encode(const picarro::types::KeyValueMap &native,
+    void encode(const shared::types::KeyValueMap &native,
                 Picarro::Variant::TaggedValueList *idl) noexcept
     {
         idl->list().resize(native.size());
@@ -280,7 +280,7 @@ namespace picarro::idl
     }
 
     void decode(const Picarro::Variant::TaggedValueList &idl,
-                picarro::types::KeyValueMap *native) noexcept
+                shared::types::KeyValueMap *native) noexcept
     {
         native->clear();
         for (const auto &tv : idl.list())
@@ -289,4 +289,4 @@ namespace picarro::idl
         }
     }
 
-}  // namespace picarro::idl
+}  // namespace idl

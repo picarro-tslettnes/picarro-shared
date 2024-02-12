@@ -11,7 +11,7 @@
 #include "logging/logging.h++"
 //#include "errnos.h"
 
-namespace picarro::grpc
+namespace shared::grpc
 {
     ServiceHandlerBase::ServiceHandlerBase(const std::string &full_service_name)
         : Base("gRPC Service", full_service_name)
@@ -35,7 +35,7 @@ namespace picarro::grpc
                                        const int &lineno,
                                        const std::string &function)
     {
-        Status status(*picarro::exception::map_to_event(e));
+        Status status(*shared::exception::map_to_event(e));
         this->log_status(status, operation, flow, path, lineno, function);
         return status;
     }
@@ -135,8 +135,8 @@ namespace picarro::grpc
         {
             ss << "request from " << peer << ": ";
         }
-        ss << function << "(" << picarro::protobuf::to_string(request) << ")";
+        ss << function << "(" << ::protobuf::to_string(request) << ")";
         return ss.str();
     }
 
-}  // namespace picarro::grpc
+}  // namespace shared::grpc

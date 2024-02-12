@@ -7,8 +7,8 @@
 
 #include "timezone.h++"
 
-namespace picarro::platform
+namespace shared::platform
 {
     ProviderProxy<TimeZoneProvider> timezone("timezone");
 
-}  // namespace picarro::platform
+}  // namespace shared::platform

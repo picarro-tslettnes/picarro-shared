@@ -7,7 +7,7 @@
 
 #include "jsondecoder.h++"
 
-namespace picarro::json
+namespace shared::json
 {
     types::Value JsonDecoder::decodeValue(const rapidjson::Value &jv)
     {
@@ -80,4 +80,4 @@ namespace picarro::json
         }
         return kvmap;
     }
-}  // namespace picarro::json
+}  // namespace shared::json

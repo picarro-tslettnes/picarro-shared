@@ -12,7 +12,7 @@
 
 #include "platform/symbols.h++"
 
-namespace picarro::grpc
+namespace shared::grpc
 {
     //==========================================================================
     /// @class SignalServiceWrapper<ServiceT>
@@ -106,4 +106,4 @@ namespace picarro::grpc
         }
     };
 
-}  // namespace picarro::grpc
+}  // namespace shared::grpc

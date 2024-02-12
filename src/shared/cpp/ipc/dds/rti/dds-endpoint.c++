@@ -10,7 +10,7 @@
 
 #include <dds/domain/find.hpp>
 
-namespace picarro::dds
+namespace shared::dds
 {
     Endpoint::Endpoint(const std::string &endpoint_type,
                        const std::string &channel_name,
@@ -43,4 +43,4 @@ namespace picarro::dds
         }
     }
 
-}  // namespace picarro::dds
+}  // namespace shared::dds

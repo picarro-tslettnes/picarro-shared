@@ -8,7 +8,7 @@
 #include "windows-timezone.h++"
 #include <sstream>
 
-namespace picarro::platform
+namespace shared::platform
 {
     WindowsTimeZoneProvider::WindowsTimeZoneProvider()
         : Super("WindowsTimeZoneProvider")
@@ -87,7 +87,7 @@ namespace picarro::platform
             CP_UTF8,           // codepage
             0,                 // dwFlags
             wstr.data(),       // lpWiderCharStr
-            (int)wstr.size(),  // picarroWideChar
+            (int)wstr.size(),  // sharedWideChar
             nullptr,           // lpMultiByteStr
             0,                 // cbMultiByte
             nullptr,           // lpDefaultChar
@@ -99,7 +99,7 @@ namespace picarro::platform
             CP_UTF8,           // codepage
             0,                 // dwFlags
             wstr.data(),       // lpWiderCharStr
-            (int)wstr.size(),  // picarroWideChar
+            (int)wstr.size(),  // sharedWideChar
             target.data(),     // lpMultiByteStr
             size_needed,       // cbMultiByte
             nullptr,           // lpDefaultChar
@@ -137,4 +137,4 @@ namespace picarro::platform
         return st;
     }
 
-}  // namespace picarro::platform
+}  // namespace shared::platform

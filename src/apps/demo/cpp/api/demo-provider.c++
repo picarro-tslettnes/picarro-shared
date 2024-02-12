@@ -7,7 +7,7 @@
 
 #include "demo-provider.h++"
 
-namespace picarro::demo
+namespace demo
 {
     std::shared_ptr<API> provider;
 }

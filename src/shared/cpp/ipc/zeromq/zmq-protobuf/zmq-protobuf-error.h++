@@ -10,7 +10,7 @@
 
 #include "request_reply.pb.h"
 
-namespace picarro::zmq
+namespace shared::zmq
 {
     constexpr auto STATUS_FIELD_CODE = "status";
 
@@ -20,7 +20,7 @@ namespace picarro::zmq
         using status::Event::Event;
 
         ProtoBufError(const Picarro::RR::StatusCode &code,
-                      const picarro::status::Event &event);
+                      const shared::status::Event &event);
 
         Picarro::RR::StatusCode status_code() const;
         status::Domain domain() const noexcept override;
@@ -32,4 +32,4 @@ namespace picarro::zmq
     private:
         Picarro::RR::StatusCode status_code_;
     };
-}  // namespace picarro::zmq
+}  // namespace shared::zmq

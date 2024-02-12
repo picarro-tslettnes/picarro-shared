@@ -14,7 +14,7 @@
 
 #include <tuple>
 
-namespace picarro::platform
+namespace shared::platform
 {
     //==========================================================================
     // HID Bus Type
@@ -124,4 +124,4 @@ namespace picarro::platform
 
     extern ProviderProxy<HIDProvider> hid;
 
-}  // namespace picarro::platform
+}  // namespace shared::platform

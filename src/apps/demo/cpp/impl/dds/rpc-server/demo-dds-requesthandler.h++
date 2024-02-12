@@ -12,14 +12,14 @@
 
 #include "types/create-shared.h++"
 
-namespace picarro::demo::dds
+namespace demo::dds
 {
     //==========================================================================
     // @class RequestHandler
     // @brief Process requests from DemoService clients
 
     class RequestHandler : public Picarro::Demo::DemoService,
-                           public picarro::types::enable_create_shared<RequestHandler>
+                           public shared::types::enable_create_shared<RequestHandler>
     {
         // Convencience alias
         using This = RequestHandler;
@@ -37,4 +37,4 @@ namespace picarro::demo::dds
     private:
         std::shared_ptr<API> provider;
     };
-}  // namespace picarro::demo::dds
+}  // namespace demo::dds

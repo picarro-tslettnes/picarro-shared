@@ -12,7 +12,7 @@
 #include <locale>
 #include <csignal>
 
-namespace picarro::application
+namespace shared::application
 {
     void shutdown_handler(int signal)
     {
@@ -29,15 +29,15 @@ namespace picarro::application
         // Apply locale for `wstring` conversions
         std::locale::global(std::locale(""));
 
-        picarro::platform::register_providers(argc ? argv[0] : "");
-        picarro::init_settings();
+        shared::platform::register_providers(argc ? argv[0] : "");
+        shared::init_settings();
     }
 
     void deinitialize()
     {
         logging::message_dispatcher.deinitialize();
-        picarro::platform::unregister_providers();
+        shared::platform::unregister_providers();
     }
 
-    picarro::signal::Signal<int> signal_shutdown("signal_shutdown");
-}  // namespace picarro::application
+    shared::signal::Signal<int> signal_shutdown("signal_shutdown");
+}  // namespace shared::application

@@ -12,12 +12,12 @@
 #include "status/exception.h++"
 #include "types/value.h++"
 
-namespace picarro::python
+namespace shared::python
 {
-    class Exception : picarro::exception::Exception<std::runtime_error>
+    class Exception : shared::exception::Exception<std::runtime_error>
     {
         using This = Exception;
-        using Super = picarro::exception::Exception<std::runtime_error>;
+        using Super = shared::exception::Exception<std::runtime_error>;
 
     public:
         Exception(PyObject *exc, const std::string &module_name);
@@ -25,4 +25,4 @@ namespace picarro::python
         std::string text() const noexcept override;
         types::ValueList args() const noexcept;
     };
-}  // namespace picarro::python
+}  // namespace shared::python

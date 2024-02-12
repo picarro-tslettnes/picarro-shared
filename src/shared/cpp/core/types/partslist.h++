@@ -11,7 +11,7 @@
 #include <string>
 #include <list>
 
-namespace picarro::types
+namespace shared::types
 {
     //==========================================================================
     /// @class PartsList
@@ -40,4 +40,4 @@ namespace picarro::types
     protected:
         void to_stream(std::ostream &stream) const override;
     };
-}  // namespace picarro::types
+}  // namespace shared::types

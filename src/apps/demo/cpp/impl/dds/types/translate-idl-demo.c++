@@ -9,11 +9,11 @@
 #include "translate-idl-inline.h++"
 #include "chrono/date-time.h++"
 
-namespace picarro::idl
+namespace idl
 {
     //==========================================================================
     // Greeting
-    void encode(const picarro::demo::Greeting &native,
+    void encode(const demo::Greeting &native,
                 Picarro::Demo::Greeting *idl)
     {
         idl->text(native.text);
@@ -24,7 +24,7 @@ namespace picarro::idl
     }
 
     void decode(const Picarro::Demo::Greeting &idl,
-                picarro::demo::Greeting *native)
+                demo::Greeting *native)
     {
         native->text = idl.text();
         native->identity = idl.identity();
@@ -36,7 +36,7 @@ namespace picarro::idl
     //==========================================================================
     // TimeData
 
-    void encode(const picarro::demo::TimeData &native,
+    void encode(const demo::TimeData &native,
                 Picarro::Demo::TimeData *idl)
     {
         encode(native.timepoint, &idl->timestamp());
@@ -45,7 +45,7 @@ namespace picarro::idl
     }
 
     void decode(const Picarro::Demo::TimeData &idl,
-                picarro::demo::TimeData *native)
+                demo::TimeData *native)
     {
         decode(idl.timestamp(), &native->timepoint);
         decode(idl.local_time(), &native->localtime);
@@ -58,14 +58,14 @@ namespace picarro::idl
     void encode(const std::tm &native,
                 Picarro::Demo::TimeStruct *idl)
     {
-        idl->year(native.tm_year + picarro::dt::TM_YEAR_OFFSET);
-        idl->month(native.tm_mon + picarro::dt::TM_MONTH_OFFSET);
-        idl->day(native.tm_mday + picarro::dt::TM_DAY_OFFSET);
+        idl->year(native.tm_year + shared::dt::TM_YEAR_OFFSET);
+        idl->month(native.tm_mon + shared::dt::TM_MONTH_OFFSET);
+        idl->day(native.tm_mday + shared::dt::TM_DAY_OFFSET);
         idl->hour(native.tm_hour);
         idl->minute(native.tm_min);
         idl->second(native.tm_sec);
-        idl->weekday(static_cast<Picarro::Demo::Weekday>(native.tm_wday + picarro::dt::TM_WEEKDAY_OFFSET));
-        idl->year_day(native.tm_yday + picarro::dt::TM_YEARDAY_OFFSET);
+        idl->weekday(static_cast<Picarro::Demo::Weekday>(native.tm_wday + shared::dt::TM_WEEKDAY_OFFSET));
+        idl->year_day(native.tm_yday + shared::dt::TM_YEARDAY_OFFSET);
 
         if (native.tm_isdst >= 0)
         {
@@ -79,12 +79,12 @@ namespace picarro::idl
         native->tm_sec = static_cast<int>(idl.second());
         native->tm_min = static_cast<int>(idl.minute());
         native->tm_hour = static_cast<int>(idl.hour());
-        native->tm_mday = static_cast<int>(idl.day()) - picarro::dt::TM_DAY_OFFSET;
-        native->tm_mon = static_cast<int>(idl.month()) - picarro::dt::TM_MONTH_OFFSET;
-        native->tm_year = static_cast<int>(idl.year()) - picarro::dt::TM_YEAR_OFFSET;
-        native->tm_mday = static_cast<int>(idl.weekday()) - picarro::dt::TM_WEEKDAY_OFFSET;
-        native->tm_yday = static_cast<int>(idl.year_day()) - picarro::dt::TM_YEARDAY_OFFSET;
+        native->tm_mday = static_cast<int>(idl.day()) - shared::dt::TM_DAY_OFFSET;
+        native->tm_mon = static_cast<int>(idl.month()) - shared::dt::TM_MONTH_OFFSET;
+        native->tm_year = static_cast<int>(idl.year()) - shared::dt::TM_YEAR_OFFSET;
+        native->tm_mday = static_cast<int>(idl.weekday()) - shared::dt::TM_WEEKDAY_OFFSET;
+        native->tm_yday = static_cast<int>(idl.year_day()) - shared::dt::TM_YEARDAY_OFFSET;
         native->tm_isdst = static_cast<int>(idl.is_dst().has_value() ? idl.is_dst().value() : -1);
     }
 
-}  // namespace picarro::idl
+}  // namespace idl

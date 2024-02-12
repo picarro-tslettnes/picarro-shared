@@ -14,7 +14,7 @@
 #include <unordered_set>
 #include <mutex>
 
-namespace picarro::zmq
+namespace shared::zmq
 {
     class Subscriber : public Satellite
     {
@@ -55,4 +55,4 @@ namespace picarro::zmq
         bool keep_receiving;
     };
 
-}  // namespace picarro::zmq
+}  // namespace shared::zmq

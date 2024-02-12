@@ -8,7 +8,7 @@
 #include "builder.h++"
 #include "buildinfo.h"
 
-namespace picarro::logging
+namespace shared::logging
 {
     MessageBuilder::MessageBuilder(Dispatcher *dispatcher,
                                    Scope::Ref scope,
@@ -54,4 +54,4 @@ namespace picarro::logging
             this->dispatcher_->submit(this->shared_from_this());
         }
     }
-}  // namespace picarro::logging
+}  // namespace shared::logging

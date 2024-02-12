@@ -12,7 +12,7 @@
 #include "platform/symbols.h++"
 #include "application/init.h++"
 
-namespace picarro::python
+namespace shared::python
 {
     Runtime::Runtime()
     {
@@ -134,4 +134,4 @@ namespace picarro::python
 
     bool Runtime::initialized = false;
 
-}  // namespace picarro::python
+}  // namespace shared::python

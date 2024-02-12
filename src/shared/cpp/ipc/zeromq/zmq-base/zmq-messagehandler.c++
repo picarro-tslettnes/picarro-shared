@@ -7,7 +7,7 @@
 
 #include "zmq-messagehandler.h++"
 
-namespace picarro::zmq
+namespace shared::zmq
 {
     MessageHandler::MessageHandler(const std::string &id, const Filter &filter)
         : id_(id),
@@ -24,4 +24,4 @@ namespace picarro::zmq
     {
         return this->filter_;
     }
-}  // namespace picarro::zmq
+}  // namespace shared::zmq

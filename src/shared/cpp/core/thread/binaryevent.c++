@@ -7,7 +7,7 @@
 
 #include "binaryevent.h++"
 
-namespace picarro::types
+namespace shared::types
 {
     //==========================================================================
     // BinaryEvent
@@ -55,4 +55,4 @@ namespace picarro::types
         });
     }
 
-}  // namespace picarro::types
+}  // namespace shared::types

@@ -9,7 +9,7 @@
 #include <iostream>
 #include "types/symbolmap.h++"
 
-namespace picarro::status
+namespace shared::status
 {
     //==========================================================================
     // @enum Level
@@ -36,4 +36,4 @@ namespace picarro::status
 
     std::ostream &operator<<(std::ostream &stream, Level lvl);
     std::istream &operator>>(std::istream &stream, Level &lvl);
-}  // namespace picarro::status
+}  // namespace shared::status

@@ -9,7 +9,7 @@
 
 #include <sstream>
 
-namespace picarro::logging
+namespace shared::logging
 {
     void MessageSink::set_include_context(bool include_context)
     {
@@ -68,4 +68,4 @@ namespace picarro::logging
         this->send_preamble(ss, msg, suffix);
         return ss.str();
     }
-}  // namespace picarro::logging
+}  // namespace shared::logging

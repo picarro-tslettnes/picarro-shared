@@ -8,7 +8,7 @@
 #pragma once
 #include "platform/process.h++"
 
-namespace picarro::platform
+namespace shared::platform
 {
     /// @brief Process invocation on Linux
     class PosixProcessProvider : public ProcessProvider
@@ -71,4 +71,4 @@ namespace picarro::platform
         void execute(ArgVector argv, const fs::path &cwd) const;
     };
 
-}  // namespace picarro::platform
+}  // namespace shared::platform

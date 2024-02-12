@@ -9,7 +9,7 @@
 #include "python-pickle.h++"
 #include "zmq-subscriber.h++"
 
-namespace picarro::zmq
+namespace shared::zmq
 {
     class PyPickleSubscriber : public Subscriber
     {
@@ -29,4 +29,4 @@ namespace picarro::zmq
         }
     };
 
-}  // namespace picarro::zmq
+}  // namespace shared::zmq
