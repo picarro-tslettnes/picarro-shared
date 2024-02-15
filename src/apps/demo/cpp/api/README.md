@@ -25,7 +25,7 @@ Signals
 Event notifications are issued via the following two signals:
 
 ```
-shared::signal::Signal<TimeData> signal_time("picarro::demo::signal_time");
+shared::signal::DataSignal<TimeData> signal_time("picarro::demo::signal_time");
 shared::signal::MappingSignal<Greeting> signal_greeting("picarro::demo::signal_greeting", true);
 ```
 

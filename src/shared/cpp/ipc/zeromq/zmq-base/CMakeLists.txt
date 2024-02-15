@@ -14,7 +14,7 @@ set(LIB_TYPE STATIC)
 ### Library dependencies.
 set(LIB_DEPS
   picarro_shared_ipc_common
-  picarro_shared_platform
+  picarro_shared_core
 )
 
 ### Package dependencies

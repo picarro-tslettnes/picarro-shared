@@ -13,7 +13,8 @@ if(BUILD_PYTHON_CPP)
   set(LIB_TYPE INTERFACE)
   set(LIB_DEPS
     picarro_shared_ipc_python_base
-    picarro_shared_ipc_python_embedded)
+    picarro_shared_ipc_python_embedded
+  )
   include(BuildLibrary)
 
 endif()

@@ -16,6 +16,7 @@ set(DEST_DIR sbin)
 ### if you also list another library that depends on it.
 set(LIB_DEPS
   picarro_demo_native
+  picarro_shared_ipc_python_embedded
 )
 
 if(BUILD_RTI_DDS)
