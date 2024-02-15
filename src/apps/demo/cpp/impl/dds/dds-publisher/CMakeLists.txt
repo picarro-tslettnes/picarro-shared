@@ -18,7 +18,7 @@ set(LIB_TYPE STATIC)
 set(LIB_DEPS
   picarro_demo_api
   picarro_demo_dds_types
-  picarro_shared_ipc_dds_rti
+  picarro_shared_messaging_dds_rti
 )
 
 ### Source files

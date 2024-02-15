@@ -8,7 +8,7 @@
 ### Modules relative to install dir
 from .common import DEMO_RPC_INTERFACE
 from ..core import API, Picarro, ProtoBuf, Weekdays
-from ipc.zmq.protobuf.requesthandler import RequestHandler
+from messaging.zmq.protobuf.requesthandler import RequestHandler
 
 ### Standard Python modules
 import logging

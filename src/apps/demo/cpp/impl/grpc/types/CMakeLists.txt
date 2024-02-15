@@ -14,7 +14,7 @@ set(LIB_TYPE STATIC)
 set(LIB_DEPS
   picarro_demo_api
   picarro_demo_protodefs
-  picarro_shared_ipc_protobuf
+  picarro_shared_messaging_protobuf
 )
 
 set(SOURCES

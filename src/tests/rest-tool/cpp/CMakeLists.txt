@@ -12,7 +12,7 @@ set(TARGET rest-tool)
 ### system.
 set(LIB_DEPS
   picarro_shared_platform
-  picarro_shared_ipc_http
+  picarro_shared_messaging_http
 )
 
 ### Source files

@@ -27,7 +27,7 @@ set(LIB_TYPE INTERFACE)
 set(LIB_DEPS
   picarro_shared_core
   picarro_shared_platform
-  picarro_shared_ipc_common
+  picarro_shared_messaging_common
 )
 
 if(BUILD_RTI_DDS)

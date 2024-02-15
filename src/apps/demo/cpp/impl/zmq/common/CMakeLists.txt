@@ -18,8 +18,8 @@ set(LIB_TYPE INTERFACE)
 set(LIB_DEPS
   picarro_demo_api
   picarro_demo_protobuf_types
-  picarro_shared_ipc_zmq
-  picarro_shared_ipc_protobuf
+  picarro_shared_messaging_zmq
+  picarro_shared_messaging_protobuf
 )
 
 set(SOURCES)
