@@ -14,7 +14,6 @@ set(PROGRAMS
 
 ### Modules to be installed as supporting files, without execute permissions
 set(FILES
-  __init__.py
 )
 
 ### Subdirectories
