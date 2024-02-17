@@ -69,6 +69,11 @@ if (BUILD_PYTHON)
   if (BUILD_GRPC)
     grpc_generate_python(GRPC_PY ${CMAKE_CURRENT_BINARY_DIR} ${SOURCES})
   endif()
+
+  if(NOT PYTHON_INSTALL_DIR)
+    set(PYTHON_INSTALL_DIR "share/python")
+  endif()
+
   install(FILES ${PROTO_PY} ${GRPC_PY} DESTINATION ${PYTHON_INSTALL_DIR}/generated)
 endif()
 

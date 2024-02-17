@@ -37,11 +37,6 @@ if(BUILD_CSHARP)
   set(CSHARP_INSTALL_DIR "csbin")
 endif()
 
-### Python components
-if(BUILD_PYTHON)
-  set(PYTHON_INSTALL_DIR "share/python")
-endif()
-
 ### gRPC requires ProtoBuf
 if(BUILD_GRPC)
   set(BUILD_PROTOBUF ON)
