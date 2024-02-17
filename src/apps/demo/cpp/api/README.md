@@ -38,7 +38,7 @@ addition/update/removal of an item in a keyed data set (map).
 In the former case, a signal is emitted on as follows:
 
 ```
-cc::demo::TimeData time_data(...);
+demo::TimeData time_data(...);
 shared::signal::signal_time.emit(time_data);
 ```
 
@@ -64,9 +64,9 @@ shared::signal::MappingSignal<T, K>::emit(MappingChange change, K key, T value)
 In our case, a new client might issue a greeting like this:
 
 ```
-cc::demo::signal_greeting.emit(shared::signal::MAP_ADDITION,
-                              ::options->identity,
-                              demo::Greeting(...));
+demo::signal_greeting.emit(shared::signal::MAP_ADDITION,
+                           ::options->identity,
+                           demo::Greeting(...));
 ```
 
 These three arguments are then passed onto any connected slots, which in this
