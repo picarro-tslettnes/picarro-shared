@@ -9,6 +9,7 @@
 #include "platform/symbols.h++"
 #include "platform/init.h++"
 #include "status/exceptions.h++"
+#include "string/misc.h++"
 #include "logging/logging.h++"
 #include "thread/signaltemplate.h++"
 
@@ -83,7 +84,8 @@ namespace shared::http
         std::stringstream stream;
         this->get(location, nullptr, &content_type, nullptr, &stream, true);
         str::tolower(&content_type);
-        if (content_type != str::tolower(expected_content_type))
+        if (!str::startswith(content_type + ";",
+                             str::tolower(expected_content_type) + ";"))
         {
             throw exception::FailedPostcondition(
                 "Content type mismatch",
@@ -123,36 +125,42 @@ namespace shared::http
             code = curl_easy_setopt(this->handle_, CURLOPT_WRITEDATA, content_stream);
         }
 
-        if ((code == CURLE_OK) && fail_on_error)
-        {
-            code = curl_easy_setopt(this->handle_, CURLOPT_FAILONERROR, 1L);
-        }
+        // if ((code == CURLE_OK) && fail_on_error)
+        // {
+        //     code = curl_easy_setopt(this->handle_, CURLOPT_FAILONERROR, 1L);
+        // }
 
         if (code == CURLE_OK)
         {
             code = curl_easy_perform(this->handle_);
         }
 
-        if (code == CURLE_OK)
+        if (code != CURLE_OK)
         {
-            code = curl_easy_getinfo(this->handle_, CURLINFO_RESPONSE_CODE, &response);
-            if (response_code)
-            {
-                *response_code = response;
-            }
+            throw exception::FailedPrecondition(
+                curl_easy_strerror(code),
+                {{"url", url},
+                 {"curl_code", code}});
         }
 
-        if ((code == CURLE_OK) && content_type)
+        code = curl_easy_getinfo(this->handle_, CURLINFO_RESPONSE_CODE, &response);
+        if (response_code)
+        {
+            *response_code = response;
+        }
+
+        if (content_type)
         {
             char *ctype = nullptr;
             code = curl_easy_getinfo(this->handle_, CURLINFO_CONTENT_TYPE, &ctype);
             content_type->assign(ctype ? ctype : "");
         }
 
-        if (code != CURLE_OK)
+        if (fail_on_error && !this->successful_response(response))
         {
-            throw exception::FailedPostcondition(
-                curl_easy_strerror(code),
+            throwf_args(
+                exception::FailedPostcondition,
+                ("Server returned response code %s", response),
                 {
                     {"url", url},
                     {"curl_code", code},
