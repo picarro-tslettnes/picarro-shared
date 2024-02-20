@@ -15,6 +15,7 @@ set(LIB_TYPE STATIC)
 set(LIB_DEPS
   picarro_shared_messaging_common
   picarro_shared_messaging_protobuf
+  picarro_shared_messaging_http
   picarro_shared_core
 )
 
@@ -25,7 +26,7 @@ set(PKG_DEPS
 
 set(SOURCES
   grpc-base.c++
-  grpc-clientwrapper.c++
+  grpc-clientbase.c++
   grpc-serverbuilder.c++
   grpc-servicehandler.c++
   grpc-status.c++
