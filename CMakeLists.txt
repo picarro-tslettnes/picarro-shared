@@ -32,6 +32,9 @@ option(BUILD_RTI_DDS    "Build support for RTI ConnextDDS" OFF)
 option(BUILD_RTI_LOGGER "Build support for RTI Distributed Logger" OFF)
 option(BUILD_IDL        "Build Interface Definition Language types (IDL)" OFF)
 
+### Build DEMO application
+option(BUILD_DEMO       "Build DEMO application example" OFF)
+
 ### C# components
 if(BUILD_CSHARP)
   set(CSHARP_INSTALL_DIR "csbin")

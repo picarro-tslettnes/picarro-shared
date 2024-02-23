@@ -7,8 +7,7 @@
 
 ### Modules relative to install folder
 from .messagehandler import MessageHandler
-from ...base import SignalStore
-from ...protobuf import Picarro, ProtoBuf
+from ...protobuf import Picarro, ProtoBuf, SignalStore
 
 class SignalHandler (MessageHandler):
     '''Subscribe to `Signal` messages from ZMQ publisher and re-emit locally as signals.'''

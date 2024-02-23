@@ -5,4 +5,7 @@
 ## @author Tor Slettnes <tslettnes@picarro.com>
 #===============================================================================
 
-add_subdirectory(demo)
+if (BUILD_DEMO)
+  add_subdirectory(demo)
+endif()
+

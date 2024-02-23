@@ -18,7 +18,7 @@ SignalSlot = Callable[[Picarro.Demo.Signal], None]
 #===============================================================================
 # Native Demo implementation
 
-class API (object):
+class API (ProtoBuf):
     '''Demo API'''
 
     def __init__(self,
@@ -42,8 +42,6 @@ class API (object):
             This is a convencience wrapper to build a `Picarro.Demo.Greeting` object
             and pass it to `say_hello()`.
         '''
-
-        self.check_type(text, str)
 
         greeting = Picarro.Demo.Greeting(text=text,
                                     identity=self.identity,
