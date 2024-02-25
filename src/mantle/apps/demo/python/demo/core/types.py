@@ -6,13 +6,13 @@
 #===============================================================================
 
 ### Modules relative to install dir
-from picarro.io.protobuf import Picarro as _CC, ProtoBuf
+from picarro.io.protobuf import Picarro as Picarro_Base, ProtoBuf
 from picarro.core.scalar_types import enums
 
 ### Standard Python modules
 import time
 
-class Picarro (_CC):
+class Picarro (Picarro_Base):
     import generated.demo_types_pb2 as Demo
 
     @classmethod
