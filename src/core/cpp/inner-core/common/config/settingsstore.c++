@@ -35,6 +35,11 @@ namespace core
         this->load(filename);
     }
 
+    bool SettingsStore::loaded() const
+    {
+        return !this->filenames_.empty();
+    }
+
     bool SettingsStore::load(const fs::path &filename)
     {
         bool success = false;

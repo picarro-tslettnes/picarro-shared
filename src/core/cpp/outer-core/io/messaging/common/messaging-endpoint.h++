@@ -47,9 +47,9 @@ namespace core::messaging
         virtual void initialize() {}
         virtual void deinitialize() {}
 
-        const std::string &messaging_flavor() const;
-        const std::string &endpoint_type() const;
-        const std::string &channel_name() const;
+        virtual std::string messaging_flavor() const;
+        virtual std::string endpoint_type() const;
+        virtual std::string channel_name() const;
 
         std::shared_ptr<SettingsStore> settings() const;
         types::Value setting(const std::string &key,
@@ -63,7 +63,7 @@ namespace core::messaging
     private:
 
     private:
-        static std::map<std::string, std::shared_ptr<SettingsStore>> settings_map_;
+        std::shared_ptr<SettingsStore> settings_;
         std::string messaging_flavor_;
         std::string endpoint_type_;
         std::string channel_name_;
