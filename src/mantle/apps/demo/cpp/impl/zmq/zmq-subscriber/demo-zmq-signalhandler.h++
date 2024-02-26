@@ -13,11 +13,11 @@
 
 namespace demo::zmq
 {
-    class SignalHandler : public shared::zmq::ProtoBufSignalHandler<Picarro::Demo::Signal>,
-                          public shared::types::enable_create_shared<SignalHandler>
+    class SignalHandler : public core::zmq::ProtoBufSignalHandler<Picarro::Demo::Signal>,
+                          public core::types::enable_create_shared<SignalHandler>
     {
         using This = SignalHandler;
-        using Super = shared::zmq::ProtoBufSignalHandler<Picarro::Demo::Signal>;
+        using Super = core::zmq::ProtoBufSignalHandler<Picarro::Demo::Signal>;
 
     protected:
         void initialize() override;

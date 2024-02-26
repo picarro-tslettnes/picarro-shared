@@ -26,4 +26,4 @@ namespace protobuf
     // TimeStruct
     void encode(const std::tm &tm, Picarro::Demo::TimeStruct *msg);
     void decode(const Picarro::Demo::TimeStruct &msg, std::tm *tm);
-}  // namespace shared::protobuf
+}  // namespace core::protobuf

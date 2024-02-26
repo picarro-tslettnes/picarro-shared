@@ -16,28 +16,28 @@ namespace idl
 {
     //==========================================================================
     // Domain
-    void encode(const shared::status::Domain &native, Picarro::Status::Domain *idl) noexcept;
-    void decode(const Picarro::Status::Domain &idl, shared::status::Domain *native) noexcept;
+    void encode(const core::status::Domain &native, Picarro::Status::Domain *idl) noexcept;
+    void decode(const Picarro::Status::Domain &idl, core::status::Domain *native) noexcept;
 
     //==========================================================================
     // Level
-    void encode(const shared::status::Level &native, Picarro::Status::Level *idl) noexcept;
-    void decode(const Picarro::Status::Level &idl, shared::status::Level *native) noexcept;
+    void encode(const core::status::Level &native, Picarro::Status::Level *idl) noexcept;
+    void decode(const Picarro::Status::Level &idl, core::status::Level *native) noexcept;
 
     //==========================================================================
     // Flow
-    void encode(const shared::status::Flow &native, Picarro::Status::Flow *idl) noexcept;
-    void decode(const Picarro::Status::Flow &idl, shared::status::Flow *native) noexcept;
+    void encode(const core::status::Flow &native, Picarro::Status::Flow *idl) noexcept;
+    void decode(const Picarro::Status::Flow &idl, core::status::Flow *native) noexcept;
 
     //==========================================================================
     // Event
-    void encode(const shared::status::Event &native, Picarro::Status::Event *idl) noexcept;
-    void decode(const Picarro::Status::Event &idl, shared::status::Event *native) noexcept;
-    shared::status::Event decoded_event(const Picarro::Status::Event &idl) noexcept;
+    void encode(const core::status::Event &native, Picarro::Status::Event *idl) noexcept;
+    void decode(const Picarro::Status::Event &idl, core::status::Event *native) noexcept;
+    core::status::Event decoded_event(const Picarro::Status::Event &idl) noexcept;
 
     //==========================================================================
     // LogMessage
-    void encode(const shared::logging::Message &native, Picarro::Status::LogMessage *idl) noexcept;
-    shared::logging::Message decoded_logmessage(Picarro::Status::LogMessage idl) noexcept;
+    void encode(const core::logging::Message &native, Picarro::Status::LogMessage *idl) noexcept;
+    core::logging::Message decoded_logmessage(Picarro::Status::LogMessage idl) noexcept;
 
 }  // namespace idl

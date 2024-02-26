@@ -24,20 +24,20 @@ namespace idl
     //==========================================================================
     // Encode/decode Unsigned Integer value
 
-    void encode(shared::types::largest_uint native,
+    void encode(core::types::largest_uint native,
                 Picarro::Common::UnsignedValue *idl) noexcept;
 
     void decode(const Picarro::Common::UnsignedValue &idl,
-                shared::types::largest_uint *native) noexcept;
+                core::types::largest_uint *native) noexcept;
 
     //==========================================================================
     // Encode/decode Signed Integer value
 
-    void encode(shared::types::largest_sint native,
+    void encode(core::types::largest_sint native,
                 Picarro::Common::SignedValue *idl) noexcept;
 
     void decode(const Picarro::Common::SignedValue &idl,
-                shared::types::largest_sint *native) noexcept;
+                core::types::largest_sint *native) noexcept;
 
     //==========================================================================
     // Encode/decode real value
@@ -51,29 +51,29 @@ namespace idl
     //==========================================================================
     // Encode/decode Complex value
 
-    void encode(const shared::types::complex &native,
+    void encode(const core::types::complex &native,
                 Picarro::Common::ComplexValue *idl) noexcept;
 
     void decode(const Picarro::Common::ComplexValue &idl,
-                shared::types::complex *native) noexcept;
+                core::types::complex *native) noexcept;
 
     //==========================================================================
     // Encode/decode Timestamp
 
-    void encode(const shared::dt::TimePoint &native,
+    void encode(const core::dt::TimePoint &native,
                 Picarro::Common::Timestamp *idl) noexcept;
 
     void decode(const Picarro::Common::Timestamp &idl,
-                shared::dt::TimePoint *native) noexcept;
+                core::dt::TimePoint *native) noexcept;
 
     //==========================================================================
     // Encode/decode Duration
 
-    void encode(const shared::dt::Duration &native,
+    void encode(const core::dt::Duration &native,
                 Picarro::Common::Duration *idl) noexcept;
 
     void decode(const Picarro::Common::Duration &idl,
-                shared::dt::Duration *native) noexcept;
+                core::dt::Duration *native) noexcept;
 
     //==========================================================================
     // Encode/decode String value

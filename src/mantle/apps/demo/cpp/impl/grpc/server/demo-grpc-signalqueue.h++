@@ -27,9 +27,9 @@ namespace demo::grpc
     ///
     /// See `service::SignalQueue<T>` for additional info.
 
-    class SignalQueue : public shared::grpc::SignalQueue<Picarro::Demo::Signal>
+    class SignalQueue : public core::grpc::SignalQueue<Picarro::Demo::Signal>
     {
-        using Super = shared::grpc::SignalQueue<Picarro::Demo::Signal>;
+        using Super = core::grpc::SignalQueue<Picarro::Demo::Signal>;
 
     public:
         using Super::Super;
