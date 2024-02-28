@@ -197,6 +197,7 @@ Questions? Comments? Concerns?
 ------------------------------
 
 Contact:
-    Tor Slettnes 
-    Email: [tslettnes@picarro.com](mailto:tslettnes@picarro.com) 
-    Phone: [+1-925-8888-TOR](tel:+19258888867)
+
+> Tor Slettnes  
+> tor@slett.net  
+> +1.925.8888.TOR

@@ -20,7 +20,7 @@ sys.path.append(_generatedRoot)
 ## In lieu of proper package-based code generation, we create a `Picarro` container
 ## class to hold generated data types within the ProtoBuf `Picarro` namespace.
 ## Within here we import generated modules using names that reflect the
-## second component on thier ProtoBuf namespace (e.g. `Picarro.Variant`).
+## second component on their ProtoBuf namespace (e.g. `Picarro.Variant`).
 ##
 ## You can add to this class by importing it under a different name, then create
 ## an `Picarro` subclass; e.g.:

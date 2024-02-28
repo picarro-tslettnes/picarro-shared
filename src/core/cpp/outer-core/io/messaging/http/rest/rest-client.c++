@@ -6,7 +6,7 @@
 //==============================================================================
 
 #include "rest-client.h++"
-#include "json/jsondecoder.h++"
+#include "json/jsonparser.h++"
 
 namespace core::http
 {
@@ -23,7 +23,7 @@ namespace core::http
     types::Value RESTClient::get_json(const std::string &location) const
     {
         std::stringstream content = this->get(location, this->content_type);
-        return json::JsonDecoder::parse_text(content.str());
+        return json::JsonParser::parse_text(content.str());
     }
 
 

@@ -13,7 +13,7 @@ set(LIB_TYPE STATIC)
 ### Library dependencies.
 set(LIB_DEPS
   picarro_demo_api
-  picarro_demo_protodefs
+  picarro_demo_proto
   picarro_core_io_protobuf
 )
 
