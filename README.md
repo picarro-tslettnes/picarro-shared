@@ -4,7 +4,10 @@ Getting Started
 Contents
 --------
 
-This repository contains source for the Common Core framework. Most of the code is developed in C++, but there is also client modules written in Python.
+This repository contains shared components intended as a framwework for Picarro product develoments, including language-specific utility libraries, interface definitions, and recipes for the CMake build file generator.
+
+Most of the source code provided here is for C++ and Python.
+
 
 Directory Structure
 -------------------
@@ -81,10 +84,10 @@ If you are reading this text directly on your system, you have already completed
     with a the contents of the Personal Access Token you created above).
 
 
-* You should now be able to pull all required source code to build product from [`common-core`](https://github.com/picarro-tslettnes/common-core) repository:
+* You should now be able to pull all required source code to build product from the [Picarro Shared Components](https://github.com/picarro-tslettnes/picarro-shared) repository:
 
     ```bash
-    $ git clone https://github.com/picarro-tslettnes/common-core.git
+    $ git clone https://github.com/picarro-tslettnes/picarro-shared.git
     ```
 
 
@@ -97,8 +100,7 @@ If you are reading this text directly on your system, you have already completed
 * C++ core build-time dependencies:
 
   ```bash
-  $ sudo apt install build-essential cmake \
-                     uuid-dev rapidjson-dev
+  $ sudo apt install build-essential cmake uuid-dev
   ```
   (Additional indirect dependencies are installed as well)
 
