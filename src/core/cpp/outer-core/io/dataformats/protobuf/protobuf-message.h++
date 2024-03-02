@@ -7,6 +7,7 @@
 
 #pragma once
 #include "types/bytevector.h++"
+#include "string/stream.h++"
 
 #include <google/protobuf/message.h>
 
@@ -19,7 +20,7 @@ namespace protobuf
 
     /// Convert a ProtoBuf message to a printable string.
     std::string to_string(const google::protobuf::Message &msg,
-                          bool single_line = true);
+                          bool single_line = false);
 
     /// Convert a protobuf message to a serialized byte array
     void to_bytes(const google::protobuf::Message &msg,
@@ -77,5 +78,12 @@ namespace google
     {
         std::ostream &operator<<(std::ostream &stream,
                                  const google::protobuf::Message &msg);
+
+        template <class T>
+        std::ostream &operator<<(std::ostream &stream,
+                                 const google::protobuf::RepeatedPtrField<T> &ptr_field)
+        {
+            return core::stream::write_sequence(stream, ptr_field);
+        }
     }  // namespace protobuf
 }  // namespace google
