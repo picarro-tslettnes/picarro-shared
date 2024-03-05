@@ -326,7 +326,7 @@ namespace core::types
                 std::chrono::duration_cast<std::chrono::steady_clock::duration>(timeout));
         }
 
-    public:
+    private:
         std::queue<T, std::deque<T>> queue;
     };
 
