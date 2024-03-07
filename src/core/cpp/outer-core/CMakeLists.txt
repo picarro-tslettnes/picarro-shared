@@ -5,4 +5,5 @@
 ## @author Tor Slettnes <tslettnes@picarro.com>
 #===============================================================================
 
-add_subdirectory(io)
+add_subdirectory(dataformats)
+add_subdirectory(messaging)

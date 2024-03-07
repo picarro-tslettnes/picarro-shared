@@ -15,8 +15,8 @@
 
 namespace demo::grpc
 {
-    using ClientImplBase = core::grpc::SignalWatchClient<Picarro::Demo::Demo,
-                                                       Picarro::Demo::Signal>;
+    using ClientImplBase = core::grpc::SignalClient<Picarro::Demo::Demo,
+                                                    Picarro::Demo::Signal>;
 
     class ClientImpl : public demo::API,
                        public ClientImplBase,
