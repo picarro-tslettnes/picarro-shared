@@ -10,8 +10,9 @@ target_sources(${TARGET} PRIVATE
   tokenparser-stream.c++
   tokenparser-string.c++
   jsonparser.c++
+  jsonreader.c++
+
   jsonbuilder.c++
   jsonwriter.c++
 )
 
-target_include_directories(${TARGET} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
