@@ -23,8 +23,8 @@ BUILD_FLAVOR ?= $(TARGET)-$(BUILD_TYPE)
 BUILD_DIR    ?= $(OUT_DIR)/build/$(BUILD_FLAVOR)
 INSTALL_DIR  ?= $(OUT_DIR)/install/$(TARGET)
 
-export CMAKE_INSTALL_PREFIX ?= ${INSTALL_DIR}
 export CMAKE_BUILD_TYPE ?= $(BUILD_TYPE)
+export CMAKE_INSTALL_PREFIX ?= ${INSTALL_DIR}
 
 ifeq ($(shell uname), Linux)
    export CMAKE_BUILD_PARALLEL_LEVEL ?= $(shell nproc)
@@ -35,12 +35,17 @@ endif
 install: build
 	@echo
 	@echo "#############################################################"
-	@echo "Installing in ${INSTALL_DIR}"
+	@echo "Installing unstripped binaries in ${INSTALL_DIR}"
 	@echo "#############################################################"
 	@echo
 	@cmake --install $(BUILD_DIR) --prefix $(INSTALL_DIR)
 
 install/strip: build
+	@echo
+	@echo "#############################################################"
+	@echo "Installing stripped binaries in ${INSTALL_DIR}"
+	@echo "#############################################################"
+	@echo
 	@cmake --install $(BUILD_DIR) --prefix $(INSTALL_DIR) --strip
 
 uninstall:
