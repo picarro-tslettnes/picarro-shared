@@ -8,8 +8,8 @@
 cmake_minimum_required(VERSION 3.15)
 
 if (NOT PROJECT_NAME)
-  project(picarro_core
-    VERSION 0.0.2)
+  project(picarro_shared
+    VERSION 0.0.3)
 endif()
 
 
