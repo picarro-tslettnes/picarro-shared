@@ -31,5 +31,9 @@ namespace core::zmq
             auto numbers = list->filter_by_type<types::largest_uint>();
             return {numbers.begin(), numbers.end()};
         }
+        else
+        {
+            return {};
+        }
     }
 }  // namespace core::zmq
