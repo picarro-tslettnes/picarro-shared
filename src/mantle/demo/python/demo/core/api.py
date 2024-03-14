@@ -49,7 +49,7 @@ class API (ProtoBuf):
                                     birth=ProtoBuf.encodeTimestamp(self.birth),
                                     data=Picarro.encodeValueList(kwargs))
 
-        self.say_hello(greeting)
+        return self.say_hello(greeting)
 
 
     def say_hello(self, greeting: Picarro.Demo.Greeting):

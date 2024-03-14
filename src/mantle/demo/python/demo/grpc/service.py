@@ -6,7 +6,7 @@
 #===============================================================================
 
 ### Modules relative to install dir
-from picarro.messaging.grpc.signalservice import SignalService
+from picarro.messaging.grpc.signal_service import SignalService
 from generated.demo_service_pb2_grpc import DemoServicer
 from ..core import API, Picarro, ProtoBuf, demo_signals
 
