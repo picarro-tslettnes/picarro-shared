@@ -12,6 +12,8 @@
 #include "chrono/date-time.h++"
 #include "string/misc.h++"
 
+#include <grpc++/ext/proto_server_reflection_plugin.h>
+
 namespace demo::grpc
 {
     void run_grpc_service(
@@ -19,6 +21,8 @@ namespace demo::grpc
         const std::string &listen_address)
     {
         constexpr auto SIGNAL_HANDLE = "gRPC Server";
+
+        ::grpc::reflection::InitProtoReflectionServerBuilderPlugin();
 
         log_info("Creating gRPC server builder");
         core::grpc::ServerBuilder builder(listen_address);
