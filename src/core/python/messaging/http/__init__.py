@@ -5,5 +5,6 @@
 ## @author Tor Slettnes <tslettnes@picarro.com>
 #===============================================================================
 
-from .base import HTTPBase, HTTPTarget, HTTPError, HTTPClientError, HTTPServerError
+from .base import HTTPBase, HTTPError, HTTPClientError, HTTPServerError
 from .client import HTTPClient
+from .aio_client import AsyncHTTPClient
