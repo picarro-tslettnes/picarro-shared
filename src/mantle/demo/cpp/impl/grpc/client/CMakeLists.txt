@@ -23,7 +23,7 @@ set(LIB_TYPE STATIC)
 set(LIB_DEPS
   picarro_demo_api
   picarro_demo_protobuf_types
-  picarro_core_messaging_grpc)
+  picarro_core_messaging_grpc_client)
 
 ### Source files
 set(SOURCES
