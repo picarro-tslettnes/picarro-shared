@@ -7,8 +7,8 @@
 
 #include "application/init.h++"
 #include "argparse/common.h++"
-#include "json/jsonparser.h++"
-#include "json/jsonwriter.h++"
+#include "json/parser.h++"
+#include "json/builder.h++"
 #include <iostream>
 
 int main(int argc, char** argv)
@@ -19,17 +19,15 @@ int main(int argc, char** argv)
     {
         std::string json_string(argv[1]);
         std::cout << "parsing input: '" << json_string << "'" << std::endl;
-        core::types::Value value = core::json::JsonParser::parse_text(json_string);
+        core::types::Value value = core::json::Parser::parse_text(json_string);
         std::cout << "parsed: " << value << std::endl;
 
-        std::string reconstructed = core::json::JsonBuilder::to_string(value, true);
+        std::string reconstructed = core::json::Builder::to_string(value, true);
         std::cout << "reconstructed:" << reconstructed << std::endl;
     }
     else
     {
         std::cerr << "Please provide a JSON string to parse" << std::endl;
     }
-
-    core::application::deinitialize();
     return 0;
 }
