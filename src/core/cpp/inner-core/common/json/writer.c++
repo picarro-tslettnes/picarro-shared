@@ -5,23 +5,10 @@
 /// @author Tor Slettnes <tslettnes@picarro.com>
 //==============================================================================
 
-#pragma once
-#include "custom-parser/writer.h++"
-
-#if BUILD_RAPIDJSON
-#include "rapidjson/writer.h++"
-#endif
+#include "writer.h++"
 
 namespace core::json
 {
-    using Writer = CustomWriter;
-
-#if BUILD_RAPIDJSON
-    using FastWriter = RapidWriter;
-#else
-    using FastWriter = CustomWriter;
-#endif
-
-    extern Writer writer;
-    extern FastWriter fast_writer;
+    Writer writer;
+    FastWriter fast_writer;
 }
